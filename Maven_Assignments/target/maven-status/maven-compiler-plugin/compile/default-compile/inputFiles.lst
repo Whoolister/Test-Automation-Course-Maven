@@ -1,39 +1,38 @@
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\exceptions\BadGenesException.java
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\exceptions\DefeatedException.java
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\enums\Locomotion.java
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\run\InheritanceRunner.java
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\interfaces\IEndothermy.java
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\genetics\IBreeding.java
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\inheritance\Invertebrate.java
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\enums\Intelligence.java
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\inheritance\Cnidarian.java
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\exceptions\MissException.java
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\battle\IFighter.java
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\inheritance\Reptile.java
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\enums\Respiration.java
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\interfaces\IEctothermy.java
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\interfaces\IHibernation.java
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\utilities\MyLinkedList.java
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\exceptions\ExcessRankException.java
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\battle\Arena.java
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\inheritance\Facility.java
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\enums\Stat.java
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\inheritance\Arthropod.java
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\inheritance\Vertebrate.java
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\interfaces\IAgriculture.java
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\interfaces\ISwarm.java
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\seventh_solvd_assignment\HomeworkRunner.java
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\utilities\MyLogger.java
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\enums\SpecialTrait.java
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\inheritance\Mammal.java
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\inheritance\Zoo.java
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\inheritance\Hybrid.java
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\enums\Diet.java
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\exceptions\BadVariableException.java
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\inheritance\Fish.java
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\genetics\Nursery.java
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\inheritance\Animal.java
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\inheritance\Mollusk.java
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\graphics\ClienteDeChat.java
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\exceptions\ExhaustedException.java
-C:\Users\Lautaro\eclipse-workspace\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\utilities\Randomizer.java
+C:\Users\Lautaro\git\maven repository\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\enums\Respiration.java
+C:\Users\Lautaro\git\maven repository\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\inheritance\Mammal.java
+C:\Users\Lautaro\git\maven repository\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\inheritance\Reptile.java
+C:\Users\Lautaro\git\maven repository\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\utilities\Randomizer.java
+C:\Users\Lautaro\git\maven repository\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\utilities\MyLogger.java
+C:\Users\Lautaro\git\maven repository\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\enums\Stat.java
+C:\Users\Lautaro\git\maven repository\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\inheritance\Vertebrate.java
+C:\Users\Lautaro\git\maven repository\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\inheritance\Arthropod.java
+C:\Users\Lautaro\git\maven repository\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\exceptions\DefeatedException.java
+C:\Users\Lautaro\git\maven repository\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\enums\Intelligence.java
+C:\Users\Lautaro\git\maven repository\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\exceptions\BadVariableException.java
+C:\Users\Lautaro\git\maven repository\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\genetics\Nursery.java
+C:\Users\Lautaro\git\maven repository\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\exceptions\MissException.java
+C:\Users\Lautaro\git\maven repository\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\seventh_solvd_assignment\HomeworkRunner.java
+C:\Users\Lautaro\git\maven repository\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\enums\SpecialTrait.java
+C:\Users\Lautaro\git\maven repository\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\exceptions\BadGenesException.java
+C:\Users\Lautaro\git\maven repository\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\exceptions\ExhaustedException.java
+C:\Users\Lautaro\git\maven repository\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\interfaces\IAgriculture.java
+C:\Users\Lautaro\git\maven repository\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\battle\Arena.java
+C:\Users\Lautaro\git\maven repository\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\inheritance\Fish.java
+C:\Users\Lautaro\git\maven repository\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\interfaces\IEctothermy.java
+C:\Users\Lautaro\git\maven repository\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\graphics\ClienteDeChat.java
+C:\Users\Lautaro\git\maven repository\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\run\InheritanceRunner.java
+C:\Users\Lautaro\git\maven repository\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\inheritance\Invertebrate.java
+C:\Users\Lautaro\git\maven repository\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\inheritance\Mollusk.java
+C:\Users\Lautaro\git\maven repository\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\exceptions\ExcessRankException.java
+C:\Users\Lautaro\git\maven repository\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\battle\IFighter.java
+C:\Users\Lautaro\git\maven repository\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\inheritance\Hybrid.java
+C:\Users\Lautaro\git\maven repository\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\interfaces\ISwarm.java
+C:\Users\Lautaro\git\maven repository\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\enums\Diet.java
+C:\Users\Lautaro\git\maven repository\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\inheritance\Cnidarian.java
+C:\Users\Lautaro\git\maven repository\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\inheritance\Animal.java
+C:\Users\Lautaro\git\maven repository\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\genetics\IBreeding.java
+C:\Users\Lautaro\git\maven repository\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\inheritance\Zoo.java
+C:\Users\Lautaro\git\maven repository\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\enums\Locomotion.java
+C:\Users\Lautaro\git\maven repository\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\inheritance\Facility.java
+C:\Users\Lautaro\git\maven repository\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\interfaces\IHibernation.java
+C:\Users\Lautaro\git\maven repository\Maven_Assignments\src\main\java\Solvd\Maven_Assignments\sixth_solvd_assignment\interfaces\IEndothermy.java

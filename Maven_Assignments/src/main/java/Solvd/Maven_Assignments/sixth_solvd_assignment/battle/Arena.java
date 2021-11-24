@@ -23,7 +23,7 @@ public class Arena extends Facility {
 	static final MyLogger LOG = new MyLogger(Logger.GLOBAL_LOGGER_NAME);
 
 	public static void hostTournament(Scanner scanner) {
-		LOG.setupLogger(arena);
+		LOG.setupLogger();
 
 		LOG.logAndShow(Level.INFO,
 				"ENTERING THE TOURNAMENT" + System.lineSeparator() + "==<O>===<0>===<O>===<0>===<O>==");
@@ -120,7 +120,7 @@ public class Arena extends Facility {
 		LOG.logAndShow(Level.INFO, "E N D   O F   T O U R N A M E N T" + System.lineSeparator()
 			+ ">==<O>===<0>- -<0>===<O>==<" + System.lineSeparator());
 
-		LOG.turnOffLogger(arena);
+		LOG.turnOffLogger();
 	}
 
 	public static Animal fight(Animal competitorOne, Animal competitorTwo) throws ExcessRankException {

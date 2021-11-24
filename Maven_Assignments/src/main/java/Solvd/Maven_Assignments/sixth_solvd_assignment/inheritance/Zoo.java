@@ -12,7 +12,7 @@ public class Zoo extends Facility {
 	private static LinkedList<Animal> exhibits = new LinkedList<>();
 
 	public static void tour(Scanner scanner) {
-		LOG.setupLogger(zoo);
+		LOG.setupLogger();
 
 		LOG.logAndShow(Level.INFO, "ENTERING THE ZOO" + System.lineSeparator() + "==<O>===<0>===<O>===<0>===<O>=="
 				+ System.lineSeparator());
@@ -103,5 +103,7 @@ public class Zoo extends Facility {
 				LOG.logAndShow(Level.SEVERE, "ERRONEOUS INPUT: Must input YES or NO." + System.lineSeparator());
 			}
 		}
+		
+		LOG.turnOffLogger();
 	}
 }

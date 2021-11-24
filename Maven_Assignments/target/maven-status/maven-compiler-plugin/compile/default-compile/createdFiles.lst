@@ -18,7 +18,6 @@ sixth_solvd_assignment\interfaces\IEndothermy.class
 sixth_solvd_assignment\interfaces\IAgriculture.class
 sixth_solvd_assignment\inheritance\Zoo.class
 sixth_solvd_assignment\utilities\Randomizer.class
-sixth_solvd_assignment\utilities\MyLinkedList.class
 sixth_solvd_assignment\exceptions\DefeatedException.class
 sixth_solvd_assignment\genetics\IBreeding.class
 sixth_solvd_assignment\inheritance\Fish.class

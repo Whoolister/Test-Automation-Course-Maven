@@ -7,7 +7,6 @@ import java.util.logging.Logger;
 
 import sixth_solvd_assignment.battle.Arena;
 import sixth_solvd_assignment.inheritance.Animal;
-import sixth_solvd_assignment.inheritance.Facility;
 import sixth_solvd_assignment.inheritance.Zoo;
 import sixth_solvd_assignment.utilities.MyLogger;
 
@@ -39,9 +38,9 @@ public final class InheritanceRunner {
 						LOG.logAndShow(Level.FINE, "Feature Unavailable, choose another." + System.lineSeparator()
 								+ entryLine + System.lineSeparator());
 					} else if (choice == 4) {
-						LOG.readLog(Facility.getZooLog());
-						LOG.readLog(Facility.getArenaLog());
-						// LOG.readLog(Facility.getNurseryLog());
+						LOG.readLog();
+						LOG.readLog();
+						// LOG.readLog();
 						LOG.logAndShow(Level.FINE, entryLine);
 					} else if (choice == 5) {
 						LOG.logAndShow(Level.SEVERE, "Bye Bye!");
