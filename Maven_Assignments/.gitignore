@@ -1,4 +1,3 @@
-/target/
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
@@ -104,6 +103,7 @@ local.properties
 
 # Log file
 *.log
+*.txt
 
 # BlueJ files
 *.ctxt

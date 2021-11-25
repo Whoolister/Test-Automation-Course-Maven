@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
 public class MyLogger extends Logger {
-	private static final File file = new File("logs\\InheritanceLog.txt"); 
+	private static final File file = new File("InheritanceLog.txt");
 
 	public MyLogger(String name) {
 		super(name, null);
@@ -22,10 +22,9 @@ public class MyLogger extends Logger {
 
 	public void setupLogger() {
 		try {
-			file.mkdirs();
 			file.createNewFile();
 
-			FileHandler fh = new FileHandler(file.getName());
+			FileHandler fh = new FileHandler(file.getParent() + file.getName());
 			fh.setFormatter(new SimpleFormatter());
 			fh.setLevel(Level.INFO);
 
@@ -37,7 +36,7 @@ public class MyLogger extends Logger {
 
 	public void turnOffLogger() {
 		try {
-			removeHandler(new FileHandler(file.getName()));
+			removeHandler(new FileHandler(file.getParent() + file.getName()));
 		} catch (SecurityException e) {
 
 		} catch (IOException e) {

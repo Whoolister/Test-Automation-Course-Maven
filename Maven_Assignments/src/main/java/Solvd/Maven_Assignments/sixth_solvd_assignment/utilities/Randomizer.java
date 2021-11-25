@@ -3,7 +3,13 @@ package sixth_solvd_assignment.utilities;
 import java.util.ArrayList;
 import java.util.Random;
 
-import sixth_solvd_assignment.inheritance.*;
+import sixth_solvd_assignment.inheritance.Animal;
+import sixth_solvd_assignment.inheritance.Arthropod;
+import sixth_solvd_assignment.inheritance.Cnidarian;
+import sixth_solvd_assignment.inheritance.Fish;
+import sixth_solvd_assignment.inheritance.Mammal;
+import sixth_solvd_assignment.inheritance.Mollusk;
+import sixth_solvd_assignment.inheritance.Reptile;
 
 public final class Randomizer {
 	private static String[] sampleNames = { "Wobbegong", "Boops", "Plumbus", "Imp", "Kelpie", "Selket", "Karkinos",

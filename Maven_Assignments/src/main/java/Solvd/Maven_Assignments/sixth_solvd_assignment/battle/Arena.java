@@ -6,7 +6,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import sixth_solvd_assignment.enums.Stat;
 import sixth_solvd_assignment.exceptions.DefeatedException;
@@ -15,12 +14,10 @@ import sixth_solvd_assignment.exceptions.ExhaustedException;
 import sixth_solvd_assignment.exceptions.MissException;
 import sixth_solvd_assignment.inheritance.Animal;
 import sixth_solvd_assignment.inheritance.Facility;
-import sixth_solvd_assignment.utilities.MyLogger;
 import sixth_solvd_assignment.utilities.Randomizer;
 
 public class Arena extends Facility {
 	private static LinkedList<Animal> roster = new LinkedList<Animal>();
-	static final MyLogger LOG = new MyLogger(Logger.GLOBAL_LOGGER_NAME);
 
 	public static void hostTournament(Scanner scanner) {
 		LOG.setupLogger();
@@ -85,21 +82,25 @@ public class Arena extends Facility {
 
 			LinkedList<Animal> survivors = new LinkedList<>();
 
-			LOG.logAndShow(Level.INFO, "Match Cycle " + cycles + System.lineSeparator()
-				+ "==<O>===<0>- -<0>===<O>==" + System.lineSeparator());
+			LOG.logAndShow(Level.INFO, "Match Cycle " + cycles + System.lineSeparator() + "==<O>===<0>- -<0>===<O>=="
+					+ System.lineSeparator());
 
 			for (int fights = 0; fights < roster.size(); fights += 2) {
 				LOG.logAndShow(Level.INFO, "Press any key, and hit ENTER to begin:");
 				scanner.next();
 
 				try {
-					LOG.logAndShow(Level.INFO, "---<O>===<O>===<O>===<O>---" + System.lineSeparator()
-						+ roster.get(fights).getName() + " Vs " + roster.get(fights + 1).getName() + System.lineSeparator()
-						+ "^~^~^~^~^~^~^~^~^~^");
+					LOG.logAndShow(Level.INFO,
+							"---<O>===<O>===<O>===<O>---" + System.lineSeparator() + roster.get(fights).getName()
+									+ " Vs " + roster.get(fights + 1).getName() + System.lineSeparator()
+									+ "^~^~^~^~^~^~^~^~^~^");
 
 					survivors.add(fight(roster.get(fights), roster.get(fights + 1)));
 				} catch (IndexOutOfBoundsException e) {
-					LOG.logAndShow(Level.INFO, "There's no one to put " + roster.get(fights).getName() + " against, so they'll be advancing the ranking. However, they won't rank up." + System.lineSeparator());
+					LOG.logAndShow(Level.INFO,
+							"There's no one to put " + roster.get(fights).getName()
+									+ " against, so they'll be advancing the ranking. However, they won't rank up."
+									+ System.lineSeparator());
 					survivors.add(roster.get(fights));
 				} catch (ExcessRankException excess) {
 					LOG.logAndShow(Level.SEVERE, roster.toString());
@@ -112,13 +113,14 @@ public class Arena extends Facility {
 			cycles++;
 		}
 
-		LOG.logAndShow(Level.INFO, "---<O>===<0>===<O|O>===<0>===- -===<0>===<O|O>===<0>===<O>---" + System.lineSeparator()
-			+ roster.get(0).getName() + " is the undisputed winner of this tournament! All hail!" + System.lineSeparator()
-			+ roster.get(0).toString() + System.lineSeparator());
+		LOG.logAndShow(Level.INFO,
+				"---<O>===<0>===<O|O>===<0>===- -===<0>===<O|O>===<0>===<O>---" + System.lineSeparator()
+						+ roster.get(0).getName() + " is the undisputed winner of this tournament! All hail!"
+						+ System.lineSeparator() + roster.get(0).toString() + System.lineSeparator());
 
 		// FINAL LINE
 		LOG.logAndShow(Level.INFO, "E N D   O F   T O U R N A M E N T" + System.lineSeparator()
-			+ ">==<O>===<0>- -<0>===<O>==<" + System.lineSeparator());
+				+ ">==<O>===<0>- -<0>===<O>==<" + System.lineSeparator());
 
 		LOG.turnOffLogger();
 	}
@@ -126,7 +128,8 @@ public class Arena extends Facility {
 	public static Animal fight(Animal competitorOne, Animal competitorTwo) throws ExcessRankException {
 		ArrayDeque<Animal> queue = new ArrayDeque<>(2);
 
-		if (competitorOne.getStat(Stat.SPEED) > competitorTwo.getStat(Stat.SPEED) || competitorOne.getStat(Stat.SPEED) == competitorTwo.getStat(Stat.SPEED)) {
+		if (competitorOne.getStat(Stat.SPEED) > competitorTwo.getStat(Stat.SPEED)
+				|| competitorOne.getStat(Stat.SPEED) == competitorTwo.getStat(Stat.SPEED)) {
 			queue.addFirst(competitorOne);
 			queue.addLast(competitorTwo);
 		} else {
@@ -141,30 +144,52 @@ public class Arena extends Facility {
 			for (Animal competitor : queue) {
 				if (competitor.equals(queue.peekFirst())) {
 					try {
-						LOG.logAndShow(Level.INFO, ">" + competitor.getName() + " Landed a hit for a " + Randomizer.hitAdjectiveGenerator() + " " + competitor.hit(queue.peekLast()) + " points of damage!" + System.lineSeparator());
+						LOG.logAndShow(Level.INFO,
+								">" + competitor.getName() + " Landed a hit for a " + Randomizer.hitAdjectiveGenerator()
+										+ " " + competitor.hit(queue.peekLast()) + " points of damage!"
+										+ System.lineSeparator());
 					} catch (MissException miss) {
-						LOG.logAndShow(Level.INFO, ">" + competitor.getName() + miss.getMessage() + System.lineSeparator());
+						LOG.logAndShow(Level.INFO,
+								">" + competitor.getName() + miss.getMessage() + System.lineSeparator());
 					} catch (ExhaustedException exhausted) {
 						queue.peekLast().rankUP();
-						LOG.logAndShow(Level.INFO, competitor.getName() + exhausted.getMessage() + queue.peekLast().getName() + " has won the match, and rose to Rank " + queue.peekLast().getRank()+ System.lineSeparator());
+						LOG.logAndShow(Level.INFO,
+								competitor.getName() + exhausted.getMessage() + queue.peekLast().getName()
+										+ " has won the match, and rose to Rank " + queue.peekLast().getRank()
+										+ System.lineSeparator());
 						return queue.peekLast();
 					} catch (DefeatedException defeated) {
 						competitorOne.rankUP();
-						LOG.logAndShow(Level.INFO, competitor.getName() + " delivered one final blow to his opponent, dealing a " + Randomizer.hitAdjectiveGenerator() + " " + defeated.getDamage() + " points of damage!" + System.lineSeparator()+ "They have won the match, and risen to Rank " + competitor.getRank());
+						LOG.logAndShow(Level.INFO,
+								competitor.getName() + " delivered one final blow to his opponent, dealing a "
+										+ Randomizer.hitAdjectiveGenerator() + " " + defeated.getDamage()
+										+ " points of damage!" + System.lineSeparator()
+										+ "They have won the match, and risen to Rank " + competitor.getRank());
 						return competitor;
 					}
 				} else {
 					try {
-						LOG.logAndShow(Level.INFO, ">" + competitor.getName() + " Landed a hit for a " + Randomizer.hitAdjectiveGenerator() + " " + competitor.hit(queue.peekFirst()) + " points of damage!" + System.lineSeparator());
+						LOG.logAndShow(Level.INFO,
+								">" + competitor.getName() + " Landed a hit for a " + Randomizer.hitAdjectiveGenerator()
+										+ " " + competitor.hit(queue.peekFirst()) + " points of damage!"
+										+ System.lineSeparator());
 					} catch (MissException miss) {
-						LOG.logAndShow(Level.INFO, ">" + competitor.getName() + miss.getMessage() + System.lineSeparator());
+						LOG.logAndShow(Level.INFO,
+								">" + competitor.getName() + miss.getMessage() + System.lineSeparator());
 					} catch (ExhaustedException exhausted) {
 						queue.peekFirst().rankUP();
-						LOG.logAndShow(Level.INFO, competitor.getName() + exhausted.getMessage() + queue.peekFirst().getName() + " has won the match, and rose to Rank " + queue.peekFirst().getRank() + System.lineSeparator());
+						LOG.logAndShow(Level.INFO,
+								competitor.getName() + exhausted.getMessage() + queue.peekFirst().getName()
+										+ " has won the match, and rose to Rank " + queue.peekFirst().getRank()
+										+ System.lineSeparator());
 						return queue.peekFirst();
 					} catch (DefeatedException defeated) {
 						competitorOne.rankUP();
-						LOG.logAndShow(Level.INFO, competitor.getName() + " delivered one final blow to his opponent, dealing a " + Randomizer.hitAdjectiveGenerator() + " " + defeated.getDamage() + " points of damage!" + System.lineSeparator() + "They have won the match, and risen to Rank " + competitor.getRank());
+						LOG.logAndShow(Level.INFO,
+								competitor.getName() + " delivered one final blow to his opponent, dealing a "
+										+ Randomizer.hitAdjectiveGenerator() + " " + defeated.getDamage()
+										+ " points of damage!" + System.lineSeparator()
+										+ "They have won the match, and risen to Rank " + competitor.getRank());
 						return competitor;
 					}
 				}
@@ -177,16 +202,13 @@ public class Arena extends Facility {
 				+ System.lineSeparator() + "- - - - - - - - - -");
 		try {
 			for (int index = 0; index < list.size(); index += 2) {
-				LOG.logAndShow(Level.INFO, list.get(index).getName() + System.lineSeparator()
-					+ " Vs " + System.lineSeparator()
-					+ list.get(index + 1).getName() + System.lineSeparator()
-					+ "- - - - - - - - - -");
+				LOG.logAndShow(Level.INFO,
+						list.get(index).getName() + System.lineSeparator() + " Vs " + System.lineSeparator()
+								+ list.get(index + 1).getName() + System.lineSeparator() + "- - - - - - - - - -");
 			}
 		} catch (IndexOutOfBoundsException e) {
-			LOG.logAndShow(Level.INFO, list.get(list.size() - 1).getName() + System.lineSeparator()
-			+ " Vs " + System.lineSeparator()
-			+ ". . ." + System.lineSeparator()
-			+ "- - - - - - - - - -");
+			LOG.logAndShow(Level.INFO, list.get(list.size() - 1).getName() + System.lineSeparator() + " Vs "
+					+ System.lineSeparator() + ". . ." + System.lineSeparator() + "- - - - - - - - - -");
 		}
 	}
 

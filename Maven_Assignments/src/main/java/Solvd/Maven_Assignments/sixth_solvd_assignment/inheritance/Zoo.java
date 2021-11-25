@@ -103,7 +103,7 @@ public class Zoo extends Facility {
 				LOG.logAndShow(Level.SEVERE, "ERRONEOUS INPUT: Must input YES or NO." + System.lineSeparator());
 			}
 		}
-		
+
 		LOG.turnOffLogger();
 	}
 }
