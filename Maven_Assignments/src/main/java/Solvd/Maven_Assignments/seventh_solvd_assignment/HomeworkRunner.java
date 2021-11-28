@@ -1,5 +1,9 @@
 package seventh_solvd_assignment;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.apache.commons.io.FileUtils;
@@ -27,13 +31,27 @@ public class HomeworkRunner {
 				+ StringUtils.remove(StringUtils.mid(sample, sample.length() / 2, 0), 'e'));
 		LOG.info("End of StringUtils demonstration" + System.lineSeparator()
 				+ "========================================");
+		File sampleFile = new File("testFolder/testing.txt");
+		try {
+			FileUtils.forceMkdirParent(sampleFile);
+			sampleFile.createNewFile();
+			FileUtils.writeStringToFile(sampleFile, sample, StandardCharsets.UTF_8);
 
-		LOG.info("File operations with Apache's FileUtils" + System.lineSeparator()
-				+ "========================================");
-
+			LOG.info("File operations with Apache's FileUtils" + System.lineSeparator()
+					+ "========================================");
+			LOG.info("Turning a massive number into it's equivalent in bytes: "
+					+ FileUtils.byteCountToDisplaySize(987654321098765432L));
+			LOG.info("Calling this User's main directory path: " + FileUtils.getUserDirectoryPath());
+			LOG.info("Checking to see if the 'testFolder' directory is empty or not: "
+					+ FileUtils.isEmptyDirectory(new File(sampleFile.getParent())));
+			LOG.info("Reading a file's content: " + FileUtils.readFileToString(sampleFile, StandardCharsets.UTF_8));
+			LOG.info("File size: " + FileUtils.sizeOf(sampleFile));
+		} catch (IOException e) {
+			LOG.log(Level.SEVERE, "Rest in Ripperoni", e);
+		}
+		sampleFile.deleteOnExit();
 		LOG.info("End of FileUtils demonstration and program" + System.lineSeparator()
 				+ "========================================");
-		LOG.info("Turning a massive number into it's equivalent in bytes: "
-				+ FileUtils.byteCountToDisplaySize(987654321098765432L));
+
 	}
 }
