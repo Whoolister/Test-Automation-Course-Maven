@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import sixth_solvd_assignment.battle.Arena;
 import sixth_solvd_assignment.inheritance.Animal;
 import sixth_solvd_assignment.inheritance.Zoo;
+import sixth_solvd_assignment.safari.Safari;
 import sixth_solvd_assignment.utilities.MyLogger;
 
 public final class InheritanceRunner {
@@ -17,8 +18,9 @@ public final class InheritanceRunner {
 	public static void main(String[] args) {
 		String entryLine = new String("What do you want to do?" + System.lineSeparator() + ">-> Type 1 to go to the Zoo"
 				+ System.lineSeparator() + ">-> Type 2 to go to the Arena" + System.lineSeparator()
-				+ ">-> Type 3 to go to the Nursery" + System.lineSeparator() + ">-> Type 4 to read the last logs"
-				+ System.lineSeparator() + ">-> Type 5 to exit the program" + System.lineSeparator());
+				+ ">-> Type 3 to go on a Safari" + System.lineSeparator() + ">-> Type 4 to go to the Nursery"
+				+ System.lineSeparator() + ">-> Type 5 to read the last logs" + System.lineSeparator()
+				+ ">-> Type 6 to exit the program" + System.lineSeparator());
 
 		// CHOOSE YOUR OWN ADVENTURE
 		System.out.print("I N H E R I T A N C E  R U N N E R" + System.lineSeparator()
@@ -35,14 +37,15 @@ public final class InheritanceRunner {
 						Arena.hostTournament(scan);
 						LOG.logAndShow(Level.FINE, entryLine);
 					} else if (choice == 3) {
+						Safari.expedition(scan);
+						LOG.logAndShow(Level.FINE, entryLine);
+					} else if (choice == 4) {
 						LOG.logAndShow(Level.FINE, "Feature Unavailable, choose another." + System.lineSeparator()
 								+ entryLine + System.lineSeparator());
-					} else if (choice == 4) {
-						LOG.readLog();
-						LOG.readLog();
-						// LOG.readLog();
-						LOG.logAndShow(Level.FINE, entryLine);
 					} else if (choice == 5) {
+						LOG.readLog();
+						LOG.logAndShow(Level.FINE, entryLine);
+					} else if (choice == 6) {
 						LOG.logAndShow(Level.SEVERE, "Bye Bye!");
 						System.exit(0);
 					} else {
@@ -54,7 +57,6 @@ public final class InheritanceRunner {
 					scan.next();
 				}
 			}
-
 		}
 	}
 }
