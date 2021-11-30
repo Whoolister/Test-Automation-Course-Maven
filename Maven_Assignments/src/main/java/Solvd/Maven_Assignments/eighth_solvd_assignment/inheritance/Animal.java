@@ -11,7 +11,6 @@ import eighth_solvd_assignment.enums.Locomotion;
 import eighth_solvd_assignment.enums.Respiration;
 import eighth_solvd_assignment.enums.SpecialTrait;
 import eighth_solvd_assignment.enums.Stat;
-import eighth_solvd_assignment.exceptions.BadVariableException;
 import eighth_solvd_assignment.exceptions.DefeatedException;
 import eighth_solvd_assignment.exceptions.ExcessRankException;
 import eighth_solvd_assignment.exceptions.ExhaustedException;
@@ -22,7 +21,7 @@ import eighth_solvd_assignment.utilities.Randomizer;
 public abstract class Animal implements IFighter, IBreeding {
 	// BASIC TRAITS
 	protected String name = "";
-	protected int rank = 0;
+	protected int rank;
 	protected Respiration respiration;
 	protected Locomotion locomotion;
 	protected Intelligence intelligence;
@@ -34,7 +33,6 @@ public abstract class Animal implements IFighter, IBreeding {
 
 	public Animal(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet) {
 		this.name = Randomizer.animalNameGenerator(this);
-		this.rank = 0;
 		this.specialTraits = new EnumMap<>(SpecialTrait.class);
 		this.respiration = respiration;
 		this.locomotion = locomotion;
@@ -47,77 +45,23 @@ public abstract class Animal implements IFighter, IBreeding {
 	}
 
 	// DESCRIPTIVE METHODS
-	public String breathe() throws BadVariableException {
-		switch (this.respiration) {
-		case LUNGS:
-			return this.respiration.getDescription();
-		case GILLS:
-			return this.respiration.getDescription();
-		case SKIN_DIFFUSION:
-			return this.respiration.getDescription();
-		}
-
-		throw new BadVariableException("In Breathing");
+	public String breathe() {
+		return this.respiration.getDescription();
 	}
 
-	public String move() throws BadVariableException {
-		switch (this.locomotion) {
-		case BIPEDAL:
-			return this.locomotion.getDescription();
-		case QUADRUPEDAL:
-			return this.locomotion.getDescription();
-		case MULTI_LEGGED:
-			return this.locomotion.getDescription();
-		case WINGED:
-			return this.locomotion.getDescription();
-		case FINNED:
-			return this.locomotion.getDescription();
-		case TENTACLES:
-			return this.locomotion.getDescription();
-		case SLITHERING:
-			return this.locomotion.getDescription();
-		case NONE:
-			return this.locomotion.getDescription();
-		}
-
-		throw new BadVariableException("In Movement");
+	public String move() {
+		return this.locomotion.getDescription();
 	}
 
-	public String think() throws BadVariableException {
-		switch (this.intelligence) {
-		case POPULATION_BASED:
-			return this.intelligence.getDescription();
-		case NONE:
-			return this.intelligence.getDescription();
-		case SOME:
-			return this.intelligence.getDescription();
-		case INTERMEDIATE:
-			return this.intelligence.getDescription();
-		case HIGH:
-			return this.intelligence.getDescription();
-		case SAPIENT:
-			return this.intelligence.getDescription();
-		case ELDRITCH:
-			return this.intelligence.getDescription();
-		}
-
-		throw new BadVariableException("In Thought");
+	public String think() {
+		return this.intelligence.getDescription();
 	}
 
-	public String eat() throws BadVariableException {
-		switch (this.diet) {
-		case HERBIVOROUS:
-			return this.diet.getDescription();
-		case CARNIVOROUS:
-			return this.diet.getDescription();
-		case OMNIVOROUS:
-			return this.diet.getDescription();
-		}
-
-		throw new BadVariableException("In Eating");
+	public String eat() {
+		return this.diet.getDescription();
 	}
 
-	// IFighter METHODS INCOMPLETE
+	// IFighter METHODS
 	public void rankUP() throws ExcessRankException {
 		// IDENTITY
 		this.rank++;
@@ -145,6 +89,8 @@ public abstract class Animal implements IFighter, IBreeding {
 	}
 
 	public void generateStatBlock() {
+		this.rank = 0;
+
 		this.statBlock = new EnumMap<>(Stat.class);
 
 		int maxHealth = 100;

@@ -4,7 +4,6 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.logging.Level;
 
-import eighth_solvd_assignment.exceptions.BadVariableException;
 import eighth_solvd_assignment.inheritance.Animal;
 import eighth_solvd_assignment.inheritance.Facility;
 import eighth_solvd_assignment.utilities.CustomLinkedList;
@@ -95,17 +94,13 @@ public class Safari extends Facility {
 			}
 
 			if (wildFind != null) {
-				try {
-					LOG.logAndShow(Level.INFO, "That right there is a wild " + wildFind.getName()
-							+ ", and let me nerd out over here for a minute... *ahem*" + System.lineSeparator()
-							+ "--<>---<o>=====<o>---<>--" + System.lineSeparator() + wildFind.breathe()
-							+ System.lineSeparator() + wildFind.move() + System.lineSeparator() + wildFind.think()
-							+ System.lineSeparator() + wildFind.eat() + System.lineSeparator());
-				} catch (BadVariableException e) {
-					LOG.logAndShow(Level.SEVERE,
-							"That... Uhhh... I thought animals weren't capable of doing that, to be honest . . ."
-									+ System.lineSeparator());
-				}
+				LOG.logAndShow(Level.INFO,
+						"That right there is a wild " + wildFind.getName()
+								+ ", and let me nerd out over here for a minute... *ahem*" + System.lineSeparator()
+								+ "--<>---<o>=====<o>---<>--" + System.lineSeparator() + wildFind.breathe()
+								+ System.lineSeparator() + wildFind.move() + System.lineSeparator() + wildFind.think()
+								+ System.lineSeparator() + wildFind.eat() + System.lineSeparator());
+
 				if (specimens.size() < 16) {
 					LOG.logAndShow(Level.INFO,
 							"So! What would you like to do with it?" + System.lineSeparator()

@@ -86,8 +86,7 @@ public class Arthropod extends Invertebrate implements IEctothermy, IAgriculture
 
 	@Override
 	public String toString() {
-		return "Arthropod [Name: " + this.name + " | Rank: " + this.rank + " | Respiration: " + this.respiration
-				+ " | Locomotion: " + this.locomotion + " | Intelligence: " + this.intelligence + " | Diet: "
-				+ this.diet + "]";
+		return "Arthropod [Name: " + this.name + " | Respiration: " + this.respiration + " | Locomotion: "
+				+ this.locomotion + " | Intelligence: " + this.intelligence + " | Diet: " + this.diet + "]";
 	}
 }

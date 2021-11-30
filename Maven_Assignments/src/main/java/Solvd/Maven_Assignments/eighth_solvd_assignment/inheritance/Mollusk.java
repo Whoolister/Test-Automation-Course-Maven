@@ -81,8 +81,7 @@ public class Mollusk extends Invertebrate implements IEctothermy, IHibernation {
 
 	@Override
 	public String toString() {
-		return "Mollusk [Name: " + this.name + " | Rank: " + this.rank + " | Respiration: " + this.respiration
-				+ " | Locomotion: " + this.locomotion + " | Intelligence: " + this.intelligence + " | Diet: "
-				+ this.diet + "]";
+		return "Mollusk [Name: " + this.name + " | Respiration: " + this.respiration + " | Locomotion: "
+				+ this.locomotion + " | Intelligence: " + this.intelligence + " | Diet: " + this.diet + "]";
 	}
 }

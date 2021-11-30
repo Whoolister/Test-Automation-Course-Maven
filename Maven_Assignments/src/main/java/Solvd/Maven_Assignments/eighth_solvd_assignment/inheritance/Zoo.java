@@ -5,7 +5,6 @@ import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.logging.Level;
 
-import eighth_solvd_assignment.exceptions.BadVariableException;
 import eighth_solvd_assignment.utilities.Randomizer;
 
 public class Zoo extends Facility {
@@ -52,22 +51,12 @@ public class Zoo extends Facility {
 					if (amount > 0 && amount <= 16) {
 						LOG.logAndShow(Level.INFO, "Generating " + amount + " animals..." + System.lineSeparator());
 						exhibits.addAll(Randomizer.creatureCreator(amount));
-
-						char id = 'A';
-
-						for (Animal animal : exhibits) {
-							try {
-								LOG.logAndShow(Level.INFO,
-										"Exhibit " + (id++) + ":" + System.lineSeparator() + animal.toString()
-												+ System.lineSeparator() + animal.breathe() + System.lineSeparator()
-												+ animal.move() + System.lineSeparator() + animal.eat()
-												+ System.lineSeparator() + animal.think() + System.lineSeparator());
-							} catch (BadVariableException e) {
-								LOG.logAndShow(Level.SEVERE, "Problem Ocurred in Animal Collection Examination: "
-										+ e.getMessage() + System.lineSeparator() + animal.toString());
-							}
-
-						}
+						// LAMBDA IMPLEMENTATION
+						exhibits.forEach(animal -> LOG.logAndShow(Level.INFO,
+								"Exhibit :" + System.lineSeparator() + animal.toString() + System.lineSeparator()
+										+ animal.breathe() + System.lineSeparator() + animal.move()
+										+ System.lineSeparator() + animal.eat() + System.lineSeparator()
+										+ animal.think() + System.lineSeparator()));
 						break;
 					} else {
 						LOG.logAndShow(Level.INFO,

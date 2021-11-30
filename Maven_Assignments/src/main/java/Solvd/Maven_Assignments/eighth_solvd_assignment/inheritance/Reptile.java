@@ -41,8 +41,8 @@ public class Reptile extends Vertebrate implements IEctothermy, IEndothermy {
 
 	@Override
 	public String toString() {
-		return "Reptile [Name: " + this.name + " | Rank: " + this.rank + " | Respiration: " + this.respiration
-				+ " | Locomotion: " + this.locomotion + "| Intelligence: " + this.intelligence + " | Diet: " + this.diet
-				+ " | Body Plan: " + this.bodyPlan + "]";
+		return "Reptile [Name: " + this.name + " | Respiration: " + this.respiration + " | Locomotion: "
+				+ this.locomotion + "| Intelligence: " + this.intelligence + " | Diet: " + this.diet + " | Body Plan: "
+				+ this.bodyPlan + "]";
 	}
 }

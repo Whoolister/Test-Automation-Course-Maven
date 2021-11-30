@@ -33,8 +33,7 @@ public class Cnidarian extends Invertebrate implements IEctothermy, ISwarm {
 
 	@Override
 	public String toString() {
-		return "Cnidaria [Name: " + this.name + " | Rank: " + this.rank + " | Respiration: " + this.respiration
-				+ " | Locomotion: " + this.locomotion + " | Intelligence: " + this.intelligence + " | Diet: "
-				+ this.diet + "]";
+		return "Cnidaria [Name: " + this.name + " | Respiration: " + this.respiration + " | Locomotion: "
+				+ this.locomotion + " | Intelligence: " + this.intelligence + " | Diet: " + this.diet + "]";
 	}
 }

@@ -73,8 +73,8 @@ public class Mammal extends Vertebrate implements IEndothermy, IAgriculture, IHi
 
 	@Override
 	public String toString() {
-		return "Mammal [Name: " + this.name + " | Rank: " + this.rank + " | Respiration: " + this.respiration
-				+ " | Locomotion: " + this.locomotion + " | Intelligence: " + this.intelligence + " | Diet: "
-				+ this.diet + " | Fur Color: " + this.furColor + "]";
+		return "Mammal [Name: " + this.name + " | Respiration: " + this.respiration + " | Locomotion: "
+				+ this.locomotion + " | Intelligence: " + this.intelligence + " | Diet: " + this.diet + " | Fur Color: "
+				+ this.furColor + "]";
 	}
 }

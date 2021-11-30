@@ -38,8 +38,8 @@ public class Fish extends Vertebrate implements IEctothermy, ISwarm {
 
 	@Override
 	public String toString() {
-		return "Fish [Name: " + this.name + " | Rank: " + this.rank + " | Respiration: " + this.respiration
-				+ " | Locomotion: " + this.locomotion + " | Intelligence: " + this.intelligence + " | Diet: "
-				+ this.diet + " | Tail Plan: " + this.tailPlan + "]";
+		return "Fish [Name: " + this.name + " | Respiration: " + this.respiration + " | Locomotion: " + this.locomotion
+				+ " | Intelligence: " + this.intelligence + " | Diet: " + this.diet + " | Tail Plan: " + this.tailPlan
+				+ "]";
 	}
 }
