@@ -7,12 +7,11 @@ import eighth_solvd_assignment.enums.Intelligence;
 import eighth_solvd_assignment.enums.Locomotion;
 import eighth_solvd_assignment.enums.Respiration;
 import eighth_solvd_assignment.enums.SpecialTrait;
-import eighth_solvd_assignment.exceptions.BadVariableException;
 import eighth_solvd_assignment.interfaces.IEctothermy;
 import eighth_solvd_assignment.interfaces.IHibernation;
 
 public class Mollusk extends Invertebrate implements IEctothermy, IHibernation {
-	protected boolean jetReady = true;
+	private static boolean jetReady = true;
 
 	public Mollusk() {
 		super(Respiration.GILLS, (new Random()).nextInt(2) < 1 ? Locomotion.TENTACLES : Locomotion.NONE,
@@ -24,7 +23,7 @@ public class Mollusk extends Invertebrate implements IEctothermy, IHibernation {
 		evolve(SpecialTrait.CAMOUFLAGE);
 	}
 
-	public final String hide() throws BadVariableException {
+	public final String hide() {
 		switch ((new Random()).nextInt(5)) {
 		case 0:
 			return "It's skin turned into some sort of checkerboard pattern... Maybe it's distracting us with a friendly game of chess!\n";
@@ -38,26 +37,23 @@ public class Mollusk extends Invertebrate implements IEctothermy, IHibernation {
 			return "It's skin turned into a very distracting stripe pattern, making it difficult to tell apart when it moves.\n";
 		case 5:
 			return "It's skin turned into a mushy, dark green mess. Not something I'd take a bite out of...\n";
+		default:
+			return "It's... Just staying very still...";
 		}
-
-		throw new BadVariableException("In Hiding");
 	}
 
 	public final String escape() {
 		if (jetReady) {
-			Thread timer = new Thread() {
-				public void run() {
-					jetReady = false;
-					try {
-						sleep(35000);
-					} catch (InterruptedException e) {
-						// e.printStackTrace();
-					}
-					jetReady = true;
+			// LAMBDA IMPLEMENTATION
+			new Thread(() -> {
+				try {
+					Mollusk.setJetReady(false);
+					Thread.sleep(35000);
+					Mollusk.setJetReady(true);
+				} catch (InterruptedException e) {
+					// Nothing
 				}
-			};
-			// STARTS THREAD, WAITS 35 SECONDS BEFORE RECOVERING
-			timer.run();
+			}).start();
 
 			return "It got away!\n";
 		} else {
@@ -65,8 +61,12 @@ public class Mollusk extends Invertebrate implements IEctothermy, IHibernation {
 		}
 	}
 
-	public final boolean isJetReady() {
+	public static boolean isJetReady() {
 		return jetReady;
+	}
+
+	public static void setJetReady(boolean input) {
+		jetReady = input;
 	}
 
 	@Override

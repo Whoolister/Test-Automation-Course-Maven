@@ -7,13 +7,12 @@ import eighth_solvd_assignment.enums.Intelligence;
 import eighth_solvd_assignment.enums.Locomotion;
 import eighth_solvd_assignment.enums.Respiration;
 import eighth_solvd_assignment.enums.SpecialTrait;
-import eighth_solvd_assignment.exceptions.BadVariableException;
 import eighth_solvd_assignment.interfaces.IAgriculture;
 import eighth_solvd_assignment.interfaces.IEctothermy;
 import eighth_solvd_assignment.interfaces.ISwarm;
 
 public class Arthropod extends Invertebrate implements IEctothermy, IAgriculture, ISwarm {
-	private boolean hardened = true;
+	private static boolean hardened = true;
 
 	public Arthropod() {
 		super(Respiration.SKIN_DIFFUSION, (new Random()).nextInt(2) != 1 ? Locomotion.WINGED : Locomotion.MULTI_LEGGED,
@@ -27,20 +26,16 @@ public class Arthropod extends Invertebrate implements IEctothermy, IAgriculture
 
 	public final String molt() {
 		if (hardened) {
-			Thread timer = new Thread() {
-				public void run() {
-					hardened = false;
-					System.out.println();
-					try {
-						sleep(60000);
-					} catch (InterruptedException e) {
-						// e.printStackTrace();
-					}
-					hardened = true;
+			// LAMBDA IMPLEMENTATION
+			new Thread(() -> {
+				try {
+					Arthropod.setHardened(false);
+					Thread.sleep(35000);
+					Arthropod.setHardened(true);
+				} catch (InterruptedException e) {
+					// Nothing
 				}
-			};
-			// STARTS THE THREAD, WAITS 60 SECONDS BEFORE 'HARDENING'
-			timer.run();
+			}).start();
 
 			return "A successful molt! Now, to hide and wait for the body to harden...";
 		} else {
@@ -48,8 +43,12 @@ public class Arthropod extends Invertebrate implements IEctothermy, IAgriculture
 		}
 	}
 
-	public final boolean isHardened() {
+	public static final boolean getHardened() {
 		return hardened;
+	}
+
+	public static final void setHardened(boolean input) {
+		hardened = input;
 	}
 
 	@Override
@@ -58,25 +57,21 @@ public class Arthropod extends Invertebrate implements IEctothermy, IAgriculture
 	}
 
 	@Override
-	public String cultivate() throws BadVariableException {
+	public String cultivate() {
 		if (this.intelligence == Intelligence.SOME) {
 			return "This being can participate in a mutualistic relationship with different plant species, protecting them in exchange for a steady source of nutrition.";
-		} else if (this.intelligence == Intelligence.POPULATION_BASED) {
+		} else {
 			return "This being dedicates a part of its colony to feeding and growing nutritious mycelium, although it may not understand what it's really doing.";
 		}
-
-		throw new BadVariableException("In Cultivation");
 	}
 
 	@Override
-	public String raiseAnimals() throws BadVariableException {
+	public String raiseAnimals() {
 		if (this.intelligence == Intelligence.SOME) {
 			return "This being doesn't yet have the capacity to raise other animals, maybe in a further evolution.\n";
-		} else if (this.intelligence == Intelligence.POPULATION_BASED) {
+		} else {
 			return "This being can enter a mutualistic relationship with certain other species, by protecting them and feeding on their residues.\n";
 		}
-
-		throw new BadVariableException("In Husbandry");
 	}
 
 	@Override

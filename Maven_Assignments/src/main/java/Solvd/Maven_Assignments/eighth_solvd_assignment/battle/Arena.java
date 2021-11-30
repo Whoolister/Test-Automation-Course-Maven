@@ -1,10 +1,11 @@
 package eighth_solvd_assignment.battle;
 
 import java.util.ArrayDeque;
-import java.util.ArrayList;
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.function.BiPredicate;
 import java.util.logging.Level;
 
 import eighth_solvd_assignment.enums.Stat;
@@ -103,8 +104,7 @@ public class Arena extends Facility {
 									+ System.lineSeparator());
 					survivors.add(roster.get(fights));
 				} catch (ExcessRankException excess) {
-					LOG.logAndShow(Level.SEVERE, roster.toString());
-					LOG.logAndShow(Level.SEVERE, excess.getMessage());
+					LOG.logAndShow(Level.SEVERE, roster.toString() + System.lineSeparator() + excess.getMessage());
 					System.exit(0);
 				}
 			}
@@ -140,9 +140,13 @@ public class Arena extends Facility {
 		for (int rounds = 0; true; rounds++) {
 			LOG.logAndShow(Level.INFO, "Round " + (rounds + 1) + ":" + System.lineSeparator()
 					+ ">---------->---------->---------->---------->");
+			// LAMBDA IMPLEMENTATION
+			BiPredicate<Animal, Deque<Animal>> predicate = (fighter, order) -> {
+				return (fighter.equals(order.peekFirst()));
+			};
 
 			for (Animal competitor : queue) {
-				if (competitor.equals(queue.peekFirst())) {
+				if (predicate.test(competitor, queue)) {
 					try {
 						LOG.logAndShow(Level.INFO,
 								">" + competitor.getName() + " Landed a hit for a " + Randomizer.hitAdjectiveGenerator()
@@ -210,9 +214,5 @@ public class Arena extends Facility {
 			LOG.logAndShow(Level.INFO, list.get(list.size() - 1).getName() + System.lineSeparator() + " Vs "
 					+ System.lineSeparator() + ". . ." + System.lineSeparator() + "- - - - - - - - - -");
 		}
-	}
-
-	public static ArrayList<Animal> getSpecimens() {
-		return specimens;
 	}
 }

@@ -7,7 +7,6 @@ import eighth_solvd_assignment.enums.Intelligence;
 import eighth_solvd_assignment.enums.Locomotion;
 import eighth_solvd_assignment.enums.Respiration;
 import eighth_solvd_assignment.enums.SpecialTrait;
-import eighth_solvd_assignment.exceptions.BadVariableException;
 import eighth_solvd_assignment.interfaces.IAgriculture;
 import eighth_solvd_assignment.interfaces.IEndothermy;
 import eighth_solvd_assignment.interfaces.IHibernation;
@@ -36,29 +35,25 @@ public class Mammal extends Vertebrate implements IEndothermy, IAgriculture, IHi
 	}
 
 	@Override
-	public String cultivate() throws BadVariableException {
+	public String cultivate() {
 		if (this.intelligence == Intelligence.INTERMEDIATE) {
 			return "This being can pick apart certain plants with healing effects on it's body, but not much else.";
 		} else if (this.intelligence == Intelligence.HIGH) {
 			return "This being knows to wait for the growth or ripening of plants and fruits, to enjoy better and safer meals.";
-		} else if (this.intelligence == Intelligence.SAPIENT) {
+		} else {
 			return "This being has the mental acquity to learn to carefully plan and aid the growth of plant matter, either for medicinal or nutritional purposes.";
 		}
-
-		throw new BadVariableException("In Cultivation");
 	}
 
 	@Override
-	public String raiseAnimals() throws BadVariableException {
+	public String raiseAnimals() {
 		if (this.intelligence == Intelligence.INTERMEDIATE) {
 			return "This being can participate in symbiotic relationships with other animals, be it for protection or hunting aid.";
 		} else if (this.intelligence == Intelligence.HIGH) {
 			return "This being can learn the behaviors of different species and use the knowledge to hunt or find food and water.";
-		} else if (this.intelligence == Intelligence.SAPIENT) {
+		} else {
 			return "This being has the mental capacity to raise, train, and even selectively breed other animal species.";
 		}
-
-		throw new BadVariableException("In Husbandry");
 	}
 
 	@Override

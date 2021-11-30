@@ -1,5 +1,6 @@
 package eighth_solvd_assignment.inheritance;
 
+import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.Objects;
 import java.util.Random;
@@ -34,6 +35,9 @@ public abstract class Animal implements IFighter, IBreeding {
 	public Animal(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet) {
 		this.name = Randomizer.animalNameGenerator(this);
 		this.specialTraits = new EnumMap<>(SpecialTrait.class);
+		// LAMBDA IMPLEMENTATION
+		Arrays.asList(SpecialTrait.values()).forEach((value) -> this.specialTraits.put(value, false));
+
 		this.respiration = respiration;
 		this.locomotion = locomotion;
 		this.intelligence = intelligence;
@@ -102,102 +106,96 @@ public abstract class Animal implements IFighter, IBreeding {
 		int evasionChance = 10;
 		int defense = 3;
 
-		if (specialTraits.containsKey(SpecialTrait.FLEXIBLE_BODY_PLAN)
-				&& specialTraits.get(SpecialTrait.FLEXIBLE_BODY_PLAN)) {
+		if (specialTraits.get(SpecialTrait.FLEXIBLE_BODY_PLAN)) {
 			maxHealth -= 20;
 			speed -= 5;
 			hitDamage -= 1;
 			evasionChance += 8;
 		}
-		if (specialTraits.containsKey(SpecialTrait.EXOSKELETON) && specialTraits.get(SpecialTrait.EXOSKELETON)) {
+		if (specialTraits.get(SpecialTrait.EXOSKELETON)) {
 			maxHealth += 10;
 			maxEnergy -= 1;
 			defense += 2;
 		}
-		if (specialTraits.containsKey(SpecialTrait.IRRITANT_STINGS)
-				&& specialTraits.get(SpecialTrait.IRRITANT_STINGS)) {
+		if (specialTraits.get(SpecialTrait.IRRITANT_STINGS)) {
 			hitDamage += 2;
 			criticalChance += 12;
 		}
-		if (specialTraits.containsKey(SpecialTrait.COMPOUND_EYES) && specialTraits.get(SpecialTrait.COMPOUND_EYES)) {
+		if (specialTraits.get(SpecialTrait.COMPOUND_EYES)) {
 			evasionChance += 15;
 		}
-		if (specialTraits.containsKey(SpecialTrait.HYDROSKELETON) && specialTraits.get(SpecialTrait.HYDROSKELETON)) {
+		if (specialTraits.get(SpecialTrait.HYDROSKELETON)) {
 			maxHealth -= 20;
 			maxEnergy += 3;
 			speed -= 10;
 			evasionChance += 12;
 			defense -= 1;
 		}
-		if (specialTraits.containsKey(SpecialTrait.DEADLY_POISON) && specialTraits.get(SpecialTrait.DEADLY_POISON)) {
+		if (specialTraits.get(SpecialTrait.DEADLY_POISON)) {
 			defense += 4;
 		}
-		if (specialTraits.containsKey(SpecialTrait.BIOLUMINESCENCE)
-				&& specialTraits.get(SpecialTrait.BIOLUMINESCENCE)) {
+		if (specialTraits.get(SpecialTrait.BIOLUMINESCENCE)) {
 			maxEnergy -= 1;
 			evasionChance += 8;
 		}
-		if (specialTraits.containsKey(SpecialTrait.SHELLED_BODY) && specialTraits.get(SpecialTrait.SHELLED_BODY)) {
+		if (specialTraits.get(SpecialTrait.SHELLED_BODY)) {
 			maxHealth += 15;
 			speed -= 5;
 			defense += 2;
 		}
-		if (specialTraits.containsKey(SpecialTrait.JET_PROPULSION) && specialTraits.get(SpecialTrait.JET_PROPULSION)) {
+		if (specialTraits.get(SpecialTrait.JET_PROPULSION)) {
 			maxEnergy -= 1;
 			speed += 5;
 			hitDamage += 2;
 			evasionChance += 10;
 		}
-		if (specialTraits.containsKey(SpecialTrait.CAMOUFLAGE) && specialTraits.get(SpecialTrait.CAMOUFLAGE)) {
+		if (specialTraits.get(SpecialTrait.CAMOUFLAGE)) {
 			maxEnergy -= 1;
 			hitRolls += 1;
 			evasionChance += 8;
 		}
-		if (specialTraits.containsKey(SpecialTrait.ENDOSKELETON) && specialTraits.get(SpecialTrait.ENDOSKELETON)) {
+		if (specialTraits.get(SpecialTrait.ENDOSKELETON)) {
 			maxHealth += 8;
 			maxEnergy += 2;
 			evasionChance += 5;
 			defense -= 1;
 		}
-		if (specialTraits.containsKey(SpecialTrait.FUR) && specialTraits.get(SpecialTrait.FUR)) {
+		if (specialTraits.get(SpecialTrait.FUR)) {
 			maxEnergy += 1;
 			evasionChance -= 4;
 			defense += 2;
 		}
-		if (specialTraits.containsKey(SpecialTrait.SINGLE_BONED_JAW)
-				&& specialTraits.get(SpecialTrait.SINGLE_BONED_JAW)) {
+		if (specialTraits.get(SpecialTrait.SINGLE_BONED_JAW)) {
 			hitDamage += 3;
 			hitRolls += 1;
 			criticalChance += 8;
 		}
-		if (specialTraits.containsKey(SpecialTrait.FOUR_CHAMBERED_HEART)
-				&& specialTraits.get(SpecialTrait.FOUR_CHAMBERED_HEART)) {
+		if (specialTraits.get(SpecialTrait.FOUR_CHAMBERED_HEART)) {
 			maxEnergy += 4;
 		}
-		if (specialTraits.containsKey(SpecialTrait.SCALED_BODY) && specialTraits.get(SpecialTrait.SCALED_BODY)) {
+		if (specialTraits.get(SpecialTrait.SCALED_BODY)) {
 			maxHealth += 15;
 			speed -= 6;
 			defense += 1;
 		}
-		if (specialTraits.containsKey(SpecialTrait.HYDRODYNAMISM) && specialTraits.get(SpecialTrait.HYDRODYNAMISM)) {
+		if (specialTraits.get(SpecialTrait.HYDRODYNAMISM)) {
 			maxEnergy += 1;
 			speed += 15;
 			criticalChance += 10;
 		}
-		if (specialTraits.containsKey(SpecialTrait.UNDERWATER_VISION)
-				&& specialTraits.get(SpecialTrait.UNDERWATER_VISION)) {
+		if (specialTraits.get(SpecialTrait.UNDERWATER_VISION)) {
 			maxEnergy -= 1;
 			evasionChance += 12;
 		}
-		if (specialTraits.containsKey(SpecialTrait.ROUGH_SCALES) && specialTraits.get(SpecialTrait.ROUGH_SCALES)) {
+		if (specialTraits.get(SpecialTrait.ROUGH_SCALES)) {
 			maxHealth += 30;
 			speed -= 8;
 			defense += 4;
 		}
-		if (specialTraits.containsKey(SpecialTrait.COLD_BLOODED) && specialTraits.get(SpecialTrait.COLD_BLOODED)) {
+		if (specialTraits.get(SpecialTrait.COLD_BLOODED)) {
 			maxEnergy += 2;
 		}
-		if (specialTraits.containsKey(SpecialTrait.DEADLY_VENOM) && specialTraits.get(SpecialTrait.DEADLY_VENOM)) {
+		if (specialTraits.get(SpecialTrait.DEADLY_VENOM)) {
 			hitDamage += 2;
 			hitRolls += 1;
 			criticalChance += 20;
