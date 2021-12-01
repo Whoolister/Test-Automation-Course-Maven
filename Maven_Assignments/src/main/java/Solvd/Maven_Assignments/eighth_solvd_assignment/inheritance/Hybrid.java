@@ -6,7 +6,8 @@ import eighth_solvd_assignment.enums.Locomotion;
 import eighth_solvd_assignment.enums.Respiration;
 
 public class Hybrid extends Animal {
-	public Hybrid(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet) {
+	public Hybrid(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet,
+			String geneSequence) {
 		super(respiration, locomotion, intelligence, diet);
 	}
 }

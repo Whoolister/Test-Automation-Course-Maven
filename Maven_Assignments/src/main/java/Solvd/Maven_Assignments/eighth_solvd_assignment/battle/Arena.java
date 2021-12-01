@@ -8,6 +8,8 @@ import java.util.Scanner;
 import java.util.function.BiPredicate;
 import java.util.logging.Level;
 
+import org.apache.commons.lang3.StringUtils;
+
 import eighth_solvd_assignment.enums.Stat;
 import eighth_solvd_assignment.exceptions.DefeatedException;
 import eighth_solvd_assignment.exceptions.ExcessRankException;
@@ -24,14 +26,20 @@ public class Arena extends Facility {
 		LOG.setupLogger();
 
 		LOG.logAndShow(Level.INFO,
-				"ENTERING THE TOURNAMENT" + System.lineSeparator() + "==<O>===<0>===<O>===<0>===<O>==");
+				StringUtils.center("ENTERING THE TOURNAMENT", 54) + System.lineSeparator()
+						+ "/\\_/\\_/\\_/\\_/\\_/\\_/\\_/\\_/\\_/\\_/\\_/\\_/\\_/\\_/\\_/\\_/\\_/\\\n"
+						+ "--+---+---+---+---+---+---+---+---+---+---+---+---+--\n"
+						+ "o | o   o | o   o | o   o | o   o | o   o | o   o | o\n"
+						+ "--+---+---+---+---+---+---+---+---+---+---+---+---+--\n"
+						+ "o   o | o   o | o   o | o   o | o   o | o   o | o   o\n"
+						+ "--+---+---+---+---+---+---+---+---+---+---+---+---+--" + System.lineSeparator());
 
 		boolean useRNG = true;
 		if (specimens != null) {
 			LOG.logAndShow(Level.INFO,
 					"What mode do you want to use?" + System.lineSeparator()
-							+ ">-> Type 1 to use the exhibits saved from the Zoo" + System.lineSeparator()
-							+ ">-> Type 2 to randomly generate combatants" + System.lineSeparator());
+							+ "\t>-> Type 1 to use the exhibits saved from the Zoo" + System.lineSeparator()
+							+ "\t>-> Type 2 to randomly generate combatants" + System.lineSeparator());
 
 			while (scanner.hasNext()) {
 				if (scanner.hasNextInt()) {
@@ -44,7 +52,8 @@ public class Arena extends Facility {
 					} else if (mode == 2) {
 						break;
 					} else {
-						LOG.logAndShow(Level.SEVERE, "ERRONEOUS INPUT: Must input 1 or 2." + System.lineSeparator());
+						LOG.logAndShow(Level.SEVERE,
+								"ERRONEOUS INPUT (" + mode + ") Must input 1 or 2." + System.lineSeparator());
 					}
 				} else {
 					LOG.logAndShow(Level.SEVERE, "ERRONEOUS INPUT: Must be an integer." + System.lineSeparator());
@@ -54,8 +63,8 @@ public class Arena extends Facility {
 		}
 
 		if (useRNG) {
-			LOG.logAndShow(Level.INFO,
-					"Input the number of combatants (Up to 16) to create for this tournament" + System.lineSeparator());
+			LOG.logAndShow(Level.INFO, "Input the number of combatants (Up to 16), to create for this tournament:"
+					+ System.lineSeparator());
 			while (scanner.hasNext()) {
 				if (scanner.hasNextInt()) {
 					int amount = scanner.nextInt();
@@ -64,7 +73,8 @@ public class Arena extends Facility {
 						roster.addAll(Randomizer.creatureCreator(amount));
 						break;
 					} else {
-						System.out.print("ERRONEOUS INPUT: Must input 1, 2, 3, 4, or 5." + System.lineSeparator());
+						System.out.print("ERRONEOUS INPUT (" + amount + ") Must input 1, 2, 3, 4, or 5."
+								+ System.lineSeparator());
 					}
 				} else {
 					System.out.print("ERRONEOUS INPUT: Must be an integer." + System.lineSeparator());
@@ -94,7 +104,7 @@ public class Arena extends Facility {
 					LOG.logAndShow(Level.INFO,
 							"---<O>===<O>===<O>===<O>---" + System.lineSeparator() + roster.get(fights).getName()
 									+ " Vs " + roster.get(fights + 1).getName() + System.lineSeparator()
-									+ "^~^~^~^~^~^~^~^~^~^");
+									+ "^-^-^-^-^-^-^-^-^-^");
 
 					survivors.add(fight(roster.get(fights), roster.get(fights + 1)));
 				} catch (IndexOutOfBoundsException e) {
@@ -113,14 +123,23 @@ public class Arena extends Facility {
 			cycles++;
 		}
 
+		LOG.logAndShow(Level.INFO, "Press any key, and hit ENTER to show the winner:");
+		scanner.next();
+
+		Animal winner = roster.getFirst();
+
 		LOG.logAndShow(Level.INFO,
-				"---<O>===<0>===<O|O>===<0>===- -===<0>===<O|O>===<0>===<O>---" + System.lineSeparator()
-						+ roster.get(0).getName() + " is the undisputed winner of this tournament! All hail!"
-						+ System.lineSeparator() + roster.get(0).toString() + System.lineSeparator());
+				"  .--.      .-'.      .--.      .--.      .--.      .--.      .`-.      .--.\n"
+						+ ":::::.\\::::::::.\\::::::::.\\::::::::.\\::::::::.\\::::::::.\\::::::::.\\::::::::.\\\n"
+						+ "'      `--'      `.-'      `--'      `--'      `--'      `-.'      `--'      `"
+						+ System.lineSeparator() + "\t\tW I N N E R: " + winner.getName() + System.lineSeparator()
+						+ "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_" + System.lineSeparator()
+						+ winner.breathe() + System.lineSeparator() + winner.move() + System.lineSeparator()
+						+ winner.think() + System.lineSeparator() + winner.eat() + System.lineSeparator());
 
 		// FINAL LINE
-		LOG.logAndShow(Level.INFO, "E N D   O F   T O U R N A M E N T" + System.lineSeparator()
-				+ ">==<O>===<0>- -<0>===<O>==<" + System.lineSeparator());
+		LOG.logAndShow(Level.INFO, StringUtils.center("E N D   O F   T O U R N A M E N T", 32) + System.lineSeparator()
+				+ "__________________________________________" + System.lineSeparator());
 
 		LOG.turnOffLogger();
 	}
@@ -202,17 +221,19 @@ public class Arena extends Facility {
 	}
 
 	public static void bracketMaker(List<Animal> list) {
-		LOG.logAndShow(Level.INFO, "M A T C H   B R A C K E T" + System.lineSeparator() + "==<O>===<0>- -<0>===<O>=="
-				+ System.lineSeparator() + "- - - - - - - - - -");
+		LOG.logAndShow(Level.INFO, "M A T C H   B R A C K E T" + System.lineSeparator()
+				+ ">< >< >< >< >< >< >< >< >< ><" + System.lineSeparator() + "--<>--<>--<>--<>--<>--<>--<>--<>--");
 		try {
 			for (int index = 0; index < list.size(); index += 2) {
 				LOG.logAndShow(Level.INFO,
 						list.get(index).getName() + System.lineSeparator() + " Vs " + System.lineSeparator()
-								+ list.get(index + 1).getName() + System.lineSeparator() + "- - - - - - - - - -");
+								+ list.get(index + 1).getName() + System.lineSeparator()
+								+ "--<>--<>--<>--<>--<>--<>--<>--<>--");
 			}
 		} catch (IndexOutOfBoundsException e) {
 			LOG.logAndShow(Level.INFO, list.get(list.size() - 1).getName() + System.lineSeparator() + " Vs "
-					+ System.lineSeparator() + ". . ." + System.lineSeparator() + "- - - - - - - - - -");
+					+ System.lineSeparator() + ". . ." + System.lineSeparator() + "--<>--<>--<>--<>--<>--<>--<>--<>--");
 		}
+		LOG.logAndShow(Level.INFO, ">< >< >< >< >< >< >< >< >< ><" + System.lineSeparator());
 	}
 }

@@ -26,6 +26,14 @@ public class Fish extends Vertebrate implements IEctothermy, ISwarm {
 		evolve(SpecialTrait.UNDERWATER_VISION);
 	}
 
+	public Fish(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet,
+			String geneSequence) {
+		super(respiration, locomotion, intelligence, diet, geneSequence);
+
+		tailPlan = (new Random()).nextInt(4) < 3 ? new Random().nextInt(2) < 1 ? "Heterocercal" : "Protocercal"
+				: new Random().nextInt(2) < 1 ? "Homoceral" : "Diphyceral";
+	}
+
 	@Override
 	public String congregate() {
 		return "This being forms massive groups of it's own species, known as schools, to have a better chance at surviving attacks from predators.\n";

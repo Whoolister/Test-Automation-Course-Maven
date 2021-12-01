@@ -5,6 +5,9 @@ import java.util.EnumMap;
 import java.util.Objects;
 import java.util.Random;
 
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
+
 import eighth_solvd_assignment.battle.IFighter;
 import eighth_solvd_assignment.enums.Diet;
 import eighth_solvd_assignment.enums.Intelligence;
@@ -17,20 +20,22 @@ import eighth_solvd_assignment.exceptions.ExcessRankException;
 import eighth_solvd_assignment.exceptions.ExhaustedException;
 import eighth_solvd_assignment.exceptions.MissException;
 import eighth_solvd_assignment.genetics.IBreeding;
+import eighth_solvd_assignment.genetics.Mutator;
 import eighth_solvd_assignment.utilities.Randomizer;
 
 public abstract class Animal implements IFighter, IBreeding {
-	// BASIC TRAITS
+	// TRAITS
 	protected String name = "";
 	protected int rank;
 	protected Respiration respiration;
 	protected Locomotion locomotion;
 	protected Intelligence intelligence;
 	protected Diet diet;
-	// SPECIAL
 	protected EnumMap<SpecialTrait, Boolean> specialTraits;
 	// STAT BLOCK
 	protected EnumMap<Stat, Integer> statBlock;
+	// GENETICS
+	protected String genes = "";
 
 	public Animal(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet) {
 		this.name = Randomizer.animalNameGenerator(this);
@@ -44,28 +49,49 @@ public abstract class Animal implements IFighter, IBreeding {
 		this.diet = diet;
 	}
 
+	// IMPLEMENT THIS AND OTHER GENE INCLUDING CONSTRUCTORS
+	public Animal(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet,
+			String geneSequence) {
+		this.name = Randomizer.animalNameGenerator(this);
+		this.specialTraits = new EnumMap<>(SpecialTrait.class);
+		// LAMBDA IMPLEMENTATION
+		Arrays.asList(SpecialTrait.values()).forEach((value) -> this.specialTraits.put(value, false));
+
+		this.respiration = respiration;
+		this.locomotion = locomotion;
+		this.intelligence = intelligence;
+		this.diet = diet;
+	}
+
 	protected void evolve(SpecialTrait trait) {
+		genes += trait.getLocus();
 		specialTraits.put(trait, true);
+
 	}
 
 	// DESCRIPTIVE METHODS
 	public String breathe() {
-		return this.respiration.getDescription();
+		return "[" + this.respiration.getDescription() + "]";
 	}
 
 	public String move() {
-		return this.locomotion.getDescription();
+		return "[" + this.locomotion.getDescription() + "]";
 	}
 
 	public String think() {
-		return this.intelligence.getDescription();
+		return "[" + this.intelligence.getDescription() + "]";
 	}
 
 	public String eat() {
-		return this.diet.getDescription();
+		return "[" + this.diet.getDescription() + "]";
+	}
+
+	public String getName() {
+		return this.name;
 	}
 
 	// IFighter METHODS
+	@Override
 	public void rankUP() throws ExcessRankException {
 		// IDENTITY
 		this.rank++;
@@ -92,6 +118,7 @@ public abstract class Animal implements IFighter, IBreeding {
 		this.statBlock.put(Stat.ENERGY_POINTS, this.statBlock.get(Stat.MAX_ENERGY));
 	}
 
+	@Override
 	public void generateStatBlock() {
 		this.rank = 0;
 
@@ -213,6 +240,7 @@ public abstract class Animal implements IFighter, IBreeding {
 		this.statBlock.put(Stat.DEFENSE, defense);
 	}
 
+	@Override
 	public int hit(Animal competitor) throws DefeatedException, ExhaustedException, MissException {
 		this.statBlock.put(Stat.ENERGY_POINTS, this.statBlock.get(Stat.ENERGY_POINTS) - 1);
 		if (this.statBlock.get(Stat.ENERGY_POINTS) < 0) {
@@ -238,6 +266,7 @@ public abstract class Animal implements IFighter, IBreeding {
 		return damageDealt;
 	}
 
+	@Override
 	public int receiveHit(int damage) throws DefeatedException {
 		this.statBlock.put(Stat.HEALTH_POINTS,
 				this.statBlock.get(Stat.HEALTH_POINTS) - (damage - this.getStat(Stat.DEFENSE)));
@@ -248,25 +277,72 @@ public abstract class Animal implements IFighter, IBreeding {
 		return damage;
 	}
 
-	public String getName() {
-		return this.name;
-	}
-
+	@Override
 	public int getRank() {
 		return this.rank;
 	}
 
+	@Override
 	public int getStat(Stat stat) {
 		return this.statBlock.get(stat);
 	}
 
 	// IBreeding METHODS INCOMPLETE
-	public void mixGenes() {
+	@Override
+	public Animal breed(Animal partner) {
+		String geneSequence = partner.splice() + this.splice();
 
+		Respiration respiration = new Random().nextInt(2) == 1 ? this.respiration : partner.respiration;
+		Locomotion locomotion = new Random().nextInt(2) == 1 ? this.locomotion : partner.locomotion;
+		Intelligence intelligence = new Random().nextInt(2) == 1 ? this.intelligence : partner.intelligence;
+		Diet diet = new Random().nextInt(2) == 1 ? this.diet : partner.diet;
+
+		Mutator<String> rotator = (genes) -> {
+			return StringUtils.rotate(genes, new Random().nextInt());
+		};
+		Mutator<String> shuffler = (genes) -> {
+			char[] aux = genes.toCharArray();
+			ArrayUtils.shuffle(aux);
+			return StringUtils.valueOf(aux);
+		};
+		Mutator<String> reverser = (genes) -> {
+			char[] aux = genes.toCharArray();
+			ArrayUtils.reverse(aux);
+			return StringUtils.valueOf(aux);
+		};
+		// CUSTOM FUNCTIONAL INTERFACE IMPLEMENTATION
+		for (int mutations = 0; mutations < 3; mutations++) {
+			if (new Random().nextInt(3) == 0) {
+				geneSequence = rotator.mutate(geneSequence);
+			}
+			if (new Random().nextInt(3) == 0) {
+				geneSequence = shuffler.mutate(geneSequence);
+			}
+			if (new Random().nextInt(3) == 0) {
+				geneSequence = reverser.mutate(geneSequence);
+			}
+		}
+
+		if (partner.getClass().getName() == this.getClass().getName()) {
+			try {
+				return this.getClass().getConstructor().newInstance(respiration, locomotion, intelligence, diet,
+						geneSequence);
+			} catch (Exception e) {
+				e.printStackTrace();
+				return null;
+			}
+		} else {
+			return new Hybrid(respiration, locomotion, intelligence, diet, geneSequence);
+		}
 	}
 
-	public Animal offspring(Animal parent) {
-		return this;
+	@Override
+	public String splice() {
+		if (new Random().nextInt(2) == 1) {
+			return this.genes.substring(this.genes.length() / 2);
+		} else {
+			return this.genes.substring(0, this.genes.length() / 2);
+		}
 	}
 
 	// Object METHODS

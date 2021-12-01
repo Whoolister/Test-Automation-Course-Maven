@@ -36,6 +36,7 @@ public class MyLogger extends Logger {
 
 	public void turnOffLogger() {
 		try {
+			this.getHandlers()[0].close();
 			removeHandler(new FileHandler(file.getParent() + file.getName()));
 		} catch (SecurityException e) {
 

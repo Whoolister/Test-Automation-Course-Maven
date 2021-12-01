@@ -4,6 +4,8 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.logging.Level;
 
+import org.apache.commons.lang3.StringUtils;
+
 import eighth_solvd_assignment.inheritance.Animal;
 import eighth_solvd_assignment.inheritance.Facility;
 import eighth_solvd_assignment.utilities.CustomLinkedList;
@@ -15,22 +17,33 @@ public class Safari extends Facility {
 	public static void expedition(Scanner scanner) {
 		LOG.setupLogger();
 
-		LOG.logAndShow(Level.INFO, "Commencing the expedition" + System.lineSeparator()
-				+ "==<O>===<0>===<O>===<0>===<O>==" + System.lineSeparator());
+		LOG.logAndShow(Level.INFO,
+				StringUtils.center("COMMENCING AN EXPEDITION", 32) + System.lineSeparator()
+						+ "                   \\   |   /            _\\/_\n"
+						+ "                     .-'-.              //o\\  _\\/_\n"
+						+ "  _  ___  __  _ --_ /     \\ _--_ __  __ _ | __/o\\\\ _\n"
+						+ "=-=-_=-=-_=-=_=-_= -=======- = =-=_=-=_,-'|\"'\"\"-|-,_ \n"
+						+ " =- _=-=-_=- _=-= _--=====- _=-=_-_,-\"          |\n" + "  -=- =- =-= =- = -  -===- -= - .\""
+						+ System.lineSeparator());
 
 		int animalPopulation = new Random().nextInt(24) + 1;
 		if (animalPopulation > 20) {
-			LOG.logAndShow(Level.INFO,
-					"The hunting lands are teeming with life at this time, an excellent time to go on an expedition.");
+			LOG.logAndShow(Level.INFO, "The hunting lands are teeming with life at this time," + System.lineSeparator()
+					+ " an excellent time to go on an expedition.");
 		} else if (animalPopulation > 12) {
-			LOG.logAndShow(Level.INFO,
-					"The day favors an expedition, there are plenty animal species, but just enough to not be bothersome.");
+			LOG.logAndShow(Level.INFO, "The day favors an expedition, there are plenty animal species,"
+					+ System.lineSeparator() + " but just enough to not be bothersome.");
 		} else if (animalPopulation > 4) {
-			LOG.logAndShow(Level.INFO,
-					"Not many animals around today, it's gonna be very calm on the path... Maybe even boring.");
+			LOG.logAndShow(Level.INFO, "Not many animals around today, it's gonna be very calm on the"
+					+ System.lineSeparator() + " path... Maybe even boring.");
 		} else {
-			LOG.logAndShow(Level.INFO, "It's dead quiet, but who's to say there isn't a worthy find out there.");
+			LOG.logAndShow(Level.INFO, "It's dead quiet, but who's to say there isn't" + System.lineSeparator()
+					+ " a worthy find out there.");
 		}
+
+		LOG.logAndShow(Level.INFO, "->->->->->->->->->->->->->->->->->->->->->->->->->->-" + System.lineSeparator()
+				+ "Press any key, and hit ENTER to embark:");
+		scanner.next();
 
 		for (Animal element : Randomizer.creatureCreator(animalPopulation)) {
 			wildlife.insert(element);
@@ -41,13 +54,13 @@ public class Safari extends Facility {
 		while (wildlife.getLength() > 0 && !finished) {
 			Animal wildFind = null;
 
-			LOG.logAndShow(Level.INFO,
-					"Locale " + locale + System.lineSeparator() + Randomizer.randomPostcard() + System.lineSeparator()
-							+ "---<O>===<O>===<O>===<O>---" + System.lineSeparator() + "What do you want to do?"
-							+ System.lineSeparator() + "---<O>===<O>===<O>===<O>---" + System.lineSeparator()
-							+ System.lineSeparator() + ">-> Type 1 to view the nearby specimen" + System.lineSeparator()
-							+ ">-> Type 2 to go forward" + System.lineSeparator() + ">-> Type 3 to go backwards"
-							+ System.lineSeparator() + ">-> Type 4 to finish the Safari" + System.lineSeparator());
+			LOG.logAndShow(Level.INFO, "Locale " + locale + System.lineSeparator() + Randomizer.randomPostcard()
+					+ System.lineSeparator() + " >< >< >< >< >< >< >< >< >< >< >< >< >< >< >< >< ><"
+					+ System.lineSeparator() + "What do you want to do?" + System.lineSeparator()
+					+ " >< >< >< >< >< >< >< >< >< >< >< >< >< >< >< >< ><" + System.lineSeparator()
+					+ System.lineSeparator() + "\t>-> Type 1 to view the nearby specimen" + System.lineSeparator()
+					+ "\t>-> Type 2 to go forward" + System.lineSeparator() + "\t>-> Type 3 to go backwards"
+					+ System.lineSeparator() + "\t>-> Type 4 to finish the Safari" + System.lineSeparator());
 
 			while (scanner.hasNext()) {
 				if (scanner.hasNextInt()) {
@@ -137,8 +150,8 @@ public class Safari extends Facility {
 			}
 		}
 
-		LOG.logAndShow(Level.INFO, "E N D   O F   E X P E D I T I O N" + System.lineSeparator()
-				+ ">==<O>===<0>- -<0>===<O>==<" + System.lineSeparator());
+		LOG.logAndShow(Level.INFO, StringUtils.center("E N D   O F   E X P E D I T I O N", 32) + System.lineSeparator()
+				+ "__________________________________________" + System.lineSeparator());
 
 		LOG.turnOffLogger();
 	}

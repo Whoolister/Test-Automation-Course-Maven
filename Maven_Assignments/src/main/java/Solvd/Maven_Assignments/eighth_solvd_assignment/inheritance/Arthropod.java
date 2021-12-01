@@ -24,6 +24,11 @@ public class Arthropod extends Invertebrate implements IEctothermy, IAgriculture
 		evolve(SpecialTrait.COMPOUND_EYES);
 	}
 
+	public Arthropod(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet,
+			String geneSequence) {
+		super(respiration, locomotion, intelligence, diet, geneSequence);
+	}
+
 	public final String molt() {
 		if (hardened) {
 			// LAMBDA IMPLEMENTATION

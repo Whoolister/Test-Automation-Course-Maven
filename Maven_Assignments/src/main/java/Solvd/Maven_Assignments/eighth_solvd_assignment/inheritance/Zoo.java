@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.logging.Level;
 
+import org.apache.commons.lang3.StringUtils;
+
 import eighth_solvd_assignment.utilities.Randomizer;
 
 public class Zoo extends Facility {
@@ -13,15 +15,18 @@ public class Zoo extends Facility {
 	public static void tour(Scanner scanner) {
 		LOG.setupLogger();
 
-		LOG.logAndShow(Level.INFO, "ENTERING THE ZOO" + System.lineSeparator() + "==<O>===<0>===<O>===<0>===<O>=="
-				+ System.lineSeparator());
+		LOG.logAndShow(Level.INFO,
+				StringUtils.center("ENTERING THE ZOO", 48) + System.lineSeparator()
+						+ "_|___|___|___|___|___|___|___|___|___|___|___|___|___|_\n"
+						+ "___|___|___|___|___|___|___|___|___|___|___|___|___|___\n"
+						+ "_|___|___|___|___|___|___|___|___|___|___|___|___|___|_" + System.lineSeparator());
 
 		boolean useRNG = true;
 		if (specimens != null) {
 			LOG.logAndShow(Level.INFO,
-					"What mode do you want to use?" + System.lineSeparator() + ">-> Type 1 to check the saved exhibits"
-							+ System.lineSeparator() + ">-> Type 2 to randomly generate exhibits"
-							+ System.lineSeparator());
+					"What mode do you want to use?" + System.lineSeparator()
+							+ "\t>-> Type 1 to check the saved exhibits" + System.lineSeparator()
+							+ "\t>-> Type 2 to randomly generate exhibits" + System.lineSeparator());
 
 			while (scanner.hasNext()) {
 				if (scanner.hasNextInt()) {
@@ -33,7 +38,8 @@ public class Zoo extends Facility {
 					} else if (mode == 2) {
 						break;
 					} else {
-						LOG.logAndShow(Level.SEVERE, "ERRONEOUS INPUT: Must input 1 or 2." + System.lineSeparator());
+						LOG.logAndShow(Level.SEVERE,
+								"ERRONEOUS INPUT (" + mode + ") Must input 1 or 2." + System.lineSeparator());
 					}
 				} else {
 					LOG.logAndShow(Level.SEVERE, "ERRONEOUS INPUT: Must be an integer." + System.lineSeparator());
@@ -49,18 +55,15 @@ public class Zoo extends Facility {
 				if (scanner.hasNextInt()) {
 					int amount = scanner.nextInt();
 					if (amount > 0 && amount <= 16) {
-						LOG.logAndShow(Level.INFO, "Generating " + amount + " animals..." + System.lineSeparator());
+						LOG.logAndShow(Level.INFO, StringUtils.center("Generating " + amount + " animals...", 30));
 						exhibits.addAll(Randomizer.creatureCreator(amount));
-						// LAMBDA IMPLEMENTATION
-						exhibits.forEach(animal -> LOG.logAndShow(Level.INFO,
-								"Exhibit :" + System.lineSeparator() + animal.toString() + System.lineSeparator()
-										+ animal.breathe() + System.lineSeparator() + animal.move()
-										+ System.lineSeparator() + animal.eat() + System.lineSeparator()
-										+ animal.think() + System.lineSeparator()));
+
+						display(exhibits, false);
+
 						break;
 					} else {
 						LOG.logAndShow(Level.INFO,
-								"ERRONEOUS INPUT (" + amount + "): Must input a number between 1 and 100.");
+								"ERRONEOUS INPUT (" + amount + "): Must input a number between 1 and 16.");
 					}
 				} else {
 					LOG.logAndShow(Level.INFO, "ERRONEOUS INPUT: Must be an integer.");
@@ -70,14 +73,14 @@ public class Zoo extends Facility {
 		}
 
 		LOG.logAndShow(Level.INFO,
-				"Do you want to save these creatures?" + System.lineSeparator() + ">-> Type 1 to save them"
-						+ System.lineSeparator() + ">-> Type 2 to discard them, you monster..."
+				"Do you want to save these creatures?" + System.lineSeparator() + "\t>-> Type 1 to save them"
+						+ System.lineSeparator() + "\t>-> Type 2 to discard them, you monster..."
 						+ System.lineSeparator());
 		while (scanner.hasNext()) {
 			if (scanner.hasNextInt()) {
 				int operation = scanner.nextInt();
 				if (operation == 1) {
-					LOG.logAndShow(Level.INFO, "The saved exhibits have been saved to our specimens lab,"
+					LOG.logAndShow(Level.INFO, "The generated exhibits have been saved to our specimens lab,"
 							+ System.lineSeparator() + "you may choose to retrieve them as fighters in the arena.");
 					specimens = new ArrayList<>();
 					specimens.addAll(exhibits);
@@ -92,7 +95,8 @@ public class Zoo extends Facility {
 				LOG.logAndShow(Level.SEVERE, "ERRONEOUS INPUT: Must input YES or NO." + System.lineSeparator());
 			}
 		}
-
+		LOG.logAndShow(Level.INFO, StringUtils.center("E N D   O F   T H E   T O U R", 32) + System.lineSeparator()
+				+ "__________________________________________");
 		LOG.turnOffLogger();
 	}
 }

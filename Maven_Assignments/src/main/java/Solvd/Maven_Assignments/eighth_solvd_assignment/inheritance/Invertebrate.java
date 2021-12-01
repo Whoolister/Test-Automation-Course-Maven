@@ -12,4 +12,10 @@ public abstract class Invertebrate extends Animal {
 
 		evolve(SpecialTrait.FLEXIBLE_BODY_PLAN);
 	}
+
+	protected Invertebrate(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet,
+			String geneSequence) {
+		super(respiration, locomotion, intelligence, diet);
+
+	}
 }

@@ -3,7 +3,6 @@ package sixth_solvd_assignment.run;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import sixth_solvd_assignment.battle.Arena;
 import sixth_solvd_assignment.inheritance.Animal;
@@ -12,7 +11,7 @@ import sixth_solvd_assignment.safari.Safari;
 import sixth_solvd_assignment.utilities.MyLogger;
 
 public final class InheritanceRunner {
-	static final MyLogger LOG = new MyLogger(Logger.GLOBAL_LOGGER_NAME);
+	static final MyLogger LOG = new MyLogger(InheritanceRunner.class.getName());
 	static ArrayList<Animal> collection = new ArrayList<>();
 
 	public static void main(String[] args) {
@@ -58,5 +57,6 @@ public final class InheritanceRunner {
 				}
 			}
 		}
+		LOG.turnOffLogger();
 	}
 }

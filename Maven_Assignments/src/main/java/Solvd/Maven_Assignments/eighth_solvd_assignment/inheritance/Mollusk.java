@@ -23,6 +23,11 @@ public class Mollusk extends Invertebrate implements IEctothermy, IHibernation {
 		evolve(SpecialTrait.CAMOUFLAGE);
 	}
 
+	public Mollusk(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet,
+			String geneSequence) {
+		super(respiration, locomotion, intelligence, diet, geneSequence);
+	}
+
 	public final String hide() {
 		switch ((new Random()).nextInt(5)) {
 		case 0:

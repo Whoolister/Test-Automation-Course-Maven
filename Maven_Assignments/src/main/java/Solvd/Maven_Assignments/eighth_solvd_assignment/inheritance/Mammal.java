@@ -29,6 +29,13 @@ public class Mammal extends Vertebrate implements IEndothermy, IAgriculture, IHi
 		evolve(SpecialTrait.FOUR_CHAMBERED_HEART);
 	}
 
+	public Mammal(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet,
+			String geneSequence) {
+		super(respiration, locomotion, intelligence, diet, geneSequence);
+
+		furColor = (new Random()).nextInt(3) < 2 ? ((new Random()).nextInt(2) < 1 ? "White" : "Brown") : "Black";
+	}
+
 	@Override
 	public String hibernate() {
 		return "This being can enter a state of extremely low metabolism, to sleep through periods with unfavorable conditions.\n";

@@ -20,6 +20,11 @@ public class Cnidarian extends Invertebrate implements IEctothermy, ISwarm {
 		evolve(SpecialTrait.BIOLUMINESCENCE);
 	}
 
+	public Cnidarian(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet,
+			String geneSequence) {
+		super(respiration, locomotion, intelligence, diet, geneSequence);
+	}
+
 	@Override
 	public String congregate() {
 		return "This being tends to create large swarms of its own species, giving them a greater chance of surviving attacks.\n";

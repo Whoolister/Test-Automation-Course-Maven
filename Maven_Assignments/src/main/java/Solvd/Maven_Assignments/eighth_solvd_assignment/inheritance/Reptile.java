@@ -24,6 +24,13 @@ public class Reptile extends Vertebrate implements IEctothermy, IEndothermy {
 		evolve(SpecialTrait.DEADLY_VENOM);
 	}
 
+	public Reptile(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet,
+			String geneSequence) {
+		super(respiration, locomotion, intelligence, diet, geneSequence);
+
+		bodyPlan = new Random().nextInt(2) < 1 ? "Wide" : "Long";
+	}
+
 	@Override
 	public String produceHeat() {
 		return "This being can increase their metabolism to exude greater amounts of energy, this may be a limiting factor to their physical ability.\n";

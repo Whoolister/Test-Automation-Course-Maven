@@ -12,4 +12,9 @@ public abstract class Vertebrate extends Animal {
 
 		evolve(SpecialTrait.ENDOSKELETON);
 	}
+
+	protected Vertebrate(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet,
+			String geneSequence) {
+		super(respiration, locomotion, intelligence, diet);
+	}
 }
