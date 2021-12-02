@@ -18,8 +18,8 @@ public class Nursery extends Facility {
 
 		LOG.logAndShow(Level.INFO,
 				StringUtils.center("ENTERING THE NURSERY", 48) + System.lineSeparator()
-						+ " / __ \\ \\__/ / __ \\ \\__/ / __ \\ \\__/ / __ \\ \\__/ / \n"
-						+ "/ /  \\ \\____/ /  \\ \\____/ /  \\ \\____/ /  \\ \\____/" + System.lineSeparator());
+						+ " / __ \\ \\__/ / __ \\ \\__/ / __ \\ \\__/ / __ \\ \\__/ / /\n"
+						+ "/ /  \\ \\____/ /  \\ \\____/ /  \\ \\____/ /  \\ \\____/ /  " + System.lineSeparator());
 
 		boolean useRNG = true, selectPair = false;
 		if (specimens != null) {
@@ -97,6 +97,11 @@ public class Nursery extends Facility {
 
 		Animal offspring = breedingPen(patients.peekFirst(), patients.peekLast());
 
+		LOG.logAndShow(Level.INFO,
+				offspring.toString() + System.lineSeparator() + offspring.breathe() + System.lineSeparator()
+						+ offspring.move() + System.lineSeparator() + offspring.think() + System.lineSeparator()
+						+ offspring.eat() + System.lineSeparator() + "[" + offspring.getGenes() + "]"
+						+ System.lineSeparator());
 	}
 
 	public static Animal breedingPen(Animal firstParent, Animal secondParent) {

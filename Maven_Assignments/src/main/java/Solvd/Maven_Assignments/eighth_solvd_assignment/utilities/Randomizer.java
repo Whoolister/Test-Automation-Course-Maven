@@ -3,6 +3,8 @@ package eighth_solvd_assignment.utilities;
 import java.util.ArrayList;
 import java.util.Random;
 
+import org.apache.commons.lang3.StringUtils;
+
 import eighth_solvd_assignment.inheritance.Animal;
 import eighth_solvd_assignment.inheritance.Arthropod;
 import eighth_solvd_assignment.inheritance.Cnidarian;
@@ -197,5 +199,14 @@ public final class Randomizer {
 
 	public static String hitAdjectiveGenerator() {
 		return hitAdjectives[new Random().nextInt(hitAdjectives.length)];
+	}
+
+	public static String nucleotideRandomizer(String geneSequence) {
+		while (geneSequence.length() < 32) {
+			geneSequence += new Random().nextInt(10) < 5 ? new Random().nextInt(10) < 5 ? "A" : "C"
+					: new Random().nextInt(10) < 5 ? "T" : "G";
+		}
+
+		return StringUtils.rotate(geneSequence, new Random().nextInt(16) + 1);
 	}
 }

@@ -1,5 +1,7 @@
 package eighth_solvd_assignment.enums;
 
+import eighth_solvd_assignment.genetics.Decoder;
+
 public enum SpecialTrait {
 	// INVERTEBRATE TRAITS
 	FLEXIBLE_BODY_PLAN(
@@ -83,5 +85,13 @@ public enum SpecialTrait {
 
 	public String getLocus() {
 		return this.locus;
+	}
+
+	public Decoder<String> getDecoder() {
+		Decoder<String> decoder = (sequence) -> {
+			return sequence.contains(getLocus());
+		};
+
+		return decoder;
 	}
 }

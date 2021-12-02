@@ -10,4 +10,10 @@ public class Hybrid extends Animal {
 			String geneSequence) {
 		super(respiration, locomotion, intelligence, diet);
 	}
+
+	@Override
+	public String toString() {
+		return "Hybrid [Name: " + this.name + " | Respiration: " + this.respiration + " | Locomotion: "
+				+ this.locomotion + " | Intelligence: " + this.intelligence + " | Diet: " + this.diet + "]";
+	}
 }

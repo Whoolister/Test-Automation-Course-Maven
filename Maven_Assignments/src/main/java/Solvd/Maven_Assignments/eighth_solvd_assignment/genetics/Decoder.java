@@ -1,5 +1,6 @@
 package eighth_solvd_assignment.genetics;
 
-public interface Decoder {
-
+@FunctionalInterface
+public interface Decoder<E extends CharSequence> {
+	public boolean decode(E base);
 }

@@ -47,6 +47,8 @@ public abstract class Animal implements IFighter, IBreeding {
 		this.locomotion = locomotion;
 		this.intelligence = intelligence;
 		this.diet = diet;
+
+		this.genes = Randomizer.nucleotideRandomizer(genes);
 	}
 
 	// IMPLEMENT THIS AND OTHER GENE INCLUDING CONSTRUCTORS
@@ -61,12 +63,17 @@ public abstract class Animal implements IFighter, IBreeding {
 		this.locomotion = locomotion;
 		this.intelligence = intelligence;
 		this.diet = diet;
+
+		this.genes = Randomizer.nucleotideRandomizer(geneSequence);
+		// FOR EACH SPECIAL TRAIT, CHECKS IF THE GENETIC CODE HAS THE REQUIRED LOCUS
+		Arrays.asList(SpecialTrait.values())
+				.forEach((value) -> this.specialTraits.put(value, value.getDecoder().decode(genes)));
 	}
 
 	protected void evolve(SpecialTrait trait) {
-		genes += trait.getLocus();
 		specialTraits.put(trait, true);
 
+		genes += trait.getLocus();
 	}
 
 	// DESCRIPTIVE METHODS
@@ -287,7 +294,7 @@ public abstract class Animal implements IFighter, IBreeding {
 		return this.statBlock.get(stat);
 	}
 
-	// IBreeding METHODS INCOMPLETE
+	// IBreeding METHODS
 	@Override
 	public Animal breed(Animal partner) {
 		String geneSequence = partner.splice() + this.splice();
@@ -343,6 +350,11 @@ public abstract class Animal implements IFighter, IBreeding {
 		} else {
 			return this.genes.substring(0, this.genes.length() / 2);
 		}
+	}
+
+	@Override
+	public String getGenes() {
+		return this.genes;
 	}
 
 	// Object METHODS

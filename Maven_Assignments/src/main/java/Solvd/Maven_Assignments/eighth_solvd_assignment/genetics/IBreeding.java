@@ -6,4 +6,6 @@ public interface IBreeding {
 	public Animal breed(Animal partner);
 
 	public String splice();
+
+	public String getGenes();
 }

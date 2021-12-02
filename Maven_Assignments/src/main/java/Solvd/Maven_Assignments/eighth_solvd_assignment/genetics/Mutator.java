@@ -1,6 +1,6 @@
 package eighth_solvd_assignment.genetics;
 
 @FunctionalInterface
-public interface Mutator<E> {
-	public String mutate(E base);
+public interface Mutator<E extends CharSequence> {
+	public E mutate(E base);
 }
