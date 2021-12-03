@@ -9,6 +9,7 @@ import java.util.logging.Level;
 
 import org.apache.commons.lang3.StringUtils;
 
+import eighth_solvd_assignment.enums.Stat;
 import eighth_solvd_assignment.enums.Weather;
 import eighth_solvd_assignment.exceptions.DefeatedException;
 import eighth_solvd_assignment.exceptions.ExcessRankException;
@@ -22,7 +23,7 @@ public class Arena extends Facility {
 	private static LinkedList<Animal> roster = new LinkedList<Animal>();
 
 	public static void hostTournament(Scanner scanner) {
-		LOG.setupLogger();
+		openFacilities();
 
 		LOG.logAndShow(Level.INFO,
 				StringUtils.center("ENTERING THE TOURNAMENT", 54) + System.lineSeparator()
@@ -34,7 +35,7 @@ public class Arena extends Facility {
 						+ "--+---+---+---+---+---+---+---+---+---+---+---+---+--" + System.lineSeparator());
 
 		boolean useRNG = true;
-		if (specimens != null) {
+		if (specimens.size() != 0) {
 			LOG.logAndShow(Level.INFO,
 					"What mode do you want to use?" + System.lineSeparator()
 							+ "\t>-> Type 1 to use the exhibits saved from the Zoo" + System.lineSeparator()
@@ -134,25 +135,27 @@ public class Arena extends Facility {
 						+ System.lineSeparator() + "\t\tW I N N E R: " + winner.getName() + System.lineSeparator()
 						+ "_,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,__,.-'~'-.,_" + System.lineSeparator()
 						+ winner.breathe() + System.lineSeparator() + winner.move() + System.lineSeparator()
-						+ winner.think() + System.lineSeparator() + winner.eat() + System.lineSeparator());
+						+ winner.think() + System.lineSeparator() + winner.eat() + System.lineSeparator()
+						+ winner.sleep() + System.lineSeparator());
 
 		// FINAL LINE
 		LOG.logAndShow(Level.INFO, StringUtils.center("E N D   O F   T O U R N A M E N T", 32) + System.lineSeparator()
 				+ "__________________________________________" + System.lineSeparator());
-
-		LOG.turnOffLogger();
 	}
 
 	public static Animal fight(Animal competitorOne, Animal competitorTwo) throws ExcessRankException {
 		// APPLY WEATHER CONDITIONS ON FIGHTERS
 		Weather weather = Weather.values()[new Random().nextInt(Weather.values().length)];
-		competitorOne.weatherImpact(weather);
-		competitorTwo.weatherImpact(weather);
+		LOG.logAndShow(Level.INFO,
+				weather.getIcon() + System.lineSeparator() + weather.getDescription() + System.lineSeparator());
+
+		weather.getCondition().condition(competitorOne);
+		weather.getCondition().condition(competitorTwo);
 
 		ArrayDeque<Animal> queue = new ArrayDeque<>(2);
 
-		if (competitorOne.getSpeedPoints() > competitorTwo.getSpeedPoints()
-				|| competitorOne.getSpeedPoints() == competitorTwo.getSpeedPoints()) {
+		if (competitorOne.getStat(Stat.SPEED) > competitorTwo.getStat(Stat.SPEED)
+				|| competitorOne.getStat(Stat.SPEED) == competitorTwo.getStat(Stat.SPEED)) {
 			queue.addFirst(competitorOne);
 			queue.addLast(competitorTwo);
 		} else {
@@ -181,12 +184,13 @@ public class Arena extends Facility {
 										+ System.lineSeparator());
 						return queue.peekLast();
 					} catch (DefeatedException defeated) {
-						competitorOne.rankUP();
+						competitor.rankUP();
 						LOG.logAndShow(Level.INFO,
 								competitor.getName() + " delivered one final blow to his opponent, dealing a "
 										+ Randomizer.hitAdjectiveGenerator() + " " + defeated.getDamage()
 										+ " points of damage!" + System.lineSeparator()
-										+ "They have won the match, and risen to Rank " + competitor.getRank());
+										+ "They have won the match, and risen to Rank " + competitor.getRank()
+										+ System.lineSeparator());
 						return competitor;
 					}
 				} else {
@@ -206,12 +210,13 @@ public class Arena extends Facility {
 										+ System.lineSeparator());
 						return queue.peekFirst();
 					} catch (DefeatedException defeated) {
-						competitorOne.rankUP();
+						competitor.rankUP();
 						LOG.logAndShow(Level.INFO,
 								competitor.getName() + " delivered one final blow to his opponent, dealing a "
 										+ Randomizer.hitAdjectiveGenerator() + " " + defeated.getDamage()
 										+ " points of damage!" + System.lineSeparator()
-										+ "They have won the match, and risen to Rank " + competitor.getRank());
+										+ "They have won the match, and risen to Rank " + competitor.getRank()
+										+ System.lineSeparator());
 						return competitor;
 					}
 				}

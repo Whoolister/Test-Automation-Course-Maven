@@ -1,5 +1,6 @@
 package eighth_solvd_assignment.inheritance;
 
+import eighth_solvd_assignment.enums.CyrcadianRythm;
 import eighth_solvd_assignment.enums.Diet;
 import eighth_solvd_assignment.enums.Intelligence;
 import eighth_solvd_assignment.enums.Locomotion;
@@ -7,8 +8,8 @@ import eighth_solvd_assignment.enums.Respiration;
 
 public class Hybrid extends Animal {
 	public Hybrid(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet,
-			String geneSequence) {
-		super(respiration, locomotion, intelligence, diet);
+			CyrcadianRythm cyrcadianRythm, String geneSequence) {
+		super(respiration, locomotion, intelligence, diet, cyrcadianRythm, geneSequence);
 	}
 
 	@Override

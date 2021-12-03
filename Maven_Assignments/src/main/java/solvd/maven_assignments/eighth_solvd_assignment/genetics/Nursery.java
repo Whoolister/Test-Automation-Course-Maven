@@ -14,7 +14,7 @@ public class Nursery extends Facility {
 	private static LinkedList<Animal> patients = new LinkedList<>();
 
 	public static void visit(Scanner scanner) {
-		LOG.setupLogger();
+		openFacilities();
 
 		LOG.logAndShow(Level.INFO,
 				StringUtils.center("ENTERING THE NURSERY", 48) + System.lineSeparator()
@@ -25,7 +25,7 @@ public class Nursery extends Facility {
 						+ ",-'-'   `-=_,-'-'   `-=_,-'-'   `-=_,-'-'   `-=_,-'-'" + System.lineSeparator());
 
 		boolean useRNG = true, selectPair = false;
-		if (specimens != null) {
+		if (specimens.size() != 0) {
 			LOG.logAndShow(Level.INFO,
 					"What mode do you want to use?" + System.lineSeparator()
 							+ ">-> Type 1 to select a pair from the saved exhibits" + System.lineSeparator()
@@ -65,7 +65,7 @@ public class Nursery extends Facility {
 			display(specimens, true);
 
 			LOG.logAndShow(Level.INFO, "Choose a specimen to pair:" + System.lineSeparator());
-			while (scanner.hasNext() && patients.size() != 2) {
+			while (scanner.hasNext() && patients.size() < 2) {
 				if (scanner.hasNextInt()) {
 					int selection = scanner.nextInt();
 					if (selection > 0 && selection < 16) {
@@ -91,8 +91,8 @@ public class Nursery extends Facility {
 		LOG.logAndShow(Level.INFO,
 				offspring.toString() + System.lineSeparator() + offspring.breathe() + System.lineSeparator()
 						+ offspring.move() + System.lineSeparator() + offspring.think() + System.lineSeparator()
-						+ offspring.eat() + System.lineSeparator() + "[" + offspring.getGenes() + "]"
-						+ System.lineSeparator());
+						+ offspring.eat() + System.lineSeparator() + offspring.sleep() + System.lineSeparator() + "["
+						+ offspring.getGenes() + "]" + System.lineSeparator());
 
 		if (selectPair) {
 			specimens.addAll(patients);
@@ -100,7 +100,6 @@ public class Nursery extends Facility {
 
 		LOG.logAndShow(Level.INFO, StringUtils.center("E N D   O F   T H E   N U R S E R Y", 32)
 				+ System.lineSeparator() + "__________________________________________");
-		LOG.turnOffLogger();
 	}
 
 	public static Animal breedingPen(Animal firstParent, Animal secondParent) {

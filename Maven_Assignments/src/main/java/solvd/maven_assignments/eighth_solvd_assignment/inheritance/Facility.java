@@ -3,13 +3,13 @@ package eighth_solvd_assignment.inheritance;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import eighth_solvd_assignment.utilities.MyLogger;
 
 public class Facility {
-	protected static ArrayList<Animal> specimens;
-	protected static final MyLogger LOG = new MyLogger(Logger.GLOBAL_LOGGER_NAME);
+	protected static ArrayList<Animal> specimens = new ArrayList<>(16);
+	protected static final MyLogger LOG = new MyLogger(Facility.class.getName());
+	protected static boolean isLogging = false;
 
 	public static void display(List<Animal> list, boolean numericalMode) {
 		LOG.logAndShow(Level.INFO, ">< >< >< >< >< >< >< >< >< ><");
@@ -36,5 +36,15 @@ public class Facility {
 			}
 		}
 		LOG.logAndShow(Level.INFO, ">< >< >< >< >< >< >< >< >< ><" + System.lineSeparator());
+	}
+
+	protected static void openFacilities() {
+		if (!isLogging) {
+			LOG.setupLogger();
+		}
+	}
+
+	public static void closeFacilities() {
+		LOG.turnOffLogger();
 	}
 }

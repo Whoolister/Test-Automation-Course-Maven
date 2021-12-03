@@ -2,6 +2,7 @@ package eighth_solvd_assignment.inheritance;
 
 import java.util.Random;
 
+import eighth_solvd_assignment.enums.CyrcadianRythm;
 import eighth_solvd_assignment.enums.Diet;
 import eighth_solvd_assignment.enums.Intelligence;
 import eighth_solvd_assignment.enums.Locomotion;
@@ -16,12 +17,15 @@ public class Mammal extends Vertebrate implements IEndothermy, IAgriculture, IHi
 	private String furColor;
 
 	public Mammal() {
-		super(Respiration.LUNGS, (new Random()).nextInt(2) < 1 ? Locomotion.QUADRUPEDAL : Locomotion.FINNED,
-				(new Random()).nextInt(3) < 2
+		super(Respiration.LUNGS, new Random().nextInt(2) < 1 ? Locomotion.QUADRUPEDAL : Locomotion.FINNED,
+				new Random().nextInt(3) < 2
 						? ((new Random()).nextInt(2) < 1 ? Intelligence.INTERMEDIATE : Intelligence.HIGH)
 						: Intelligence.SAPIENT,
-				(new Random()).nextInt(3) < 2 ? ((new Random()).nextInt(2) < 1 ? Diet.HERBIVOROUS : Diet.CARNIVOROUS)
-						: Diet.OMNIVOROUS);
+				new Random().nextInt(3) < 2 ? new Random().nextInt(2) < 1 ? Diet.HERBIVOROUS : Diet.CARNIVOROUS
+						: Diet.OMNIVOROUS,
+				new Random().nextInt(3) < 2
+						? new Random().nextInt(2) < 1 ? CyrcadianRythm.DIURNAL : CyrcadianRythm.METATURNAL
+						: CyrcadianRythm.NOCTURNAL);
 
 		furColor = (new Random()).nextInt(3) < 2 ? ((new Random()).nextInt(2) < 1 ? "White" : "Brown") : "Black";
 
@@ -34,8 +38,8 @@ public class Mammal extends Vertebrate implements IEndothermy, IAgriculture, IHi
 	}
 
 	public Mammal(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet,
-			String geneSequence) {
-		super(respiration, locomotion, intelligence, diet, geneSequence);
+			CyrcadianRythm cyrcadianRythm, String geneSequence) {
+		super(respiration, locomotion, intelligence, diet, cyrcadianRythm, geneSequence);
 
 		furColor = (new Random()).nextInt(3) < 2 ? ((new Random()).nextInt(2) < 1 ? "White" : "Brown") : "Black";
 	}
@@ -80,7 +84,7 @@ public class Mammal extends Vertebrate implements IEndothermy, IAgriculture, IHi
 	@Override
 	public String toString() {
 		return "Mammal [Name: " + this.name + " | Respiration: " + this.respiration + " | Locomotion: "
-				+ this.locomotion + " | Intelligence: " + this.intelligence + " | Diet: " + this.diet + " | Fur Color: "
-				+ this.furColor + "]";
+				+ this.locomotion + " | Intelligence: " + this.intelligence + " | Diet: " + this.diet
+				+ " | Cyrcadian Rythm: " + this.cyrcadianRythm + " | Fur Color: " + this.furColor + "]";
 	}
 }

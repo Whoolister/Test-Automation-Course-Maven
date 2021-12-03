@@ -15,7 +15,7 @@ public class Safari extends Facility {
 	private static CustomLinkedList<Animal> wildlife = new CustomLinkedList<>();
 
 	public static void expedition(Scanner scanner) {
-		LOG.setupLogger();
+		openFacilities();
 
 		LOG.logAndShow(Level.INFO,
 				StringUtils.center("COMMENCING AN EXPEDITION", 32) + System.lineSeparator()
@@ -153,7 +153,5 @@ public class Safari extends Facility {
 
 		LOG.logAndShow(Level.INFO, StringUtils.center("E N D   O F   E X P E D I T I O N", 32) + System.lineSeparator()
 				+ "__________________________________________" + System.lineSeparator());
-
-		LOG.turnOffLogger();
 	}
 }

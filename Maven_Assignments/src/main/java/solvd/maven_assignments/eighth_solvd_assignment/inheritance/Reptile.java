@@ -2,6 +2,7 @@ package eighth_solvd_assignment.inheritance;
 
 import java.util.Random;
 
+import eighth_solvd_assignment.enums.CyrcadianRythm;
 import eighth_solvd_assignment.enums.Diet;
 import eighth_solvd_assignment.enums.Intelligence;
 import eighth_solvd_assignment.enums.Locomotion;
@@ -15,8 +16,9 @@ public class Reptile extends Vertebrate implements IEctothermy, IEndothermy {
 	private String bodyPlan;
 
 	public Reptile() {
-		super(Respiration.LUNGS, (new Random()).nextInt(2) < 1 ? Locomotion.QUADRUPEDAL : Locomotion.SLITHERING,
-				Intelligence.SOME, (new Random()).nextInt(2) < 1 ? Diet.HERBIVOROUS : Diet.CARNIVOROUS);
+		super(Respiration.LUNGS, new Random().nextInt(2) < 1 ? Locomotion.QUADRUPEDAL : Locomotion.SLITHERING,
+				Intelligence.SOME, new Random().nextInt(2) < 1 ? Diet.HERBIVOROUS : Diet.CARNIVOROUS,
+				new Random().nextInt(2) < 1 ? CyrcadianRythm.DIURNAL : CyrcadianRythm.NOCTURNAL);
 
 		bodyPlan = new Random().nextInt(2) < 1 ? "Wide" : "Long";
 
@@ -29,8 +31,8 @@ public class Reptile extends Vertebrate implements IEctothermy, IEndothermy {
 	}
 
 	public Reptile(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet,
-			String geneSequence) {
-		super(respiration, locomotion, intelligence, diet, geneSequence);
+			CyrcadianRythm cyrcadianRythm, String geneSequence) {
+		super(respiration, locomotion, intelligence, diet, cyrcadianRythm, geneSequence);
 
 		bodyPlan = new Random().nextInt(2) < 1 ? "Wide" : "Long";
 	}
@@ -53,7 +55,7 @@ public class Reptile extends Vertebrate implements IEctothermy, IEndothermy {
 	@Override
 	public String toString() {
 		return "Reptile [Name: " + this.name + " | Respiration: " + this.respiration + " | Locomotion: "
-				+ this.locomotion + "| Intelligence: " + this.intelligence + " | Diet: " + this.diet + " | Body Plan: "
-				+ this.bodyPlan + "]";
+				+ this.locomotion + "| Intelligence: " + this.intelligence + " | Diet: " + this.diet
+				+ " | Cyrcadian Rythm: " + this.cyrcadianRythm + " | Body Plan: " + this.bodyPlan + "]";
 	}
 }

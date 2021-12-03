@@ -1,7 +1,6 @@
 package eighth_solvd_assignment.battle;
 
 import eighth_solvd_assignment.enums.Stat;
-import eighth_solvd_assignment.enums.Weather;
 import eighth_solvd_assignment.exceptions.DefeatedException;
 import eighth_solvd_assignment.exceptions.ExcessRankException;
 import eighth_solvd_assignment.exceptions.ExhaustedException;
@@ -19,13 +18,11 @@ public interface IFighter {
 
 	public int receiveHit(int damage) throws DefeatedException;
 
-	public boolean dodge();
-
 	public int getRank();
 
-	public int getBaseStat(Stat stat);
+	public int getBaseStat(Stat baseStat);
 
-	public int getSpeedPoints();
+	public int getStat(Stat stat);
 
-	public void weatherImpact(Weather weather);
+	public void changeStat(Stat stat, int change);
 }

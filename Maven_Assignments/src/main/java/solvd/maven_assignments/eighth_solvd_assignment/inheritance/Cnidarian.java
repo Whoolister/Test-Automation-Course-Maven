@@ -2,6 +2,7 @@ package eighth_solvd_assignment.inheritance;
 
 import java.util.Random;
 
+import eighth_solvd_assignment.enums.CyrcadianRythm;
 import eighth_solvd_assignment.enums.Diet;
 import eighth_solvd_assignment.enums.Intelligence;
 import eighth_solvd_assignment.enums.Locomotion;
@@ -13,8 +14,8 @@ import eighth_solvd_assignment.utilities.Randomizer;
 
 public class Cnidarian extends Invertebrate implements IEctothermy, ISwarm {
 	public Cnidarian() {
-		super(Respiration.SKIN_DIFFUSION, (new Random()).nextInt(20) < 10 ? Locomotion.FINNED : Locomotion.NONE,
-				Intelligence.NONE, Diet.CARNIVOROUS);
+		super(Respiration.SKIN_DIFFUSION, new Random().nextInt(2) < 1 ? Locomotion.FINNED : Locomotion.NONE,
+				Intelligence.NONE, Diet.CARNIVOROUS, CyrcadianRythm.METATURNAL);
 
 		evolve(SpecialTrait.HYDROSKELETON);
 		evolve(SpecialTrait.DEADLY_POISON);
@@ -25,8 +26,8 @@ public class Cnidarian extends Invertebrate implements IEctothermy, ISwarm {
 	}
 
 	public Cnidarian(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet,
-			String geneSequence) {
-		super(respiration, locomotion, intelligence, diet, geneSequence);
+			CyrcadianRythm cyrcadianRythm, String geneSequence) {
+		super(respiration, locomotion, intelligence, diet, cyrcadianRythm, geneSequence);
 	}
 
 	@Override
@@ -43,6 +44,7 @@ public class Cnidarian extends Invertebrate implements IEctothermy, ISwarm {
 	@Override
 	public String toString() {
 		return "Cnidaria [Name: " + this.name + " | Respiration: " + this.respiration + " | Locomotion: "
-				+ this.locomotion + " | Intelligence: " + this.intelligence + " | Diet: " + this.diet + "]";
+				+ this.locomotion + " | Intelligence: " + this.intelligence + " | Diet: " + this.diet
+				+ " | Cyrcadian Rythm: " + this.cyrcadianRythm + "]";
 	}
 }

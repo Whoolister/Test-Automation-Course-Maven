@@ -2,6 +2,7 @@ package eighth_solvd_assignment.inheritance;
 
 import java.util.Random;
 
+import eighth_solvd_assignment.enums.CyrcadianRythm;
 import eighth_solvd_assignment.enums.Diet;
 import eighth_solvd_assignment.enums.Intelligence;
 import eighth_solvd_assignment.enums.Locomotion;
@@ -16,8 +17,9 @@ public class Fish extends Vertebrate implements IEctothermy, ISwarm {
 
 	public Fish() {
 		super(Respiration.GILLS, Locomotion.FINNED,
-				(new Random()).nextInt(2) < 1 ? Intelligence.SOME : Intelligence.INTERMEDIATE,
-				(new Random()).nextInt(2) < 1 ? Diet.HERBIVOROUS : Diet.CARNIVOROUS);
+				new Random().nextInt(2) < 1 ? Intelligence.SOME : Intelligence.INTERMEDIATE,
+				new Random().nextInt(2) < 1 ? Diet.HERBIVOROUS : Diet.CARNIVOROUS,
+				new Random().nextInt(2) < 1 ? CyrcadianRythm.DIURNAL : CyrcadianRythm.CREPUSCULAR);
 
 		tailPlan = (new Random()).nextInt(4) < 3 ? new Random().nextInt(2) < 1 ? "Heterocercal" : "Protocercal"
 				: new Random().nextInt(2) < 1 ? "Homoceral" : "Diphyceral";
@@ -31,8 +33,8 @@ public class Fish extends Vertebrate implements IEctothermy, ISwarm {
 	}
 
 	public Fish(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet,
-			String geneSequence) {
-		super(respiration, locomotion, intelligence, diet, geneSequence);
+			CyrcadianRythm cyrcadianRythm, String geneSequence) {
+		super(respiration, locomotion, intelligence, diet, cyrcadianRythm, geneSequence);
 
 		tailPlan = (new Random()).nextInt(4) < 3 ? new Random().nextInt(2) < 1 ? "Heterocercal" : "Protocercal"
 				: new Random().nextInt(2) < 1 ? "Homoceral" : "Diphyceral";
@@ -52,6 +54,6 @@ public class Fish extends Vertebrate implements IEctothermy, ISwarm {
 	public String toString() {
 		return "Fish [Name: " + this.name + " | Respiration: " + this.respiration + " | Locomotion: " + this.locomotion
 				+ " | Intelligence: " + this.intelligence + " | Diet: " + this.diet + " | Tail Plan: " + this.tailPlan
-				+ "]";
+				+ " | Cyrcadian Rythm: " + this.cyrcadianRythm + "]";
 	}
 }

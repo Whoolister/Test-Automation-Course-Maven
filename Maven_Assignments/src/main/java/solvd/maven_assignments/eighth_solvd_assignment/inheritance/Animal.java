@@ -17,7 +17,6 @@ import eighth_solvd_assignment.enums.Locomotion;
 import eighth_solvd_assignment.enums.Respiration;
 import eighth_solvd_assignment.enums.SpecialTrait;
 import eighth_solvd_assignment.enums.Stat;
-import eighth_solvd_assignment.enums.Weather;
 import eighth_solvd_assignment.exceptions.DefeatedException;
 import eighth_solvd_assignment.exceptions.ExcessRankException;
 import eighth_solvd_assignment.exceptions.ExhaustedException;
@@ -54,17 +53,15 @@ public abstract class Animal implements IFighter, IBreeding {
 	protected Diet diet;
 	protected CyrcadianRythm cyrcadianRythm;
 	protected EnumMap<SpecialTrait, Boolean> specialTraits;
-	// STAT BLOCK
+	// BASE STAT BLOCK
 	protected EnumMap<Stat, Integer> baseStatBlock;
-	protected int healthPoints;
-	protected int energyPoints;
-	protected int speedPoints;
-	protected int damagePoints;
-	protected int criticalPoints;
+	// ACTIVE STAT BLOCK
+	protected EnumMap<Stat, Integer> statBlock;
 	// GENETICS
 	protected String genes = "";
 
-	public Animal(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet) {
+	public Animal(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet,
+			CyrcadianRythm cyrcadianRythm) {
 		this.name = Randomizer.animalNameGenerator(this);
 		this.specialTraits = new EnumMap<>(SpecialTrait.class);
 		// LAMBDA IMPLEMENTATION
@@ -74,11 +71,12 @@ public abstract class Animal implements IFighter, IBreeding {
 		this.locomotion = locomotion;
 		this.intelligence = intelligence;
 		this.diet = diet;
+		this.cyrcadianRythm = cyrcadianRythm;
 	}
 
 	// IMPLEMENT THIS AND OTHER GENE INCLUDING CONSTRUCTORS
 	public Animal(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet,
-			String geneSequence) {
+			CyrcadianRythm cyrcadianRythm, String geneSequence) {
 		this.name = Randomizer.animalNameGenerator(this);
 		this.specialTraits = new EnumMap<>(SpecialTrait.class);
 		// LAMBDA IMPLEMENTATION
@@ -88,6 +86,7 @@ public abstract class Animal implements IFighter, IBreeding {
 		this.locomotion = locomotion;
 		this.intelligence = intelligence;
 		this.diet = diet;
+		this.cyrcadianRythm = cyrcadianRythm;
 		// RANDOMIZES THE MISSING GENETIC MATERIAL
 		this.genes = Randomizer.nucleotideRandomizer(geneSequence);
 		// FOR EACH SPECIAL TRAIT, CHECKS IF THE GENETIC CODE HAS THE REQUIRED LOCUS
@@ -154,9 +153,9 @@ public abstract class Animal implements IFighter, IBreeding {
 
 		this.name = Randomizer.animalNameGenerator(this);
 		// SURVIVAL STATS INCREASE
-		this.baseStatBlock.put(Stat.MAX_HEALTH,
-				(int) (this.baseStatBlock.get(Stat.MAX_HEALTH) * (this.rank * (1.1 + new Random().nextFloat()))));
-		this.baseStatBlock.put(Stat.MAX_ENERGY, this.baseStatBlock.get(Stat.MAX_ENERGY) + 1 * this.rank);
+		this.baseStatBlock.put(Stat.HEALTH_POINTS,
+				(int) (this.baseStatBlock.get(Stat.HEALTH_POINTS) * (this.rank * (1.1 + new Random().nextFloat()))));
+		this.baseStatBlock.put(Stat.ENERGY_POINTS, this.baseStatBlock.get(Stat.ENERGY_POINTS) + 1 * this.rank);
 		// SPEED INCREASE
 		this.baseStatBlock.put(Stat.SPEED, this.baseStatBlock.get(Stat.SPEED) + 3 * this.rank);
 		// DAMAGE STATS INCREASE
@@ -177,8 +176,8 @@ public abstract class Animal implements IFighter, IBreeding {
 
 		this.baseStatBlock = new EnumMap<>(Stat.class);
 
-		int maxHealth = 100;
-		int maxEnergy = 8;
+		int healthPoints = 100;
+		int energyPoints = 8;
 		int speed = 30;
 		int hitRolls = 1;
 		int hitDamage = 8;
@@ -186,13 +185,13 @@ public abstract class Animal implements IFighter, IBreeding {
 		int defense = 3;
 
 		if (specialTraits.get(SpecialTrait.FLEXIBLE_BODY_PLAN)) {
-			maxHealth -= 20;
+			healthPoints -= 20;
 			speed -= 5;
 			hitDamage -= 1;
 		}
 		if (specialTraits.get(SpecialTrait.EXOSKELETON)) {
-			maxHealth += 10;
-			maxEnergy -= 1;
+			healthPoints += 10;
+			energyPoints -= 1;
 			defense += 2;
 		}
 		if (specialTraits.get(SpecialTrait.IRRITANT_STINGS)) {
@@ -203,8 +202,8 @@ public abstract class Animal implements IFighter, IBreeding {
 			criticalChance += 4;
 		}
 		if (specialTraits.get(SpecialTrait.HYDROSKELETON)) {
-			maxHealth -= 20;
-			maxEnergy += 3;
+			healthPoints -= 20;
+			energyPoints += 3;
 			speed -= 10;
 			defense -= 1;
 		}
@@ -212,31 +211,31 @@ public abstract class Animal implements IFighter, IBreeding {
 			defense += 4;
 		}
 		if (specialTraits.get(SpecialTrait.BIOLUMINESCENCE)) {
-			maxEnergy -= 1;
+			energyPoints -= 1;
 			defense += 1;
 		}
 		if (specialTraits.get(SpecialTrait.SHELLED_BODY)) {
-			maxHealth += 15;
+			healthPoints += 15;
 			speed -= 5;
 			defense += 2;
 		}
 		if (specialTraits.get(SpecialTrait.JET_PROPULSION)) {
-			maxEnergy -= 1;
+			energyPoints -= 1;
 			speed += 10;
 			hitDamage += 2;
 		}
 		if (specialTraits.get(SpecialTrait.CAMOUFLAGE)) {
-			maxEnergy -= 1;
+			energyPoints -= 1;
 			hitRolls += 1;
 			criticalChance += 8;
 		}
 		if (specialTraits.get(SpecialTrait.ENDOSKELETON)) {
-			maxHealth += 8;
-			maxEnergy += 2;
+			healthPoints += 8;
+			energyPoints += 2;
 			defense -= 1;
 		}
 		if (specialTraits.get(SpecialTrait.FUR)) {
-			maxEnergy += 1;
+			energyPoints += 1;
 			defense += 2;
 		}
 		if (specialTraits.get(SpecialTrait.SINGLE_BONED_JAW)) {
@@ -245,29 +244,29 @@ public abstract class Animal implements IFighter, IBreeding {
 			criticalChance += 8;
 		}
 		if (specialTraits.get(SpecialTrait.FOUR_CHAMBERED_HEART)) {
-			maxEnergy += 4;
+			energyPoints += 4;
 		}
 		if (specialTraits.get(SpecialTrait.SCALED_BODY)) {
-			maxHealth += 15;
+			healthPoints += 15;
 			speed -= 6;
 			defense += 1;
 		}
 		if (specialTraits.get(SpecialTrait.HYDRODYNAMISM)) {
-			maxEnergy += 1;
+			energyPoints += 1;
 			speed += 15;
 			criticalChance += 10;
 		}
 		if (specialTraits.get(SpecialTrait.UNDERWATER_VISION)) {
-			maxEnergy -= 1;
+			energyPoints -= 1;
 			criticalChance += 12;
 		}
 		if (specialTraits.get(SpecialTrait.ROUGH_SCALES)) {
-			maxHealth += 30;
+			healthPoints += 30;
 			speed -= 8;
 			defense += 4;
 		}
 		if (specialTraits.get(SpecialTrait.COLD_BLOODED)) {
-			maxEnergy += 2;
+			energyPoints += 2;
 		}
 		if (specialTraits.get(SpecialTrait.DEADLY_VENOM)) {
 			hitDamage += 2;
@@ -275,8 +274,8 @@ public abstract class Animal implements IFighter, IBreeding {
 			criticalChance += 20;
 		}
 
-		this.baseStatBlock.put(Stat.MAX_HEALTH, maxHealth);
-		this.baseStatBlock.put(Stat.MAX_ENERGY, maxEnergy);
+		this.baseStatBlock.put(Stat.HEALTH_POINTS, healthPoints);
+		this.baseStatBlock.put(Stat.ENERGY_POINTS, energyPoints);
 		this.baseStatBlock.put(Stat.SPEED, speed);
 		this.baseStatBlock.put(Stat.HIT_DAMAGE, hitDamage);
 		this.baseStatBlock.put(Stat.HIT_ROLLS, hitRolls);
@@ -288,31 +287,28 @@ public abstract class Animal implements IFighter, IBreeding {
 
 	@Override
 	public void resetStatBlock() {
-		this.healthPoints = baseStatBlock.get(Stat.MAX_HEALTH);
-		this.energyPoints = baseStatBlock.get(Stat.MAX_HEALTH);
-		this.speedPoints = baseStatBlock.get(Stat.SPEED);
-		this.damagePoints = baseStatBlock.get(Stat.HIT_DAMAGE);
-		this.criticalPoints = baseStatBlock.get(Stat.CRITICAL_CHANCE);
+		this.statBlock = this.baseStatBlock;
 	}
 
 	@Override
 	public int hit(Animal competitor) throws DefeatedException, ExhaustedException, MissException {
-		this.energyPoints--;
+		statBlock.put(Stat.ENERGY_POINTS, statBlock.get(Stat.ENERGY_POINTS) - 1);
 
-		if (this.energyPoints < 0) {
+		if (statBlock.get(Stat.ENERGY_POINTS) < 0) {
 			// TELLS THE EXCEPTION THAT THE ATTACKER DIED
 			throw new ExhaustedException();
 		}
 
 		int damageDealt = 0;
-		for (int hits = 0; hits < this.baseStatBlock.get(Stat.HIT_ROLLS); hits++) {
-			if (competitor.dodge()) {
+		for (int hits = 0; hits < baseStatBlock.get(Stat.HIT_ROLLS); hits++) {
+			if (competitor.getStat(Stat.SPEED) > new Random().nextInt(100) + 1) {
 				// TELLS THE EXCEPTION THAT THE OPONENT DODGED
 				throw new MissException();
 			} else {
 				// DAMAGE & CRITICAL HIT CALCULATION
-				int damage = (new Random().nextInt(100) + 1 < this.criticalPoints ? this.damagePoints * 2
-						: this.damagePoints);
+				int damage = (new Random().nextInt(100) + 1 < statBlock.get(Stat.CRITICAL_CHANCE)
+						? statBlock.get(Stat.HIT_DAMAGE) * 2
+						: statBlock.get(Stat.HIT_DAMAGE));
 
 				damageDealt = competitor.receiveHit(damage);
 			}
@@ -323,17 +319,12 @@ public abstract class Animal implements IFighter, IBreeding {
 
 	@Override
 	public int receiveHit(int damage) throws DefeatedException {
-		this.healthPoints -= (damage - this.getBaseStat(Stat.DEFENSE));
-		if (this.healthPoints <= 0) {
+		statBlock.put(Stat.HEALTH_POINTS, statBlock.get(Stat.HEALTH_POINTS) - (damage - statBlock.get(Stat.DEFENSE)));
+		if (statBlock.get(Stat.HEALTH_POINTS) <= 0) {
 			// TELLS THE EXCEPTION THAT THE RECEIVER DIED FOR HOW MUCH DAMAGE
 			throw new DefeatedException(damage - this.getBaseStat(Stat.DEFENSE));
 		}
 		return damage;
-	}
-
-	@Override
-	public boolean dodge() {
-		return new Random().nextInt(100) + 1 < this.speedPoints ? true : false;
 	}
 
 	@Override
@@ -342,60 +333,18 @@ public abstract class Animal implements IFighter, IBreeding {
 	}
 
 	@Override
-	public int getBaseStat(Stat stat) {
-		return this.baseStatBlock.get(stat);
+	public int getBaseStat(Stat baseStat) {
+		return this.baseStatBlock.get(baseStat);
 	}
 
 	@Override
-	public int getSpeedPoints() {
-		return this.speedPoints;
+	public int getStat(Stat stat) {
+		return this.statBlock.get(stat);
 	}
 
 	@Override
-	public void weatherImpact(Weather weather) {
-		// PASS THIS TO CUSTOM INTERFACE
-		if (weather.equals(Weather.NIGHT)) {
-			if (this.cyrcadianRythm != CyrcadianRythm.CREPUSCULAR || this.cyrcadianRythm != CyrcadianRythm.NOCTURNAL) {
-				this.criticalPoints -= 15;
-				this.speedPoints -= 12;
-			} else {
-				this.criticalPoints += 8;
-				this.speedPoints += 8;
-			}
-		} else if (weather.equals(Weather.HARSH_SUNLIGHT)) {
-			if (this.respiration != Respiration.LUNGS) {
-				this.healthPoints -= 15;
-				this.energyPoints -= 2;
-				this.speedPoints -= 5;
-			}
-		} else if (weather.equals(Weather.HEAVY_RAIN)) {
-			if (this.respiration != Respiration.GILLS) {
-
-			} else {
-				this.energyPoints += 3;
-			}
-			if (this.locomotion != Locomotion.SLITHERING || this.locomotion != Locomotion.TENTACLES) {
-				this.speedPoints -= 4;
-			} else {
-				this.speedPoints += 4;
-			}
-		} else if (weather.equals(Weather.FLOOD)) {
-
-		} else if (weather.equals(Weather.SANDSTORM)) {
-
-		} else if (weather.equals(Weather.HAIL)) {
-			this.healthPoints -= 15;
-			this.energyPoints -= 3;
-			this.speedPoints -= 8;
-		} else if (weather.equals(Weather.STRONG_WINDS)) {
-			if (this.locomotion != Locomotion.WINGED) {
-				this.speedPoints -= 15;
-			} else {
-				this.speedPoints += 20;
-				this.criticalPoints += 10;
-				this.damagePoints += 2;
-			}
-		}
+	public void changeStat(Stat stat, int change) {
+		statBlock.put(stat, statBlock.get(stat) + change);
 	}
 
 	// IBreeding METHODS
@@ -407,6 +356,7 @@ public abstract class Animal implements IFighter, IBreeding {
 		Locomotion locomotion = new Random().nextInt(2) == 1 ? this.locomotion : partner.locomotion;
 		Intelligence intelligence = new Random().nextInt(2) == 1 ? this.intelligence : partner.intelligence;
 		Diet diet = new Random().nextInt(2) == 1 ? this.diet : partner.diet;
+		CyrcadianRythm cyrcadianRythm = new Random().nextInt(2) == 1 ? this.cyrcadianRythm : partner.cyrcadianRythm;
 
 		// CUSTOM FUNCTIONAL INTERFACE IMPLEMENTATION
 		// SELECT RANDOM MUTATION
@@ -415,13 +365,13 @@ public abstract class Animal implements IFighter, IBreeding {
 		if (partner.getClass().getName() == this.getClass().getName()) {
 			try {
 				return this.getClass().getConstructor().newInstance(respiration, locomotion, intelligence, diet,
-						geneSequence);
+						cyrcadianRythm, geneSequence);
 			} catch (Exception e) {
 				e.printStackTrace();
 				return null;
 			}
 		} else {
-			return new Hybrid(respiration, locomotion, intelligence, diet, geneSequence);
+			return new Hybrid(respiration, locomotion, intelligence, diet, cyrcadianRythm, geneSequence);
 		}
 	}
 

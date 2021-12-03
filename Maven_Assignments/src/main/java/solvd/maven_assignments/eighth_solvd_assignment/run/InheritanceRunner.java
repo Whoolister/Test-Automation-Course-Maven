@@ -9,6 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 import eighth_solvd_assignment.battle.Arena;
 import eighth_solvd_assignment.genetics.Nursery;
 import eighth_solvd_assignment.inheritance.Animal;
+import eighth_solvd_assignment.inheritance.Facility;
 import eighth_solvd_assignment.inheritance.Zoo;
 import eighth_solvd_assignment.safari.Safari;
 import eighth_solvd_assignment.utilities.MyLogger;
@@ -49,12 +50,13 @@ public final class InheritanceRunner {
 						LOG.readLog();
 						LOG.logAndShow(Level.FINE, entryLine);
 					} else if (choice == 6) {
+						Facility.closeFacilities();
 						LOG.logAndShow(Level.INFO, StringUtils.center("E N D   O F   R U N T I M E", 48)
 								+ System.lineSeparator() + "╚═══━━━─── • ───━━━━━━─── • ───━━━━━━─── • ───━━━═══╝");
 						System.exit(0);
 					} else {
-						LOG.logAndShow(Level.FINE,
-								"ERRONEOUS INPUT: Must input 1, 2, 3, 4, or 5." + System.lineSeparator());
+						LOG.logAndShow(Level.FINE, "ERRONEOUS INPUT (" + choice + ") Must input 1, 2, 3, 4, 5, or 6."
+								+ System.lineSeparator());
 					}
 				} else {
 					System.out.print("ERRONEOUS INPUT: Must be an integer." + System.lineSeparator());
@@ -62,5 +64,6 @@ public final class InheritanceRunner {
 				}
 			}
 		}
+		LOG.turnOffLogger();
 	}
 }

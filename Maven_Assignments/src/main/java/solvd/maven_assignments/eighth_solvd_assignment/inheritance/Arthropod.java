@@ -2,6 +2,7 @@ package eighth_solvd_assignment.inheritance;
 
 import java.util.Random;
 
+import eighth_solvd_assignment.enums.CyrcadianRythm;
 import eighth_solvd_assignment.enums.Diet;
 import eighth_solvd_assignment.enums.Intelligence;
 import eighth_solvd_assignment.enums.Locomotion;
@@ -16,9 +17,12 @@ public class Arthropod extends Invertebrate implements IEctothermy, IAgriculture
 	private static boolean hardened = true;
 
 	public Arthropod() {
-		super(Respiration.SKIN_DIFFUSION, (new Random()).nextInt(2) != 1 ? Locomotion.WINGED : Locomotion.MULTI_LEGGED,
-				(new Random()).nextInt(2) != 1 ? Intelligence.POPULATION_BASED : Intelligence.SOME,
-				(new Random()).nextInt(2) != 1 ? Diet.HERBIVOROUS : Diet.CARNIVOROUS);
+		super(Respiration.SKIN_DIFFUSION, new Random().nextInt(2) < 1 ? Locomotion.WINGED : Locomotion.MULTI_LEGGED,
+				new Random().nextInt(2) < 1 ? Intelligence.POPULATION_BASED : Intelligence.SOME,
+				new Random().nextInt(2) < 1 ? Diet.HERBIVOROUS : Diet.CARNIVOROUS,
+				new Random().nextInt(3) < 2
+						? new Random().nextInt(2) < 1 ? CyrcadianRythm.NOCTURNAL : CyrcadianRythm.NONE
+						: CyrcadianRythm.DIURNAL);
 
 		evolve(SpecialTrait.EXOSKELETON);
 		evolve(SpecialTrait.IRRITANT_STINGS);
@@ -29,8 +33,8 @@ public class Arthropod extends Invertebrate implements IEctothermy, IAgriculture
 	}
 
 	public Arthropod(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet,
-			String geneSequence) {
-		super(respiration, locomotion, intelligence, diet, geneSequence);
+			CyrcadianRythm cyrcadianRythm, String geneSequence) {
+		super(respiration, locomotion, intelligence, diet, cyrcadianRythm, geneSequence);
 	}
 
 	public final String molt() {
@@ -91,6 +95,7 @@ public class Arthropod extends Invertebrate implements IEctothermy, IAgriculture
 	@Override
 	public String toString() {
 		return "Arthropod [Name: " + this.name + " | Respiration: " + this.respiration + " | Locomotion: "
-				+ this.locomotion + " | Intelligence: " + this.intelligence + " | Diet: " + this.diet + "]";
+				+ this.locomotion + " | Intelligence: " + this.intelligence + " | Diet: " + this.diet
+				+ " | Cyrcadian Rythm: " + this.cyrcadianRythm + "]";
 	}
 }

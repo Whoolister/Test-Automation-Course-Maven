@@ -2,6 +2,7 @@ package eighth_solvd_assignment.inheritance;
 
 import java.util.Random;
 
+import eighth_solvd_assignment.enums.CyrcadianRythm;
 import eighth_solvd_assignment.enums.Diet;
 import eighth_solvd_assignment.enums.Intelligence;
 import eighth_solvd_assignment.enums.Locomotion;
@@ -15,9 +16,9 @@ public class Mollusk extends Invertebrate implements IEctothermy, IHibernation {
 	private static boolean jetReady = true;
 
 	public Mollusk() {
-		super(Respiration.GILLS, (new Random()).nextInt(2) < 1 ? Locomotion.TENTACLES : Locomotion.NONE,
-				(new Random()).nextInt(2) < 1 ? Intelligence.NONE : Intelligence.HIGH,
-				(new Random()).nextInt(2) < 1 ? Diet.CARNIVOROUS : Diet.OMNIVOROUS);
+		super(Respiration.GILLS, new Random().nextInt(2) < 1 ? Locomotion.TENTACLES : Locomotion.NONE,
+				new Random().nextInt(2) < 1 ? Intelligence.NONE : Intelligence.HIGH,
+				new Random().nextInt(2) < 1 ? Diet.CARNIVOROUS : Diet.OMNIVOROUS, CyrcadianRythm.METATURNAL);
 
 		evolve(SpecialTrait.SHELLED_BODY);
 		evolve(SpecialTrait.JET_PROPULSION);
@@ -28,8 +29,8 @@ public class Mollusk extends Invertebrate implements IEctothermy, IHibernation {
 	}
 
 	public Mollusk(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet,
-			String geneSequence) {
-		super(respiration, locomotion, intelligence, diet, geneSequence);
+			CyrcadianRythm cyrcadianRythm, String geneSequence) {
+		super(respiration, locomotion, intelligence, diet, cyrcadianRythm, geneSequence);
 	}
 
 	public final String hide() {
@@ -91,6 +92,7 @@ public class Mollusk extends Invertebrate implements IEctothermy, IHibernation {
 	@Override
 	public String toString() {
 		return "Mollusk [Name: " + this.name + " | Respiration: " + this.respiration + " | Locomotion: "
-				+ this.locomotion + " | Intelligence: " + this.intelligence + " | Diet: " + this.diet + "]";
+				+ this.locomotion + " | Intelligence: " + this.intelligence + " | Diet: " + this.diet
+				+ " | Cyrcadian Rythm: " + this.cyrcadianRythm + "]";
 	}
 }

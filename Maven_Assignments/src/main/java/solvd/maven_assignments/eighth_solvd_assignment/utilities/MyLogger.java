@@ -1,64 +1,54 @@
 package eighth_solvd_assignment.utilities;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.logging.FileHandler;
+import java.util.logging.Handler;
 import java.util.logging.Level;
-import java.util.logging.LogManager;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
+import org.apache.commons.io.FileUtils;
+
 public class MyLogger extends Logger {
 	private static final File file = new File("InheritanceLog.txt");
+	private static FileHandler fh;
 
 	public MyLogger(String name) {
 		super(name, null);
 
-		LogManager.getLogManager().reset();
 		this.setLevel(Level.ALL);
 	}
 
 	public void setupLogger() {
 		try {
-			file.createNewFile();
-
-			FileHandler fh = new FileHandler(file.getParent() + file.getName());
+			fh = new FileHandler(file.getName());
 			fh.setFormatter(new SimpleFormatter());
 			fh.setLevel(Level.INFO);
 
-			this.addHandler(fh);
+			file.createNewFile();
+
+			addHandler(fh);
 		} catch (Exception e) {
 			this.log(Level.SEVERE, "File Logger not Working", e);
 		}
 	}
 
 	public void turnOffLogger() {
-		try {
-			this.getHandlers()[0].close();
-			removeHandler(new FileHandler(file.getParent() + file.getName()));
-		} catch (SecurityException e) {
-
-		} catch (IOException e) {
-
+		for (Handler handler : this.getHandlers()) {
+			handler.close();
 		}
 	}
 
 	public void readLog() {
-		try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-			StringBuilder content = new StringBuilder();
-			String line = "";
 
-			while ((line = reader.readLine()) != null) {
-				content.append(line);
-				content.append(System.lineSeparator());
+		if (file.exists()) {
+			try {
+				this.finest(FileUtils.readFileToString(file, StandardCharsets.UTF_8));
+			} catch (IOException e) {
+				this.log(Level.SEVERE, "ERROR OCURRED READING THE LAST LOG", e);
 			}
-
-			this.fine(content.toString());
-		} catch (IOException e) {
-			this.log(Level.SEVERE, "ERROR OCURRED WHILE READING THE LOG FILE", e);
-			System.exit(0);
 		}
 	}
 

@@ -13,7 +13,7 @@ public class Zoo extends Facility {
 	private static LinkedList<Animal> exhibits = new LinkedList<>();
 
 	public static void tour(Scanner scanner) {
-		LOG.setupLogger();
+		openFacilities();
 
 		LOG.logAndShow(Level.INFO,
 				StringUtils.center("ENTERING THE ZOO", 48) + System.lineSeparator()
@@ -22,7 +22,7 @@ public class Zoo extends Facility {
 						+ "_|___|___|___|___|___|___|___|___|___|___|___|___|___|_" + System.lineSeparator());
 
 		boolean useRNG = true;
-		if (specimens != null) {
+		if (specimens.size() != 0) {
 			LOG.logAndShow(Level.INFO,
 					"What mode do you want to use?" + System.lineSeparator()
 							+ "\t>-> Type 1 to check the saved exhibits" + System.lineSeparator()
@@ -34,6 +34,8 @@ public class Zoo extends Facility {
 					if (mode == 1) {
 						useRNG = false;
 						exhibits.addAll(specimens);
+
+						display(exhibits, false);
 						break;
 					} else if (mode == 2) {
 						break;
@@ -70,33 +72,32 @@ public class Zoo extends Facility {
 					scanner.next();
 				}
 			}
-		}
-
-		LOG.logAndShow(Level.INFO,
-				"Do you want to save these creatures?" + System.lineSeparator() + "\t>-> Type 1 to save them"
-						+ System.lineSeparator() + "\t>-> Type 2 to discard them, you monster..."
-						+ System.lineSeparator());
-		while (scanner.hasNext()) {
-			if (scanner.hasNextInt()) {
-				int operation = scanner.nextInt();
-				if (operation == 1) {
-					LOG.logAndShow(Level.INFO, "The generated exhibits have been saved to our specimens lab,"
-							+ System.lineSeparator() + "you may choose to retrieve them as fighters in the arena.");
-					specimens = new ArrayList<>();
-					specimens.addAll(exhibits);
-					break;
-				} else if (operation == 2) {
-					for (Animal animal : exhibits) {
-						LOG.logAndShow(Level.INFO, "Goodbye " + animal.getName() + "... You *might* be missed.");
+			LOG.logAndShow(Level.INFO,
+					"Do you want to save these creatures?" + System.lineSeparator() + "\t>-> Type 1 to save them"
+							+ System.lineSeparator() + "\t>-> Type 2 to discard them, you monster..."
+							+ System.lineSeparator());
+			while (scanner.hasNext()) {
+				if (scanner.hasNextInt()) {
+					int operation = scanner.nextInt();
+					if (operation == 1) {
+						LOG.logAndShow(Level.INFO, "The generated exhibits have been saved to our specimens lab,"
+								+ System.lineSeparator() + "you may choose to retrieve them as fighters in the arena.");
+						specimens = new ArrayList<>();
+						specimens.addAll(exhibits);
+						break;
+					} else if (operation == 2) {
+						for (Animal animal : exhibits) {
+							LOG.logAndShow(Level.INFO, "Goodbye " + animal.getName() + "... You *might* be missed.");
+						}
+						break;
 					}
-					break;
+				} else {
+					LOG.logAndShow(Level.SEVERE, "ERRONEOUS INPUT: Must input YES or NO." + System.lineSeparator());
 				}
-			} else {
-				LOG.logAndShow(Level.SEVERE, "ERRONEOUS INPUT: Must input YES or NO." + System.lineSeparator());
 			}
 		}
+
 		LOG.logAndShow(Level.INFO, StringUtils.center("E N D   O F   T H E   T O U R", 32) + System.lineSeparator()
 				+ "__________________________________________");
-		LOG.turnOffLogger();
 	}
 }
