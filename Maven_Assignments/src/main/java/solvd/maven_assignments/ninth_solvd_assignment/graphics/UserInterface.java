@@ -1,4 +1,4 @@
-package eighth_solvd_assignment.graphics;
+package ninth_solvd_assignment.graphics;
 
 public class UserInterface extends javax.swing.JFrame {
 	/**
