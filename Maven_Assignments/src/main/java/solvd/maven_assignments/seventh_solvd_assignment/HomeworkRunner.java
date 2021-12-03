@@ -7,8 +7,10 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.RegExUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import seventh_solvd_assignment.utilities.MyLogger;
@@ -37,12 +39,9 @@ public class HomeworkRunner {
 			LOG.info("Reading from testing.txt, determining the amount of unique words and writing it in the file:"
 					+ System.lineSeparator() + "========================================");
 
-			HashSet<String> uniqueWords = new HashSet<>(
-					Arrays.asList(
-							StringUtils.split(StringUtils
-									.remove(StringUtils.remove(
-											FileUtils.readFileToString(sampleFile, StandardCharsets.UTF_8), ','), '.')
-									.toLowerCase())));
+			HashSet<String> uniqueWords = new HashSet<>(Arrays.asList(StringUtils.split(
+					RegExUtils.removeAll(FileUtils.readFileToString(sampleFile, StandardCharsets.UTF_8).toLowerCase(),
+							Pattern.compile("[^a-z\s]")))));
 			LOG.info("Amount of unique words: " + uniqueWords.size());
 			FileUtils.writeStringToFile(sampleFile, Integer.toString(uniqueWords.size()), StandardCharsets.UTF_8, true);
 
