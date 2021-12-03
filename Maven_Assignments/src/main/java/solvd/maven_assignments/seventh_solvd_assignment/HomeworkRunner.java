@@ -17,9 +17,15 @@ public class HomeworkRunner {
 	static final MyLogger LOG = new MyLogger(Logger.GLOBAL_LOGGER_NAME);
 
 	public static void main(String[] args) {
-		String sample = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
-				+ " quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum"
-				+ " dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+		String sample = "El Tatio is a geothermal field with many geysers located in the Andes of northern Chile at 4,320 metres (14,170 ft)"
+				+ " above sea level. It is the third-largest geyser field in the world and the largest in the Southern Hemisphere. The geothermal"
+				+ " field has many geysers, hot springs, and associated sinter deposits. The vents are sites of populations of extremophile"
+				+ " microorganisms such as hyperthermophiles, and have been studied as an analogue for the early Earth and possible past life"
+				+ " on Mars. El Tatio lies at the western foot of a series of stratovolcanoes, part of the Central Volcanic Zone and the"
+				+ " Altiplano–Puna volcanic complex, which may be the source of heat for El Tatio. There are no recorded eruptions of the"
+				+ " Tatio volcanoes. The field is a major tourism destination. It has been prospected for geothermal power production, but"
+				+ " development ceased after a major incident in 2009 when a drilling well blew out.";
+
 		File sampleFile = new File("testFolder/testing.txt");
 
 		LOG.setupLogger();
@@ -32,7 +38,11 @@ public class HomeworkRunner {
 					+ System.lineSeparator() + "========================================");
 
 			HashSet<String> uniqueWords = new HashSet<>(
-					Arrays.asList(StringUtils.split(FileUtils.readFileToString(sampleFile, StandardCharsets.UTF_8))));
+					Arrays.asList(
+							StringUtils.split(StringUtils
+									.remove(StringUtils.remove(
+											FileUtils.readFileToString(sampleFile, StandardCharsets.UTF_8), ','), '.')
+									.toLowerCase())));
 			LOG.info("Amount of unique words: " + uniqueWords.size());
 			FileUtils.writeStringToFile(sampleFile, Integer.toString(uniqueWords.size()), StandardCharsets.UTF_8, true);
 
