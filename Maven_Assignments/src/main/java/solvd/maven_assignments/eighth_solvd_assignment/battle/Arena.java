@@ -1,16 +1,15 @@
 package eighth_solvd_assignment.battle;
 
 import java.util.ArrayDeque;
-import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
-import java.util.function.BiPredicate;
 import java.util.logging.Level;
 
 import org.apache.commons.lang3.StringUtils;
 
-import eighth_solvd_assignment.enums.Stat;
+import eighth_solvd_assignment.enums.Weather;
 import eighth_solvd_assignment.exceptions.DefeatedException;
 import eighth_solvd_assignment.exceptions.ExcessRankException;
 import eighth_solvd_assignment.exceptions.ExhaustedException;
@@ -84,7 +83,7 @@ public class Arena extends Facility {
 		}
 
 		for (Animal animal : roster) {
-			animal.generateStatBlock();
+			animal.generateBaseStatBlock();
 		}
 
 		int cycles = 1;
@@ -145,10 +144,15 @@ public class Arena extends Facility {
 	}
 
 	public static Animal fight(Animal competitorOne, Animal competitorTwo) throws ExcessRankException {
+		// APPLY WEATHER CONDITIONS ON FIGHTERS
+		Weather weather = Weather.values()[new Random().nextInt(Weather.values().length)];
+		competitorOne.weatherImpact(weather);
+		competitorTwo.weatherImpact(weather);
+
 		ArrayDeque<Animal> queue = new ArrayDeque<>(2);
 
-		if (competitorOne.getStat(Stat.SPEED) > competitorTwo.getStat(Stat.SPEED)
-				|| competitorOne.getStat(Stat.SPEED) == competitorTwo.getStat(Stat.SPEED)) {
+		if (competitorOne.getSpeedPoints() > competitorTwo.getSpeedPoints()
+				|| competitorOne.getSpeedPoints() == competitorTwo.getSpeedPoints()) {
 			queue.addFirst(competitorOne);
 			queue.addLast(competitorTwo);
 		} else {
@@ -159,13 +163,8 @@ public class Arena extends Facility {
 		for (int rounds = 0; true; rounds++) {
 			LOG.logAndShow(Level.INFO, "Round " + (rounds + 1) + ":" + System.lineSeparator()
 					+ ">---------->---------->---------->---------->");
-			// LAMBDA IMPLEMENTATION
-			BiPredicate<Animal, Deque<Animal>> predicate = (fighter, order) -> {
-				return (fighter.equals(order.peekFirst()));
-			};
-
 			for (Animal competitor : queue) {
-				if (predicate.test(competitor, queue)) {
+				if (competitorOne.equals(queue.peekFirst())) {
 					try {
 						LOG.logAndShow(Level.INFO,
 								">" + competitor.getName() + " Landed a hit for a " + Randomizer.hitAdjectiveGenerator()

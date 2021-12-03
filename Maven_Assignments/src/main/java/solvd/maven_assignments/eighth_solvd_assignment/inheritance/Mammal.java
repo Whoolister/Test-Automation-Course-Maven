@@ -10,6 +10,7 @@ import eighth_solvd_assignment.enums.SpecialTrait;
 import eighth_solvd_assignment.interfaces.IAgriculture;
 import eighth_solvd_assignment.interfaces.IEndothermy;
 import eighth_solvd_assignment.interfaces.IHibernation;
+import eighth_solvd_assignment.utilities.Randomizer;
 
 public class Mammal extends Vertebrate implements IEndothermy, IAgriculture, IHibernation {
 	private String furColor;
@@ -27,6 +28,9 @@ public class Mammal extends Vertebrate implements IEndothermy, IAgriculture, IHi
 		evolve(SpecialTrait.FUR);
 		evolve(SpecialTrait.SINGLE_BONED_JAW);
 		evolve(SpecialTrait.FOUR_CHAMBERED_HEART);
+
+		// RANDOMIZES THE MISSING GENETIC MATERIAL
+		this.genes = Randomizer.nucleotideRandomizer(genes);
 	}
 
 	public Mammal(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet,

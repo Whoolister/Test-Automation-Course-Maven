@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 
-import sixth_solvd_assignment.enums.Stat;
+import sixth_solvd_assignment.enums.BaseStat;
 import sixth_solvd_assignment.exceptions.DefeatedException;
 import sixth_solvd_assignment.exceptions.ExcessRankException;
 import sixth_solvd_assignment.exceptions.ExhaustedException;
@@ -128,8 +128,8 @@ public class Arena extends Facility {
 	public static Animal fight(Animal competitorOne, Animal competitorTwo) throws ExcessRankException {
 		ArrayDeque<Animal> queue = new ArrayDeque<>(2);
 
-		if (competitorOne.getStat(Stat.SPEED) > competitorTwo.getStat(Stat.SPEED)
-				|| competitorOne.getStat(Stat.SPEED) == competitorTwo.getStat(Stat.SPEED)) {
+		if (competitorOne.getStat(BaseStat.SPEED) > competitorTwo.getStat(BaseStat.SPEED)
+				|| competitorOne.getStat(BaseStat.SPEED) == competitorTwo.getStat(BaseStat.SPEED)) {
 			queue.addFirst(competitorOne);
 			queue.addLast(competitorTwo);
 		} else {

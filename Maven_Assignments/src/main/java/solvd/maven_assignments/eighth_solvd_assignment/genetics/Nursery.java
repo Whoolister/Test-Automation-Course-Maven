@@ -18,8 +18,11 @@ public class Nursery extends Facility {
 
 		LOG.logAndShow(Level.INFO,
 				StringUtils.center("ENTERING THE NURSERY", 48) + System.lineSeparator()
-						+ " / __ \\ \\__/ / __ \\ \\__/ / __ \\ \\__/ / __ \\ \\__/ / /\n"
-						+ "/ /  \\ \\____/ /  \\ \\____/ /  \\ \\____/ /  \\ \\____/ /  " + System.lineSeparator());
+						+ "`-:-.   ,-;\"`-:-.   ,-;\"`-:-.   ,-;\"`-:-.   ,-;\"`-:-.\n"
+						+ "   `=`,'=/     `=`,'=/     `=`,'=/     `=`,'=/     `=`\n"
+						+ "     y==/        y==/        y==/        y==/\n"
+						+ "   ,=,-<=`.    ,=,-<=`.    ,=,-<=`.    ,=,-<=`.    ,=,\n"
+						+ ",-'-'   `-=_,-'-'   `-=_,-'-'   `-=_,-'-'   `-=_,-'-'" + System.lineSeparator());
 
 		boolean useRNG = true, selectPair = false;
 		if (specimens != null) {
@@ -36,18 +39,6 @@ public class Nursery extends Facility {
 						selectPair = true;
 						break;
 					} else if (mode == 2) {
-						LOG.logAndShow(Level.INFO, "Generating a random pair..." + System.lineSeparator());
-
-						patients.addAll(Randomizer.creatureCreator(2));
-
-						char id = 'A';
-						for (Animal animal : patients) {
-							LOG.logAndShow(Level.INFO,
-									"Patient " + (id++) + ":" + System.lineSeparator() + animal.toString()
-											+ System.lineSeparator() + animal.breathe() + System.lineSeparator()
-											+ animal.move() + System.lineSeparator() + animal.eat()
-											+ System.lineSeparator() + animal.think() + System.lineSeparator());
-						}
 						break;
 					} else {
 						LOG.logAndShow(Level.SEVERE,
@@ -102,6 +93,14 @@ public class Nursery extends Facility {
 						+ offspring.move() + System.lineSeparator() + offspring.think() + System.lineSeparator()
 						+ offspring.eat() + System.lineSeparator() + "[" + offspring.getGenes() + "]"
 						+ System.lineSeparator());
+
+		if (selectPair) {
+			specimens.addAll(patients);
+		}
+
+		LOG.logAndShow(Level.INFO, StringUtils.center("E N D   O F   T H E   N U R S E R Y", 32)
+				+ System.lineSeparator() + "__________________________________________");
+		LOG.turnOffLogger();
 	}
 
 	public static Animal breedingPen(Animal firstParent, Animal secondParent) {

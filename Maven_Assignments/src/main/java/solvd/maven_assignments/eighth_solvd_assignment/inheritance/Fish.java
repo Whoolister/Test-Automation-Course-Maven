@@ -9,6 +9,7 @@ import eighth_solvd_assignment.enums.Respiration;
 import eighth_solvd_assignment.enums.SpecialTrait;
 import eighth_solvd_assignment.interfaces.IEctothermy;
 import eighth_solvd_assignment.interfaces.ISwarm;
+import eighth_solvd_assignment.utilities.Randomizer;
 
 public class Fish extends Vertebrate implements IEctothermy, ISwarm {
 	private String tailPlan;
@@ -24,6 +25,9 @@ public class Fish extends Vertebrate implements IEctothermy, ISwarm {
 		evolve(SpecialTrait.SCALED_BODY);
 		evolve(SpecialTrait.HYDRODYNAMISM);
 		evolve(SpecialTrait.UNDERWATER_VISION);
+
+		// RANDOMIZES THE MISSING GENETIC MATERIAL
+		this.genes = Randomizer.nucleotideRandomizer(genes);
 	}
 
 	public Fish(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet,

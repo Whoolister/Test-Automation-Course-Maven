@@ -10,6 +10,7 @@ import eighth_solvd_assignment.enums.SpecialTrait;
 import eighth_solvd_assignment.interfaces.IAgriculture;
 import eighth_solvd_assignment.interfaces.IEctothermy;
 import eighth_solvd_assignment.interfaces.ISwarm;
+import eighth_solvd_assignment.utilities.Randomizer;
 
 public class Arthropod extends Invertebrate implements IEctothermy, IAgriculture, ISwarm {
 	private static boolean hardened = true;
@@ -22,6 +23,9 @@ public class Arthropod extends Invertebrate implements IEctothermy, IAgriculture
 		evolve(SpecialTrait.EXOSKELETON);
 		evolve(SpecialTrait.IRRITANT_STINGS);
 		evolve(SpecialTrait.COMPOUND_EYES);
+
+		// RANDOMIZES THE MISSING GENETIC MATERIAL
+		this.genes = Randomizer.nucleotideRandomizer(genes);
 	}
 
 	public Arthropod(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet,

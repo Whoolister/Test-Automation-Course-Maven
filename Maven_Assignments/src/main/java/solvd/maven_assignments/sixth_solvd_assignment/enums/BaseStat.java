@@ -1,6 +1,6 @@
-package eighth_solvd_assignment.enums;
+package sixth_solvd_assignment.enums;
 
-public enum Stat {
+public enum BaseStat {
 	MAX_HEALTH("Maximum amount of HP this creature can own at any given moment."),
 	HEALTH_POINTS("The amount of hitpoints you can take out of this creature before it perishes."),
 	MAX_ENERGY("Maximum amount of EP this creature can own at any given moment."),
@@ -14,7 +14,7 @@ public enum Stat {
 
 	private String description;
 
-	private Stat(String description) {
+	private BaseStat(String description) {
 		this.description = description;
 	}
 

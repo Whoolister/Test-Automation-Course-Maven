@@ -9,6 +9,7 @@ import eighth_solvd_assignment.enums.Respiration;
 import eighth_solvd_assignment.enums.SpecialTrait;
 import eighth_solvd_assignment.interfaces.IEctothermy;
 import eighth_solvd_assignment.interfaces.ISwarm;
+import eighth_solvd_assignment.utilities.Randomizer;
 
 public class Cnidarian extends Invertebrate implements IEctothermy, ISwarm {
 	public Cnidarian() {
@@ -18,6 +19,9 @@ public class Cnidarian extends Invertebrate implements IEctothermy, ISwarm {
 		evolve(SpecialTrait.HYDROSKELETON);
 		evolve(SpecialTrait.DEADLY_POISON);
 		evolve(SpecialTrait.BIOLUMINESCENCE);
+
+		// RANDOMIZES THE MISSING GENETIC MATERIAL
+		this.genes = Randomizer.nucleotideRandomizer(genes);
 	}
 
 	public Cnidarian(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet,

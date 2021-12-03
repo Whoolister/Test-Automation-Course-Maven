@@ -112,7 +112,8 @@ public class Safari extends Facility {
 								+ ", and let me nerd out over here for a minute... *ahem*" + System.lineSeparator()
 								+ "--<>---<o>=====<o>---<>--" + System.lineSeparator() + wildFind.breathe()
 								+ System.lineSeparator() + wildFind.move() + System.lineSeparator() + wildFind.think()
-								+ System.lineSeparator() + wildFind.eat() + System.lineSeparator());
+								+ System.lineSeparator() + wildFind.eat() + System.lineSeparator() + wildFind.sleep()
+								+ System.lineSeparator());
 
 				if (specimens.size() < 16) {
 					LOG.logAndShow(Level.INFO,
@@ -144,7 +145,7 @@ public class Safari extends Facility {
 					}
 				} else {
 					LOG.logAndShow(Level.INFO,
-							"I'm afraid our reserves back at HQ are full, so we have no choice but to leave this lil' fella to his own."
+							"I'm afraid our reserves back at HQ are full, so we have no choice but to leave this lil' fella on his own."
 									+ System.lineSeparator() + "Come on, let's keep going.");
 				}
 			}

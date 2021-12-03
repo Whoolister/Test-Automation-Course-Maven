@@ -31,7 +31,8 @@ public class Facility {
 						"Exhibit " + (id++) + ": " + animal.getName() + System.lineSeparator()
 								+ "--<>--<>--<>--<>--<>--<>--<>--<>--" + System.lineSeparator() + animal.breathe()
 								+ System.lineSeparator() + animal.move() + System.lineSeparator() + animal.eat()
-								+ System.lineSeparator() + animal.think() + System.lineSeparator());
+								+ System.lineSeparator() + animal.think() + System.lineSeparator() + animal.sleep()
+								+ System.lineSeparator());
 			}
 		}
 		LOG.logAndShow(Level.INFO, ">< >< >< >< >< >< >< >< >< ><" + System.lineSeparator());

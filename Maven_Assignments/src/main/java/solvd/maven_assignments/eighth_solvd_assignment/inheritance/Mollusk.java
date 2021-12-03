@@ -9,6 +9,7 @@ import eighth_solvd_assignment.enums.Respiration;
 import eighth_solvd_assignment.enums.SpecialTrait;
 import eighth_solvd_assignment.interfaces.IEctothermy;
 import eighth_solvd_assignment.interfaces.IHibernation;
+import eighth_solvd_assignment.utilities.Randomizer;
 
 public class Mollusk extends Invertebrate implements IEctothermy, IHibernation {
 	private static boolean jetReady = true;
@@ -21,6 +22,9 @@ public class Mollusk extends Invertebrate implements IEctothermy, IHibernation {
 		evolve(SpecialTrait.SHELLED_BODY);
 		evolve(SpecialTrait.JET_PROPULSION);
 		evolve(SpecialTrait.CAMOUFLAGE);
+
+		// RANDOMIZES THE MISSING GENETIC MATERIAL
+		this.genes = Randomizer.nucleotideRandomizer(genes);
 	}
 
 	public Mollusk(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet,
