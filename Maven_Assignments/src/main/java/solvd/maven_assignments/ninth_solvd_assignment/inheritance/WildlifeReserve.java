@@ -41,7 +41,7 @@ public class WildlifeReserve extends Facility {
 						expedition(scanner);
 					} else {
 						LOG.logAndShow(Level.SEVERE,
-								"ERRONEOUS INPUT (" + mode + ") Must input 1 or 2." + System.lineSeparator());
+								"ERRONEOUS INPUT (" + mode + ") Must input 1, 2, or 3." + System.lineSeparator());
 					}
 				} else {
 					LOG.logAndShow(Level.SEVERE, "ERRONEOUS INPUT: Must be an integer." + System.lineSeparator());
@@ -49,7 +49,32 @@ public class WildlifeReserve extends Facility {
 				}
 			}
 		} else {
-			LOG.logAndShow(Level.INFO, "No exhibits currently available, heading to the lab:" + System.lineSeparator());
+			LOG.logAndShow(Level.INFO,
+					"What mode do you want to use?" + System.lineSeparator()
+							+ "\t>-> Type 1 to randomly generate exhibits" + System.lineSeparator()
+							+ "\t>-> Type 2 to go on an expedition" + System.lineSeparator());
+
+			while (scanner.hasNext()) {
+				if (scanner.hasNextInt()) {
+					int mode = scanner.nextInt();
+					if (mode == 1) {
+						LOG.logAndShow(Level.INFO, "Generating a random pair..." + System.lineSeparator());
+						exhibits = new ArrayList<>(Randomizer.creatureCreator(2));
+
+						display(exhibits, true);
+						break;
+					} else if (mode == 2) {
+						expedition(scanner);
+						break;
+					} else {
+						LOG.logAndShow(Level.SEVERE,
+								"ERRONEOUS INPUT (" + mode + ") Must input 1 or 2." + System.lineSeparator());
+					}
+				} else {
+					LOG.logAndShow(Level.SEVERE, "ERRONEOUS INPUT: Must be an integer." + System.lineSeparator());
+					scanner.next();
+				}
+			}
 			exhibits = new ArrayList<>(rngSpecimens(scanner));
 
 			display(exhibits, false);
@@ -172,7 +197,7 @@ public class WildlifeReserve extends Facility {
 						break;
 					} else {
 						LOG.logAndShow(Level.SEVERE,
-								"ERRONEOUS INPUT: Must input 1, 2, or 3." + System.lineSeparator());
+								"ERRONEOUS INPUT: Must input 1, 2, 3, or 4." + System.lineSeparator());
 					}
 				} else {
 					LOG.logAndShow(Level.SEVERE, "ERRONEOUS INPUT: Must be an integer." + System.lineSeparator());
@@ -181,13 +206,12 @@ public class WildlifeReserve extends Facility {
 			}
 
 			if (wildFind != null) {
-				LOG.logAndShow(Level.INFO,
-						"That right there is a wild " + wildFind.getName()
-								+ ", and let me nerd out over here for a minute... *ahem*" + System.lineSeparator()
-								+ "--<>---<o>=====<o>---<>--" + System.lineSeparator() + wildFind.breathe()
-								+ System.lineSeparator() + wildFind.move() + System.lineSeparator() + wildFind.think()
-								+ System.lineSeparator() + wildFind.eat() + System.lineSeparator() + wildFind.sleep()
-								+ System.lineSeparator());
+				LOG.logAndShow(Level.INFO, "That right there is a wild " + wildFind.getName() + ", a type of "
+						+ wildFind.getClass().getSimpleName() + ", and let me nerd out over here for a minute... *ahem*"
+						+ System.lineSeparator() + "--<>---<o>=====<o>---<>--" + System.lineSeparator()
+						+ wildFind.breathe() + System.lineSeparator() + wildFind.move() + System.lineSeparator()
+						+ wildFind.think() + System.lineSeparator() + wildFind.eat() + System.lineSeparator()
+						+ wildFind.sleep() + System.lineSeparator());
 
 				if (specimens.size() < 16) {
 					LOG.logAndShow(Level.INFO,

@@ -3,6 +3,7 @@ package ninth_solvd_assignment.utilities;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -130,20 +131,6 @@ public final class Randomizer {
 					+ " _   ___|||||__  _ \\\\--//    .          _\n"
 					+ "      _ `---'    .)=\\oo|=(.   _   .   .    .\n" + " _  ^      .  -    . \\.|" };
 
-	public static String trueRandomString(int length) {
-		StringBuilder result = new StringBuilder(length);
-
-		String characters = "ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvxyz";
-
-		for (int index = 0; index < length; index++) {
-			int position = (int) (characters.length() * Math.random());
-
-			result.append(characters.charAt(position));
-		}
-
-		return result.toString();
-	}
-
 	public static String randomPostcard() {
 		return postcards[new Random().nextInt(postcards.length)];
 	}
@@ -170,33 +157,29 @@ public final class Randomizer {
 
 	public static ArrayList<Animal> creatureCreator(int amount) {
 		ArrayList<Animal> list = new ArrayList<>();
-
-		while (list.size() < amount) {
-			for (int index = list.size(); index < amount; index++) {
-				switch ((new Random()).nextInt(6)) {
-				case 0:
-					list.add(new Arthropod());
-					break;
-				case 1:
-					list.add(new Mollusk());
-					break;
-				case 2:
-					list.add(new Reptile());
-					break;
-				case 3:
-					list.add(new Mammal());
-					break;
-				case 4:
-					list.add(new Fish());
-					break;
-				case 5:
-					list.add(new Cnidarian());
-					break;
-				}
-				list.retainAll(list.stream().distinct().collect(Collectors.toList()));
-				list.trimToSize();
+		// STREAM IMPLEMENTATION
+		Stream.generate(() -> {
+			switch (new Random().nextInt(5)) {
+			case 0:
+				return new Arthropod();
+			case 1:
+				return new Mollusk();
+			case 2:
+				return new Reptile();
+			case 3:
+				return new Mammal();
+			case 4:
+				return new Fish();
+			default:
+				return new Cnidarian();
 			}
-		}
+		}).limit(amount).forEach(animal -> {
+			list.add(animal);
+		});
+
+		// STREAM IMPLEMENTATION
+		list.retainAll(list.stream().distinct().collect(Collectors.toList()));
+		list.trimToSize();
 
 		return list;
 	}

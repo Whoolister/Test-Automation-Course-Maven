@@ -87,8 +87,9 @@ public abstract class Animal implements IFighter, IBreeding {
 		// RANDOMIZES THE MISSING GENETIC MATERIAL
 		this.genes = Randomizer.nucleotideRandomizer(geneSequence);
 		// FOR EACH SPECIAL TRAIT, CHECKS IF THE GENETIC CODE HAS THE REQUIRED LOCUS
-		Arrays.asList(SpecialTrait.values())
-				.forEach((value) -> this.specialTraits.put(value, value.getDecoder().decode(genes)));
+		// STREAM IMPLEMENTATION
+		Arrays.stream(SpecialTrait.values()).filter(trait -> trait.getDecoder().decode(getGenes()))
+				.forEach(trait -> specialTraits.put(trait, true));
 	}
 
 	protected void evolve(SpecialTrait trait) {

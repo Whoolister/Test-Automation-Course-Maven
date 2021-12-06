@@ -122,7 +122,6 @@ public class Laboratory extends Facility {
 						specimens.add(offspring);
 						break;
 					} else if (operation == 2) {
-						LOG.logAndShow(Level.INFO, "Setting free " + offspring.getName());
 						break;
 					} else {
 						LOG.logAndShow(Level.SEVERE,
