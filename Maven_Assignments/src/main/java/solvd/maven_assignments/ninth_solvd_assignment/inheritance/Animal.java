@@ -45,26 +45,24 @@ public abstract class Animal implements IFighter, IBreeding {
 	}
 
 	// TRAITS
-	protected String name = "";
-	protected int rank;
-	protected Respiration respiration;
-	protected Locomotion locomotion;
-	protected Intelligence intelligence;
-	protected Diet diet;
-	protected CyrcadianRythm cyrcadianRythm;
-	protected EnumMap<SpecialTrait, Boolean> specialTraits;
+	private String name = Randomizer.animalNameGenerator(this);
+	private int rank;
+	private Respiration respiration;
+	private Locomotion locomotion;
+	private Intelligence intelligence;
+	private Diet diet;
+	private CyrcadianRythm cyrcadianRythm;
+	private EnumMap<SpecialTrait, Boolean> specialTraits = new EnumMap<>(SpecialTrait.class);
 	// BASE STAT BLOCK
-	protected EnumMap<Stat, Integer> baseStatBlock;
+	private EnumMap<Stat, Integer> baseStatBlock;
 	// ACTIVE STAT BLOCK
-	protected EnumMap<Stat, Integer> statBlock;
+	private EnumMap<Stat, Integer> statBlock;
 	// GENETICS
-	protected String genes = "";
+	private String genes = "";
 
 	public Animal(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet,
 			CyrcadianRythm cyrcadianRythm) {
-		this.name = Randomizer.animalNameGenerator(this);
-		this.specialTraits = new EnumMap<>(SpecialTrait.class);
-		// LAMBDA IMPLEMENTATION
+		// POPULATES ENUMMAP WITH VALUES
 		Arrays.asList(SpecialTrait.values()).forEach((value) -> this.specialTraits.put(value, false));
 
 		this.respiration = respiration;
@@ -72,14 +70,13 @@ public abstract class Animal implements IFighter, IBreeding {
 		this.intelligence = intelligence;
 		this.diet = diet;
 		this.cyrcadianRythm = cyrcadianRythm;
+
+		this.genes = Randomizer.nucleotideRandomizer(genes);
 	}
 
-	// IMPLEMENT THIS AND OTHER GENE INCLUDING CONSTRUCTORS
 	public Animal(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet,
 			CyrcadianRythm cyrcadianRythm, String geneSequence) {
-		this.name = Randomizer.animalNameGenerator(this);
-		this.specialTraits = new EnumMap<>(SpecialTrait.class);
-		// LAMBDA IMPLEMENTATION
+		// POPULATES ENUMMAP WITH VALUES
 		Arrays.asList(SpecialTrait.values()).forEach((value) -> this.specialTraits.put(value, false));
 
 		this.respiration = respiration;
@@ -105,21 +102,41 @@ public abstract class Animal implements IFighter, IBreeding {
 		return "[" + this.respiration.getDescription() + "]";
 	}
 
+	protected Respiration getRespiration() {
+		return this.respiration;
+	}
+
 	public String move() {
 		return "[" + this.locomotion.getDescription() + "]";
+	}
+
+	protected Locomotion getLocomotion() {
+		return this.locomotion;
 	}
 
 	public String think() {
 		return "[" + this.intelligence.getDescription() + "]";
 	}
 
+	protected Intelligence getIntelligence() {
+		return this.intelligence;
+	}
+
 	public String eat() {
 		return "[" + this.diet.getDescription() + "]";
+	}
+
+	protected Diet getDiet() {
+		return this.diet;
 	}
 
 	// NOT TO BE CONFUSED WITH THREAD SLEEPING
 	public String sleep() {
 		return "[" + this.cyrcadianRythm.getDescription() + "]";
+	}
+
+	protected CyrcadianRythm getCyrcadianRythm() {
+		return this.cyrcadianRythm;
 	}
 
 	public Enum<?> getEnum(Class<?> target) {
@@ -154,7 +171,7 @@ public abstract class Animal implements IFighter, IBreeding {
 		this.name = Randomizer.animalNameGenerator(this);
 		// SURVIVAL STATS INCREASE
 		this.baseStatBlock.put(Stat.HEALTH_POINTS,
-				(int) (this.baseStatBlock.get(Stat.HEALTH_POINTS) * (this.rank * (1.1 + new Random().nextFloat()))));
+				(int) (this.baseStatBlock.get(Stat.HEALTH_POINTS) * (this.rank * (1.2 + new Random().nextFloat()))));
 		this.baseStatBlock.put(Stat.ENERGY_POINTS, this.baseStatBlock.get(Stat.ENERGY_POINTS) + 1 * this.rank);
 		// SPEED INCREASE
 		this.baseStatBlock.put(Stat.SPEED, this.baseStatBlock.get(Stat.SPEED) + 3 * this.rank);
@@ -176,111 +193,19 @@ public abstract class Animal implements IFighter, IBreeding {
 
 		this.baseStatBlock = new EnumMap<>(Stat.class);
 
-		int healthPoints = 100;
-		int energyPoints = 8;
-		int speed = 30;
-		int hitRolls = 1;
-		int hitDamage = 8;
-		int criticalChance = 10;
-		int defense = 3;
+		this.baseStatBlock.put(Stat.HEALTH_POINTS, 100);
+		this.baseStatBlock.put(Stat.ENERGY_POINTS, 8);
+		this.baseStatBlock.put(Stat.SPEED, 20);
+		this.baseStatBlock.put(Stat.HIT_DAMAGE, 1);
+		this.baseStatBlock.put(Stat.HIT_ROLLS, 8);
+		this.baseStatBlock.put(Stat.CRITICAL_CHANCE, 10);
+		this.baseStatBlock.put(Stat.DEFENSE, 3);
 
-		if (specialTraits.get(SpecialTrait.FLEXIBLE_BODY_PLAN)) {
-			healthPoints -= 20;
-			speed -= 5;
-			hitDamage -= 1;
-		}
-		if (specialTraits.get(SpecialTrait.EXOSKELETON)) {
-			healthPoints += 10;
-			energyPoints -= 1;
-			defense += 2;
-		}
-		if (specialTraits.get(SpecialTrait.IRRITANT_STINGS)) {
-			hitDamage += 2;
-			criticalChance += 12;
-		}
-		if (specialTraits.get(SpecialTrait.COMPOUND_EYES)) {
-			criticalChance += 4;
-		}
-		if (specialTraits.get(SpecialTrait.HYDROSKELETON)) {
-			healthPoints -= 20;
-			energyPoints += 3;
-			speed -= 10;
-			defense -= 1;
-		}
-		if (specialTraits.get(SpecialTrait.DEADLY_POISON)) {
-			defense += 4;
-		}
-		if (specialTraits.get(SpecialTrait.BIOLUMINESCENCE)) {
-			energyPoints -= 1;
-			defense += 1;
-		}
-		if (specialTraits.get(SpecialTrait.SHELLED_BODY)) {
-			healthPoints += 15;
-			speed -= 5;
-			defense += 2;
-		}
-		if (specialTraits.get(SpecialTrait.JET_PROPULSION)) {
-			energyPoints -= 1;
-			speed += 10;
-			hitDamage += 2;
-		}
-		if (specialTraits.get(SpecialTrait.CAMOUFLAGE)) {
-			energyPoints -= 1;
-			hitRolls += 1;
-			criticalChance += 8;
-		}
-		if (specialTraits.get(SpecialTrait.ENDOSKELETON)) {
-			healthPoints += 8;
-			energyPoints += 2;
-			defense -= 1;
-		}
-		if (specialTraits.get(SpecialTrait.FUR)) {
-			energyPoints += 1;
-			defense += 2;
-		}
-		if (specialTraits.get(SpecialTrait.SINGLE_BONED_JAW)) {
-			hitDamage += 3;
-			hitRolls += 1;
-			criticalChance += 8;
-		}
-		if (specialTraits.get(SpecialTrait.FOUR_CHAMBERED_HEART)) {
-			energyPoints += 4;
-		}
-		if (specialTraits.get(SpecialTrait.SCALED_BODY)) {
-			healthPoints += 15;
-			speed -= 6;
-			defense += 1;
-		}
-		if (specialTraits.get(SpecialTrait.HYDRODYNAMISM)) {
-			energyPoints += 1;
-			speed += 15;
-			criticalChance += 10;
-		}
-		if (specialTraits.get(SpecialTrait.UNDERWATER_VISION)) {
-			energyPoints -= 1;
-			criticalChance += 12;
-		}
-		if (specialTraits.get(SpecialTrait.ROUGH_SCALES)) {
-			healthPoints += 30;
-			speed -= 8;
-			defense += 4;
-		}
-		if (specialTraits.get(SpecialTrait.COLD_BLOODED)) {
-			energyPoints += 2;
-		}
-		if (specialTraits.get(SpecialTrait.DEADLY_VENOM)) {
-			hitDamage += 2;
-			hitRolls += 1;
-			criticalChance += 20;
-		}
-
-		this.baseStatBlock.put(Stat.HEALTH_POINTS, healthPoints);
-		this.baseStatBlock.put(Stat.ENERGY_POINTS, energyPoints);
-		this.baseStatBlock.put(Stat.SPEED, speed);
-		this.baseStatBlock.put(Stat.HIT_DAMAGE, hitDamage);
-		this.baseStatBlock.put(Stat.HIT_ROLLS, hitRolls);
-		this.baseStatBlock.put(Stat.CRITICAL_CHANCE, criticalChance);
-		this.baseStatBlock.put(Stat.DEFENSE, defense);
+		this.specialTraits.forEach((key, value) -> {
+			if (value) {
+				key.getStatMutator().mutateStat(this);
+			}
+		});
 
 		this.resetStatBlock();
 	}
@@ -343,8 +268,13 @@ public abstract class Animal implements IFighter, IBreeding {
 	}
 
 	@Override
+	public void changeBaseStat(Stat stat, int change) {
+		this.baseStatBlock.put(stat, baseStatBlock.get(stat) + change);
+	}
+
+	@Override
 	public void changeStat(Stat stat, int change) {
-		statBlock.put(stat, statBlock.get(stat) + change);
+		this.statBlock.put(stat, statBlock.get(stat) + change);
 	}
 
 	// IBreeding METHODS
@@ -364,8 +294,10 @@ public abstract class Animal implements IFighter, IBreeding {
 
 		if (partner.getClass().getName() == this.getClass().getName()) {
 			try {
-				return this.getClass().getConstructor().newInstance(respiration, locomotion, intelligence, diet,
-						cyrcadianRythm, geneSequence);
+				return this.getClass()
+						.getConstructor(Respiration.class, Locomotion.class, Intelligence.class, Diet.class,
+								CyrcadianRythm.class, String.class)
+						.newInstance(respiration, locomotion, intelligence, diet, cyrcadianRythm, geneSequence);
 			} catch (Exception e) {
 				e.printStackTrace();
 				return null;

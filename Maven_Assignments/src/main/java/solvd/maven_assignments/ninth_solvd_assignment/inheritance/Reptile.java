@@ -10,7 +10,6 @@ import ninth_solvd_assignment.enums.Respiration;
 import ninth_solvd_assignment.enums.SpecialTrait;
 import ninth_solvd_assignment.interfaces.IEctothermy;
 import ninth_solvd_assignment.interfaces.IEndothermy;
-import ninth_solvd_assignment.utilities.Randomizer;
 
 public class Reptile extends Vertebrate implements IEctothermy, IEndothermy {
 	private String bodyPlan;
@@ -25,9 +24,6 @@ public class Reptile extends Vertebrate implements IEctothermy, IEndothermy {
 		evolve(SpecialTrait.ROUGH_SCALES);
 		evolve(SpecialTrait.COLD_BLOODED);
 		evolve(SpecialTrait.DEADLY_VENOM);
-
-		// RANDOMIZES THE MISSING GENETIC MATERIAL
-		this.genes = Randomizer.nucleotideRandomizer(genes);
 	}
 
 	public Reptile(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet,
@@ -54,8 +50,8 @@ public class Reptile extends Vertebrate implements IEctothermy, IEndothermy {
 
 	@Override
 	public String toString() {
-		return "Reptile [Name: " + this.name + " | Respiration: " + this.respiration + " | Locomotion: "
-				+ this.locomotion + "| Intelligence: " + this.intelligence + " | Diet: " + this.diet
-				+ " | Cyrcadian Rythm: " + this.cyrcadianRythm + " | Body Plan: " + this.bodyPlan + "]";
+		return "Reptile [Name: " + getName() + " | Respiration: " + getRespiration() + " | Locomotion: "
+				+ getLocomotion() + " | Intelligence: " + getIntelligence() + " | Diet: " + getDiet()
+				+ " | Cyrcadian Rythm: " + getCyrcadianRythm() + " | Body Plan: " + bodyPlan + "]";
 	}
 }

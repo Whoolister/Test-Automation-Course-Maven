@@ -1,14 +1,16 @@
 package ninth_solvd_assignment.battle;
 
 import java.util.ArrayDeque;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.logging.Level;
+import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.StringUtils;
 
+import ninth_solvd_assignment.enums.Ordering;
 import ninth_solvd_assignment.enums.Stat;
 import ninth_solvd_assignment.enums.Weather;
 import ninth_solvd_assignment.exceptions.DefeatedException;
@@ -20,10 +22,9 @@ import ninth_solvd_assignment.inheritance.Facility;
 import ninth_solvd_assignment.utilities.Randomizer;
 
 public class Arena extends Facility {
-	private static LinkedList<Animal> roster = new LinkedList<Animal>();
-
 	public static void hostTournament(Scanner scanner) {
 		openFacilities();
+		ArrayList<Animal> roster = null;
 
 		LOG.logAndShow(Level.INFO,
 				StringUtils.center("ENTERING THE TOURNAMENT", 54) + System.lineSeparator()
@@ -34,7 +35,6 @@ public class Arena extends Facility {
 						+ "o   o | o   o | o   o | o   o | o   o | o   o | o   o\n"
 						+ "--+---+---+---+---+---+---+---+---+---+---+---+---+--" + System.lineSeparator());
 
-		boolean useRNG = true;
 		if (specimens.size() != 0) {
 			LOG.logAndShow(Level.INFO,
 					"What mode do you want to use?" + System.lineSeparator()
@@ -45,11 +45,11 @@ public class Arena extends Facility {
 				if (scanner.hasNextInt()) {
 					int mode = scanner.nextInt();
 					if (mode == 1) {
-						useRNG = false;
-						roster.addAll(specimens);
+						roster = new ArrayList<>(specimens);
 						specimens.clear();
 						break;
 					} else if (mode == 2) {
+						roster = rngSpecimens(scanner);
 						break;
 					} else {
 						LOG.logAndShow(Level.SEVERE,
@@ -60,42 +60,22 @@ public class Arena extends Facility {
 					scanner.next();
 				}
 			}
+		} else {
+			LOG.logAndShow(Level.INFO, "No specimens available in our holding bay, heading to the lab:");
+			roster = rngSpecimens(scanner);
 		}
 
-		if (useRNG) {
-			LOG.logAndShow(Level.INFO, "Input the number of combatants (Up to 16), to create for this tournament:"
-					+ System.lineSeparator());
-			while (scanner.hasNext()) {
-				if (scanner.hasNextInt()) {
-					int amount = scanner.nextInt();
-					if (amount > 0 && amount <= 16) {
-						LOG.logAndShow(Level.INFO, "Generating " + amount + " creatures..." + System.lineSeparator());
-						roster.addAll(Randomizer.creatureCreator(amount));
-						break;
-					} else {
-						System.out.print("ERRONEOUS INPUT (" + amount + ") Must input 1, 2, 3, 4, or 5."
-								+ System.lineSeparator());
-					}
-				} else {
-					System.out.print("ERRONEOUS INPUT: Must be an integer." + System.lineSeparator());
-					scanner.next();
-				}
-			}
-		}
-
-		for (Animal animal : roster) {
-			animal.generateBaseStatBlock();
-		}
+		roster.forEach(animal -> animal.generateBaseStatBlock());
 
 		int cycles = 1;
 		while (roster.size() > 1) {
 			bracketMaker(roster);
 
-			LinkedList<Animal> survivors = new LinkedList<>();
+			ArrayList<Animal> survivors = new ArrayList<>();
 
-			LOG.logAndShow(Level.INFO, "Match Cycle " + cycles + System.lineSeparator() + "==<O>===<0>- -<0>===<O>=="
-					+ System.lineSeparator());
-
+			LOG.logAndShow(Level.INFO, "Match Cycle " + cycles + ": " + System.lineSeparator()
+					+ "==<O>===<0>- -<0>===<O>==" + System.lineSeparator());
+			// CYCLE FIGHTS
 			for (int fights = 0; fights < roster.size(); fights += 2) {
 				LOG.logAndShow(Level.INFO, "Press any key, and hit ENTER to begin:");
 				scanner.next();
@@ -109,24 +89,34 @@ public class Arena extends Facility {
 					survivors.add(fight(roster.get(fights), roster.get(fights + 1)));
 				} catch (IndexOutOfBoundsException e) {
 					LOG.logAndShow(Level.INFO,
-							"There's no one to put " + roster.get(fights).getName()
+							"There's no one to put " + roster.get(roster.size() - 1).getName()
 									+ " against, so they'll be advancing the ranking. However, they won't rank up."
 									+ System.lineSeparator());
-					survivors.add(roster.get(fights));
+					survivors.add(roster.remove(roster.size() - 1));
 				} catch (ExcessRankException excess) {
 					LOG.logAndShow(Level.SEVERE, roster.toString() + System.lineSeparator() + excess.getMessage());
+					LOG.turnOffLogger();
 					System.exit(0);
 				}
 			}
 
-			roster = survivors;
-			cycles++;
+			if (survivors.size() > 1) {
+				Ordering ordering = Ordering.values()[new Random().nextInt(Ordering.values().length)];
+				LOG.logAndShow(Level.INFO, "NEXT MATCH CYCLE : " + ordering.name() + System.lineSeparator()
+						+ ordering.getDescription() + System.lineSeparator());
+				// STREAM IMPLEMENTATION
+				roster = new ArrayList<>(
+						survivors.stream().sorted(ordering.getComparator()).collect(Collectors.toList()));
+				cycles++;
+			} else {
+				break;
+			}
 		}
-
+		// PACER
 		LOG.logAndShow(Level.INFO, "Press any key, and hit ENTER to show the winner:");
 		scanner.next();
 
-		Animal winner = roster.getFirst();
+		Animal winner = roster.remove(0);
 
 		LOG.logAndShow(Level.INFO,
 				"  .--.      .-'.      .--.      .--.      .--.      .--.      .`-.      .--.\n"
@@ -139,11 +129,11 @@ public class Arena extends Facility {
 						+ winner.sleep() + System.lineSeparator());
 
 		// FINAL LINE
-		LOG.logAndShow(Level.INFO, StringUtils.center("E N D   O F   T O U R N A M E N T", 32) + System.lineSeparator()
+		LOG.logAndShow(Level.INFO, StringUtils.center("E X I T I N G   T H E   A R E N A", 32) + System.lineSeparator()
 				+ "__________________________________________" + System.lineSeparator());
 	}
 
-	public static Animal fight(Animal competitorOne, Animal competitorTwo) throws ExcessRankException {
+	private static Animal fight(Animal competitorOne, Animal competitorTwo) throws ExcessRankException {
 		// APPLY WEATHER CONDITIONS ON FIGHTERS
 		Weather weather = Weather.values()[new Random().nextInt(Weather.values().length)];
 		LOG.logAndShow(Level.INFO,
@@ -154,6 +144,7 @@ public class Arena extends Facility {
 
 		ArrayDeque<Animal> queue = new ArrayDeque<>(2);
 
+		// DECIDE FIGHTING ORDER
 		if (competitorOne.getStat(Stat.SPEED) > competitorTwo.getStat(Stat.SPEED)
 				|| competitorOne.getStat(Stat.SPEED) == competitorTwo.getStat(Stat.SPEED)) {
 			queue.addFirst(competitorOne);
@@ -163,68 +154,72 @@ public class Arena extends Facility {
 			queue.addLast(competitorOne);
 		}
 
-		for (int rounds = 0; true; rounds++) {
+		// ITERATE ROUNDS
+		for (int rounds = 0; queue.size() == 2; rounds++) {
 			LOG.logAndShow(Level.INFO, "Round " + (rounds + 1) + ":" + System.lineSeparator()
 					+ ">---------->---------->---------->---------->");
-			for (Animal competitor : queue) {
-				if (competitorOne.equals(queue.peekFirst())) {
-					try {
-						LOG.logAndShow(Level.INFO,
-								">" + competitor.getName() + " Landed a hit for a " + Randomizer.hitAdjectiveGenerator()
-										+ " " + competitor.hit(queue.peekLast()) + " points of damage!"
-										+ System.lineSeparator());
-					} catch (MissException miss) {
-						LOG.logAndShow(Level.INFO,
-								">" + competitor.getName() + miss.getMessage() + System.lineSeparator());
-					} catch (ExhaustedException exhausted) {
-						queue.peekLast().rankUP();
-						LOG.logAndShow(Level.INFO,
-								competitor.getName() + exhausted.getMessage() + queue.peekLast().getName()
-										+ " has won the match, and rose to Rank " + queue.peekLast().getRank()
-										+ System.lineSeparator());
-						return queue.peekLast();
-					} catch (DefeatedException defeated) {
-						competitor.rankUP();
-						LOG.logAndShow(Level.INFO,
-								competitor.getName() + " delivered one final blow to his opponent, dealing a "
-										+ Randomizer.hitAdjectiveGenerator() + " " + defeated.getDamage()
-										+ " points of damage!" + System.lineSeparator()
-										+ "They have won the match, and risen to Rank " + competitor.getRank()
-										+ System.lineSeparator());
-						return competitor;
-					}
-				} else {
-					try {
-						LOG.logAndShow(Level.INFO,
-								">" + competitor.getName() + " Landed a hit for a " + Randomizer.hitAdjectiveGenerator()
-										+ " " + competitor.hit(queue.peekFirst()) + " points of damage!"
-										+ System.lineSeparator());
-					} catch (MissException miss) {
-						LOG.logAndShow(Level.INFO,
-								">" + competitor.getName() + miss.getMessage() + System.lineSeparator());
-					} catch (ExhaustedException exhausted) {
-						queue.peekFirst().rankUP();
-						LOG.logAndShow(Level.INFO,
-								competitor.getName() + exhausted.getMessage() + queue.peekFirst().getName()
-										+ " has won the match, and rose to Rank " + queue.peekFirst().getRank()
-										+ System.lineSeparator());
-						return queue.peekFirst();
-					} catch (DefeatedException defeated) {
-						competitor.rankUP();
-						LOG.logAndShow(Level.INFO,
-								competitor.getName() + " delivered one final blow to his opponent, dealing a "
-										+ Randomizer.hitAdjectiveGenerator() + " " + defeated.getDamage()
-										+ " points of damage!" + System.lineSeparator()
-										+ "They have won the match, and risen to Rank " + competitor.getRank()
-										+ System.lineSeparator());
-						return competitor;
-					}
-				}
+			// FIRST HITTER
+			try {
+				LOG.logAndShow(Level.INFO,
+						">" + queue.peekFirst().getName() + " Landed a hit for a " + Randomizer.hitAdjectiveGenerator()
+								+ " " + queue.peekFirst().hit(queue.peekLast()) + " points of damage!"
+								+ System.lineSeparator());
+			} catch (MissException miss) {
+				LOG.logAndShow(Level.INFO,
+						">" + queue.peekFirst().getName() + miss.getMessage() + System.lineSeparator());
+			} catch (ExhaustedException exhausted) {
+				queue.peekLast().rankUP();
+				LOG.logAndShow(Level.INFO,
+						">" + queue.peekFirst().getName() + exhausted.getMessage() + queue.peekLast().getName()
+								+ " has won the match, and rose to Rank " + queue.peekLast().getRank()
+								+ System.lineSeparator());
+				queue.removeFirst();
+				break;
+			} catch (DefeatedException defeated) {
+				queue.peekFirst().rankUP();
+				;
+				LOG.logAndShow(Level.INFO,
+						">" + queue.peekFirst().getName() + " delivered one final blow to his opponent, dealing a "
+								+ Randomizer.hitAdjectiveGenerator() + " " + defeated.getDamage() + " points of damage!"
+								+ System.lineSeparator() + "They have won the match, and risen to Rank "
+								+ queue.peekFirst().getRank() + System.lineSeparator());
+				queue.removeLast();
+				break;
+			}
+			// SECOND HITTER
+			try {
+				LOG.logAndShow(Level.INFO,
+						">" + queue.peekLast().getName() + " Landed a hit for a " + Randomizer.hitAdjectiveGenerator()
+								+ " " + queue.peekLast().hit(queue.peekFirst()) + " points of damage!"
+								+ System.lineSeparator());
+			} catch (MissException miss) {
+				LOG.logAndShow(Level.INFO,
+						">" + queue.peekLast().getName() + miss.getMessage() + System.lineSeparator());
+			} catch (ExhaustedException exhausted) {
+				queue.peekFirst().rankUP();
+				LOG.logAndShow(Level.INFO,
+						">" + queue.peekLast().getName() + exhausted.getMessage() + queue.peekFirst().getName()
+								+ " has won the match, and rose to Rank " + queue.peekFirst().getRank()
+								+ System.lineSeparator());
+				queue.removeLast();
+				break;
+			} catch (DefeatedException defeated) {
+				queue.peekLast().rankUP();
+				LOG.logAndShow(Level.INFO,
+						">" + queue.peekLast().getName() + " delivered one final blow to his opponent, dealing a "
+								+ Randomizer.hitAdjectiveGenerator() + " " + defeated.getDamage() + " points of damage!"
+								+ System.lineSeparator() + "They have won the match, and risen to Rank "
+								+ queue.peekLast().getRank() + System.lineSeparator());
+				queue.removeFirst();
+				break;
 			}
 		}
+
+		return queue.remove();
+
 	}
 
-	public static void bracketMaker(List<Animal> list) {
+	private static void bracketMaker(List<Animal> list) {
 		LOG.logAndShow(Level.INFO, "M A T C H   B R A C K E T" + System.lineSeparator()
 				+ ">< >< >< >< >< >< >< >< >< ><" + System.lineSeparator() + "--<>--<>--<>--<>--<>--<>--<>--<>--");
 		try {

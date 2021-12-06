@@ -2,6 +2,7 @@ package ninth_solvd_assignment.utilities;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -148,49 +149,52 @@ public final class Randomizer {
 	}
 
 	public static String animalNameGenerator(Animal animal) {
-		String name = animal.getName();
-		int rank = animal.getRank();
+		String[] components = null;
 
-		String[] components = name.split(" ");
+		if (animal.getName() != null) {
+			components = animal.getName().split(" ");
+		}
 
-		switch (rank) {
-		case 0:
-			return sampleNames[new Random().nextInt(sampleNames.length)];
+		switch (animal.getRank()) {
 		case 1:
-			return sizes[new Random().nextInt(sizes.length)] + " " + name;
+			return sizes[new Random().nextInt(sizes.length)] + " " + components[0];
 		case 2:
 			return components[0] + " " + colors[new Random().nextInt(colors.length)] + " " + components[1];
 		case 3:
 			return components[0] + " " + components[1] + " " + features[new Random().nextInt(features.length)] + " "
 					+ components[2];
+		default:
+			return sampleNames[new Random().nextInt(sampleNames.length)];
 		}
-
-		return animal.getName();
 	}
 
 	public static ArrayList<Animal> creatureCreator(int amount) {
 		ArrayList<Animal> list = new ArrayList<>();
 
-		for (int index = 0; index < amount; index++) {
-			switch ((new Random()).nextInt(6)) {
-			case 0:
-				list.add(new Arthropod());
-				break;
-			case 1:
-				list.add(new Mollusk());
-				break;
-			case 2:
-				list.add(new Reptile());
-				break;
-			case 3:
-				list.add(new Mammal());
-				break;
-			case 4:
-				list.add(new Fish());
-				break;
-			case 5:
-				list.add(new Cnidarian());
-				break;
+		while (list.size() < amount) {
+			for (int index = list.size(); index < amount; index++) {
+				switch ((new Random()).nextInt(6)) {
+				case 0:
+					list.add(new Arthropod());
+					break;
+				case 1:
+					list.add(new Mollusk());
+					break;
+				case 2:
+					list.add(new Reptile());
+					break;
+				case 3:
+					list.add(new Mammal());
+					break;
+				case 4:
+					list.add(new Fish());
+					break;
+				case 5:
+					list.add(new Cnidarian());
+					break;
+				}
+				list.retainAll(list.stream().distinct().collect(Collectors.toList()));
+				list.trimToSize();
 			}
 		}
 

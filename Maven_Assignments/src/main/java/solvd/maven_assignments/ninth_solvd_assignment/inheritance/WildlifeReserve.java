@@ -1,21 +1,95 @@
-package ninth_solvd_assignment.safari;
+package ninth_solvd_assignment.inheritance;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.logging.Level;
 
 import org.apache.commons.lang3.StringUtils;
 
-import ninth_solvd_assignment.inheritance.Animal;
-import ninth_solvd_assignment.inheritance.Facility;
 import ninth_solvd_assignment.utilities.CustomLinkedList;
 import ninth_solvd_assignment.utilities.Randomizer;
 
-public class Safari extends Facility {
-	private static CustomLinkedList<Animal> wildlife = new CustomLinkedList<>();
-
-	public static void expedition(Scanner scanner) {
+public class WildlifeReserve extends Facility {
+	public static void tour(Scanner scanner) {
 		openFacilities();
+		ArrayList<Animal> exhibits = null;
+
+		LOG.logAndShow(Level.INFO,
+				StringUtils.center("ENTERING THE WILDLIFE RESERVE", 48) + System.lineSeparator()
+						+ "_|___|___|___|___|___|___|___|___|___|___|___|___|___|_\n"
+						+ "___|___|___|___|___|___|___|___|___|___|___|___|___|___\n"
+						+ "_|___|___|___|___|___|___|___|___|___|___|___|___|___|_" + System.lineSeparator());
+
+		if (specimens.size() != 0) {
+			LOG.logAndShow(Level.INFO,
+					"What mode do you want to use?" + System.lineSeparator()
+							+ "\t>-> Type 1 to check the saved exhibits" + System.lineSeparator()
+							+ "\t>-> Type 2 to randomly generate exhibits" + System.lineSeparator()
+							+ "\t>-> Type 3 to go on an expedition" + System.lineSeparator());
+
+			while (scanner.hasNext()) {
+				if (scanner.hasNextInt()) {
+					int mode = scanner.nextInt();
+					if (mode == 1) {
+						display(specimens, false);
+						break;
+					} else if (mode == 2) {
+						exhibits = rngSpecimens(scanner);
+						break;
+					} else if (mode == 3) {
+						expedition(scanner);
+					} else {
+						LOG.logAndShow(Level.SEVERE,
+								"ERRONEOUS INPUT (" + mode + ") Must input 1 or 2." + System.lineSeparator());
+					}
+				} else {
+					LOG.logAndShow(Level.SEVERE, "ERRONEOUS INPUT: Must be an integer." + System.lineSeparator());
+					scanner.next();
+				}
+			}
+		} else {
+			LOG.logAndShow(Level.INFO, "No exhibits currently available, heading to the lab:" + System.lineSeparator());
+			exhibits = new ArrayList<>(rngSpecimens(scanner));
+
+			display(exhibits, false);
+		}
+
+		if (exhibits != null) {
+			LOG.logAndShow(Level.INFO,
+					"Do you want to save these creatures?" + System.lineSeparator() + "\t>-> Type 1 to save them"
+							+ System.lineSeparator() + "\t>-> Type 2 to set them free" + System.lineSeparator());
+			while (scanner.hasNext()) {
+				if (scanner.hasNextInt()) {
+					int operation = scanner.nextInt();
+					if (operation == 1) {
+						LOG.logAndShow(Level.INFO,
+								"The generated exhibits have been saved to our specimens lab," + System.lineSeparator()
+										+ "you may choose to retrieve them as fighters in the arena."
+										+ System.lineSeparator());
+						specimens.addAll(exhibits);
+						break;
+					} else if (operation == 2) {
+						exhibits.clear();
+						break;
+					} else {
+						LOG.logAndShow(Level.SEVERE,
+								"ERRONEOUS INPUT (" + operation + ") Must input 1 or 2." + System.lineSeparator());
+					}
+				} else {
+					LOG.logAndShow(Level.SEVERE, "ERRONEOUS INPUT: Must be an integer." + System.lineSeparator());
+					scanner.next();
+				}
+			}
+		}
+		// FINAL LINE
+		LOG.logAndShow(Level.INFO, StringUtils.center("E N D   O F   T H E   T O U R", 32) + System.lineSeparator()
+				+ "__________________________________________");
+	}
+
+	private static void expedition(Scanner scanner) {
+		openFacilities();
+		CustomLinkedList<Animal> wildlife = new CustomLinkedList<>();
 
 		LOG.logAndShow(Level.INFO,
 				StringUtils.center("COMMENCING AN EXPEDITION", 32) + System.lineSeparator()

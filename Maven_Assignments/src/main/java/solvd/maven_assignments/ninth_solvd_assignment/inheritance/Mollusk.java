@@ -10,7 +10,6 @@ import ninth_solvd_assignment.enums.Respiration;
 import ninth_solvd_assignment.enums.SpecialTrait;
 import ninth_solvd_assignment.interfaces.IEctothermy;
 import ninth_solvd_assignment.interfaces.IHibernation;
-import ninth_solvd_assignment.utilities.Randomizer;
 
 public class Mollusk extends Invertebrate implements IEctothermy, IHibernation {
 	private static boolean jetReady = true;
@@ -23,9 +22,6 @@ public class Mollusk extends Invertebrate implements IEctothermy, IHibernation {
 		evolve(SpecialTrait.SHELLED_BODY);
 		evolve(SpecialTrait.JET_PROPULSION);
 		evolve(SpecialTrait.CAMOUFLAGE);
-
-		// RANDOMIZES THE MISSING GENETIC MATERIAL
-		this.genes = Randomizer.nucleotideRandomizer(genes);
 	}
 
 	public Mollusk(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet,
@@ -34,7 +30,7 @@ public class Mollusk extends Invertebrate implements IEctothermy, IHibernation {
 	}
 
 	public final String hide() {
-		switch ((new Random()).nextInt(5)) {
+		switch ((new Random()).nextInt(6)) {
 		case 0:
 			return "It's skin turned into some sort of checkerboard pattern... Maybe it's distracting us with a friendly game of chess!\n";
 		case 1:
@@ -71,11 +67,7 @@ public class Mollusk extends Invertebrate implements IEctothermy, IHibernation {
 		}
 	}
 
-	public static boolean isJetReady() {
-		return jetReady;
-	}
-
-	public static void setJetReady(boolean input) {
+	private static void setJetReady(boolean input) {
 		jetReady = input;
 	}
 
@@ -91,8 +83,8 @@ public class Mollusk extends Invertebrate implements IEctothermy, IHibernation {
 
 	@Override
 	public String toString() {
-		return "Mollusk [Name: " + this.name + " | Respiration: " + this.respiration + " | Locomotion: "
-				+ this.locomotion + " | Intelligence: " + this.intelligence + " | Diet: " + this.diet
-				+ " | Cyrcadian Rythm: " + this.cyrcadianRythm + "]";
+		return "Mollusk [Name: " + getName() + " | Respiration: " + getRespiration() + " | Locomotion: "
+				+ getLocomotion() + " | Intelligence: " + getIntelligence() + " | Diet: " + getDiet()
+				+ " | Cyrcadian Rythm: " + getCyrcadianRythm() + "]";
 	}
 }

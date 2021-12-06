@@ -11,7 +11,6 @@ import ninth_solvd_assignment.enums.SpecialTrait;
 import ninth_solvd_assignment.interfaces.IAgriculture;
 import ninth_solvd_assignment.interfaces.IEctothermy;
 import ninth_solvd_assignment.interfaces.ISwarm;
-import ninth_solvd_assignment.utilities.Randomizer;
 
 public class Arthropod extends Invertebrate implements IEctothermy, IAgriculture, ISwarm {
 	private static boolean hardened = true;
@@ -27,9 +26,6 @@ public class Arthropod extends Invertebrate implements IEctothermy, IAgriculture
 		evolve(SpecialTrait.EXOSKELETON);
 		evolve(SpecialTrait.IRRITANT_STINGS);
 		evolve(SpecialTrait.COMPOUND_EYES);
-
-		// RANDOMIZES THE MISSING GENETIC MATERIAL
-		this.genes = Randomizer.nucleotideRandomizer(genes);
 	}
 
 	public Arthropod(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet,
@@ -56,11 +52,7 @@ public class Arthropod extends Invertebrate implements IEctothermy, IAgriculture
 		}
 	}
 
-	public static final boolean getHardened() {
-		return hardened;
-	}
-
-	public static final void setHardened(boolean input) {
+	private static final void setHardened(boolean input) {
 		hardened = input;
 	}
 
@@ -71,7 +63,7 @@ public class Arthropod extends Invertebrate implements IEctothermy, IAgriculture
 
 	@Override
 	public String cultivate() {
-		if (this.intelligence == Intelligence.SOME) {
+		if (getIntelligence() == Intelligence.SOME) {
 			return "This being can participate in a mutualistic relationship with different plant species, protecting them in exchange for a steady source of nutrition.";
 		} else {
 			return "This being dedicates a part of its colony to feeding and growing nutritious mycelium, although it may not understand what it's really doing.";
@@ -80,7 +72,7 @@ public class Arthropod extends Invertebrate implements IEctothermy, IAgriculture
 
 	@Override
 	public String raiseAnimals() {
-		if (this.intelligence == Intelligence.SOME) {
+		if (getIntelligence() == Intelligence.SOME) {
 			return "This being doesn't yet have the capacity to raise other animals, maybe in a further evolution.\n";
 		} else {
 			return "This being can enter a mutualistic relationship with certain other species, by protecting them and feeding on their residues.\n";
@@ -94,8 +86,8 @@ public class Arthropod extends Invertebrate implements IEctothermy, IAgriculture
 
 	@Override
 	public String toString() {
-		return "Arthropod [Name: " + this.name + " | Respiration: " + this.respiration + " | Locomotion: "
-				+ this.locomotion + " | Intelligence: " + this.intelligence + " | Diet: " + this.diet
-				+ " | Cyrcadian Rythm: " + this.cyrcadianRythm + "]";
+		return "Arthropod [Name: " + getName() + " | Respiration: " + getRespiration() + " | Locomotion: "
+				+ getLocomotion() + " | Intelligence: " + getIntelligence() + " | Diet: " + getDiet()
+				+ " | Cyrcadian Rythm: " + getCyrcadianRythm() + "]";
 	}
 }

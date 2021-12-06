@@ -10,7 +10,6 @@ import ninth_solvd_assignment.enums.Respiration;
 import ninth_solvd_assignment.enums.SpecialTrait;
 import ninth_solvd_assignment.interfaces.IEctothermy;
 import ninth_solvd_assignment.interfaces.ISwarm;
-import ninth_solvd_assignment.utilities.Randomizer;
 
 public class Fish extends Vertebrate implements IEctothermy, ISwarm {
 	private String tailPlan;
@@ -27,9 +26,6 @@ public class Fish extends Vertebrate implements IEctothermy, ISwarm {
 		evolve(SpecialTrait.SCALED_BODY);
 		evolve(SpecialTrait.HYDRODYNAMISM);
 		evolve(SpecialTrait.UNDERWATER_VISION);
-
-		// RANDOMIZES THE MISSING GENETIC MATERIAL
-		this.genes = Randomizer.nucleotideRandomizer(genes);
 	}
 
 	public Fish(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet,
@@ -52,8 +48,8 @@ public class Fish extends Vertebrate implements IEctothermy, ISwarm {
 
 	@Override
 	public String toString() {
-		return "Fish [Name: " + this.name + " | Respiration: " + this.respiration + " | Locomotion: " + this.locomotion
-				+ " | Intelligence: " + this.intelligence + " | Diet: " + this.diet + " | Tail Plan: " + this.tailPlan
-				+ " | Cyrcadian Rythm: " + this.cyrcadianRythm + "]";
+		return "Fish [Name: " + getName() + " | Respiration: " + getRespiration() + " | Locomotion: " + getLocomotion()
+				+ " | Intelligence: " + getIntelligence() + " | Diet: " + getDiet() + " | Cyrcadian Rythm: "
+				+ getCyrcadianRythm() + " | Tail Plan: " + tailPlan + "]";
 	}
 }

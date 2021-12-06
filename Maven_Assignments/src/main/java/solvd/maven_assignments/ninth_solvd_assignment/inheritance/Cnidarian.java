@@ -10,7 +10,6 @@ import ninth_solvd_assignment.enums.Respiration;
 import ninth_solvd_assignment.enums.SpecialTrait;
 import ninth_solvd_assignment.interfaces.IEctothermy;
 import ninth_solvd_assignment.interfaces.ISwarm;
-import ninth_solvd_assignment.utilities.Randomizer;
 
 public class Cnidarian extends Invertebrate implements IEctothermy, ISwarm {
 	public Cnidarian() {
@@ -20,9 +19,6 @@ public class Cnidarian extends Invertebrate implements IEctothermy, ISwarm {
 		evolve(SpecialTrait.HYDROSKELETON);
 		evolve(SpecialTrait.DEADLY_POISON);
 		evolve(SpecialTrait.BIOLUMINESCENCE);
-
-		// RANDOMIZES THE MISSING GENETIC MATERIAL
-		this.genes = Randomizer.nucleotideRandomizer(genes);
 	}
 
 	public Cnidarian(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet,
@@ -43,8 +39,8 @@ public class Cnidarian extends Invertebrate implements IEctothermy, ISwarm {
 
 	@Override
 	public String toString() {
-		return "Cnidaria [Name: " + this.name + " | Respiration: " + this.respiration + " | Locomotion: "
-				+ this.locomotion + " | Intelligence: " + this.intelligence + " | Diet: " + this.diet
-				+ " | Cyrcadian Rythm: " + this.cyrcadianRythm + "]";
+		return "Cnidaria [Name: " + getName() + " | Respiration: " + getRespiration() + " | Locomotion: "
+				+ getLocomotion() + " | Intelligence: " + getIntelligence() + " | Diet: " + getDiet()
+				+ " | Cyrcadian Rythm: " + getCyrcadianRythm() + "]";
 	}
 }

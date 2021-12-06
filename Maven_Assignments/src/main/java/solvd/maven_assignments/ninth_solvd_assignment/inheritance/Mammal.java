@@ -11,7 +11,6 @@ import ninth_solvd_assignment.enums.SpecialTrait;
 import ninth_solvd_assignment.interfaces.IAgriculture;
 import ninth_solvd_assignment.interfaces.IEndothermy;
 import ninth_solvd_assignment.interfaces.IHibernation;
-import ninth_solvd_assignment.utilities.Randomizer;
 
 public class Mammal extends Vertebrate implements IEndothermy, IAgriculture, IHibernation {
 	private String furColor;
@@ -32,9 +31,6 @@ public class Mammal extends Vertebrate implements IEndothermy, IAgriculture, IHi
 		evolve(SpecialTrait.FUR);
 		evolve(SpecialTrait.SINGLE_BONED_JAW);
 		evolve(SpecialTrait.FOUR_CHAMBERED_HEART);
-
-		// RANDOMIZES THE MISSING GENETIC MATERIAL
-		this.genes = Randomizer.nucleotideRandomizer(genes);
 	}
 
 	public Mammal(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet,
@@ -51,9 +47,9 @@ public class Mammal extends Vertebrate implements IEndothermy, IAgriculture, IHi
 
 	@Override
 	public String cultivate() {
-		if (this.intelligence == Intelligence.INTERMEDIATE) {
+		if (getIntelligence() == Intelligence.INTERMEDIATE) {
 			return "This being can pick apart certain plants with healing effects on it's body, but not much else.";
-		} else if (this.intelligence == Intelligence.HIGH) {
+		} else if (getIntelligence() == Intelligence.HIGH) {
 			return "This being knows to wait for the growth or ripening of plants and fruits, to enjoy better and safer meals.";
 		} else {
 			return "This being has the mental acquity to learn to carefully plan and aid the growth of plant matter, either for medicinal or nutritional purposes.";
@@ -62,9 +58,9 @@ public class Mammal extends Vertebrate implements IEndothermy, IAgriculture, IHi
 
 	@Override
 	public String raiseAnimals() {
-		if (this.intelligence == Intelligence.INTERMEDIATE) {
+		if (getIntelligence() == Intelligence.INTERMEDIATE) {
 			return "This being can participate in symbiotic relationships with other animals, be it for protection or hunting aid.";
-		} else if (this.intelligence == Intelligence.HIGH) {
+		} else if (getIntelligence() == Intelligence.HIGH) {
 			return "This being can learn the behaviors of different species and use the knowledge to hunt or find food and water.";
 		} else {
 			return "This being has the mental capacity to raise, train, and even selectively breed other animal species.";
@@ -83,8 +79,8 @@ public class Mammal extends Vertebrate implements IEndothermy, IAgriculture, IHi
 
 	@Override
 	public String toString() {
-		return "Mammal [Name: " + this.name + " | Respiration: " + this.respiration + " | Locomotion: "
-				+ this.locomotion + " | Intelligence: " + this.intelligence + " | Diet: " + this.diet
-				+ " | Cyrcadian Rythm: " + this.cyrcadianRythm + " | Fur Color: " + this.furColor + "]";
+		return "Mammal [Name: " + getName() + " | Respiration: " + getRespiration() + " | Locomotion: "
+				+ getLocomotion() + " | Intelligence: " + getIntelligence() + " | Diet: " + getDiet()
+				+ " | Cyrcadian Rythm: " + getCyrcadianRythm() + " | Fur Color: " + furColor + "]";
 	}
 }

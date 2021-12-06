@@ -14,7 +14,8 @@ public class Hybrid extends Animal {
 
 	@Override
 	public String toString() {
-		return "Hybrid [Name: " + this.name + " | Respiration: " + this.respiration + " | Locomotion: "
-				+ this.locomotion + " | Intelligence: " + this.intelligence + " | Diet: " + this.diet + "]";
+		return "Hybrid [Name: " + getName() + " | Respiration: " + getRespiration() + " | Locomotion: "
+				+ getLocomotion() + " | Intelligence: " + getIntelligence() + " | Diet: " + getDiet()
+				+ " | Cyrcadian Rythm: " + getCyrcadianRythm() + "]";
 	}
 }

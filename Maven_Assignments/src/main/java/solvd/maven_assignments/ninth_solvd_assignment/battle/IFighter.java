@@ -24,5 +24,7 @@ public interface IFighter {
 
 	public int getStat(Stat stat);
 
+	public void changeBaseStat(Stat stat, int change);
+
 	public void changeStat(Stat stat, int change);
 }
