@@ -2,27 +2,27 @@ package tenth_solvd_assignment.connectivity;
 
 import java.util.ArrayList;
 
-public class ConnectionPool {
+public class CustomConnectionPool {
 	// SINGLE INSTANCE
-	private static ConnectionPool instance;
-	private ArrayList<Connection> pool;
-	private ArrayList<Connection> occupiedConnections;
+	private static CustomConnectionPool instance;
+	private ArrayList<CustomConnection> pool;
+	private ArrayList<CustomConnection> occupiedConnections;
 	private final int maxConnections;
 
-	private ConnectionPool(int maxConnections) {
+	private CustomConnectionPool(int maxConnections) {
 		this.maxConnections = maxConnections;
 
 		this.pool = new ArrayList<>(this.maxConnections);
 		this.occupiedConnections = new ArrayList<>(this.maxConnections);
 
 		for (int i = 0; i < this.maxConnections; i++) {
-			this.pool.add(new Connection());
+			this.pool.add(new CustomConnection());
 		}
 	}
 
-	public static ConnectionPool getInstance(int maxConnections) {
+	public static CustomConnectionPool getInstance() {
 		if (instance == null) {
-			instance = new ConnectionPool(maxConnections);
+			instance = new CustomConnectionPool(5);
 		}
 
 		return instance;
@@ -32,17 +32,17 @@ public class ConnectionPool {
 		return !pool.isEmpty();
 	}
 
-	public synchronized Connection getConnection() throws RuntimeException {
+	public synchronized CustomConnection getConnection() throws RuntimeException {
 		if (pool.isEmpty() || occupiedConnections.size() > this.maxConnections) {
 			throw new RuntimeException("No available connections!");
 		}
 
-		Connection connection = pool.remove(pool.size() - 1);
+		CustomConnection connection = pool.remove(pool.size() - 1);
 		occupiedConnections.add(connection);
 		return connection;
 	}
 
-	public synchronized boolean releaseConnection(Connection connection) {
+	public synchronized boolean releaseConnection(CustomConnection connection) {
 		pool.add(connection);
 		return occupiedConnections.remove(connection);
 	}

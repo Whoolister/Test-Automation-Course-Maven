@@ -2,9 +2,9 @@ package tenth_solvd_assignment.connectivity;
 
 import tenth_solvd_assignment.utilities.MyLogger;
 
-public class Connection {
+public class CustomConnection {
 	// MOCK DB CONNECTION CLASS
-	private static final MyLogger LOG = new MyLogger(Connection.class.getName());
+	private static final MyLogger LOG = new MyLogger(CustomConnection.class.getName());
 
 	static {
 		LOG.setupLogger();

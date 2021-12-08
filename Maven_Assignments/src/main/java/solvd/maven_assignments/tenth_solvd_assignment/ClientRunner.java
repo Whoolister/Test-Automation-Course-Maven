@@ -3,13 +3,13 @@ package tenth_solvd_assignment;
 import java.util.ArrayList;
 import java.util.logging.Level;
 
-import tenth_solvd_assignment.connectivity.Connection;
-import tenth_solvd_assignment.connectivity.ConnectionPool;
+import tenth_solvd_assignment.connectivity.CustomConnectionPool;
+import tenth_solvd_assignment.connectivity.CustomConnection;
 import tenth_solvd_assignment.utilities.MyLogger;
 
 public class ClientRunner {
 	private static final MyLogger LOG = new MyLogger(ClientRunner.class.getName());
-	private static final ConnectionPool CONNECTION_POOL = ConnectionPool.getInstance(5);
+	private static final CustomConnectionPool CONNECTION_POOL = CustomConnectionPool.getInstance();
 
 	public static void main(String[] args) {
 		LOG.setupLogger();
@@ -34,7 +34,7 @@ public class ClientRunner {
 	}
 
 	public static void createConnection(String threadName) throws InterruptedException {
-		Connection connection = CONNECTION_POOL.getConnection();
+		CustomConnection connection = CONNECTION_POOL.getConnection();
 
 		connection.ping(threadName);
 		connection.authorize(threadName);
