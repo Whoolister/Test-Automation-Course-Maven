@@ -6,7 +6,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
 import org.apache.commons.io.FileUtils;
@@ -16,7 +15,7 @@ import org.apache.commons.lang3.StringUtils;
 import seventh_solvd_assignment.utilities.MyLogger;
 
 public class HomeworkRunner {
-	static final MyLogger LOG = new MyLogger(Logger.GLOBAL_LOGGER_NAME);
+	static final MyLogger LOG = new MyLogger(HomeworkRunner.class.getName());
 
 	public static void main(String[] args) {
 		String sample = "El Tatio is a geothermal field with many geysers located in the Andes of northern Chile at 4,320 metres (14,170 ft)"
@@ -33,15 +32,17 @@ public class HomeworkRunner {
 		LOG.setupLogger();
 		try {
 			FileUtils.forceMkdirParent(sampleFile);
-			sampleFile.createNewFile();
-			FileUtils.writeStringToFile(sampleFile, sample, StandardCharsets.UTF_8);
-
+			if (sampleFile.createNewFile()) {
+				FileUtils.writeStringToFile(sampleFile, sample, StandardCharsets.UTF_8);
+			} else {
+				LOG.severe("FILE WAS NOT CREATED, PROGRAM WILL FAIL");
+			}
 			LOG.info("Reading from testing.txt, determining the amount of unique words and writing it in the file:"
 					+ System.lineSeparator() + "========================================");
 
 			HashSet<String> uniqueWords = new HashSet<>(Arrays.asList(StringUtils.split(
 					RegExUtils.removeAll(FileUtils.readFileToString(sampleFile, StandardCharsets.UTF_8).toLowerCase(),
-							Pattern.compile("[^a-z\s]")))));
+							Pattern.compile("[^a-z ]")))));
 			LOG.info("Amount of unique words: " + uniqueWords.size());
 			FileUtils.writeStringToFile(sampleFile, Integer.toString(uniqueWords.size()), StandardCharsets.UTF_8, true);
 

@@ -14,7 +14,6 @@ public class UserInterface extends javax.swing.JFrame {
 	private javax.swing.JPanel jLastLogPanel;
 	private javax.swing.JMenu jMenuTab;
 	private javax.swing.JPanel jNursery;
-	private javax.swing.JPanel jSafariPanel;
 	private javax.swing.JPopupMenu.Separator jSeparator;
 	private javax.swing.JTabbedPane jTabs;
 	private javax.swing.JMenuBar jTopMenuBar;
@@ -40,7 +39,6 @@ public class UserInterface extends javax.swing.JFrame {
 		jZooPanel = new javax.swing.JPanel();
 		jArenaPanel = new javax.swing.JPanel();
 		jNursery = new javax.swing.JPanel();
-		jSafariPanel = new javax.swing.JPanel();
 		jLastLogPanel = new javax.swing.JPanel();
 		jTopMenuBar = new javax.swing.JMenuBar();
 		jMenuTab = new javax.swing.JMenu();
@@ -162,17 +160,6 @@ public class UserInterface extends javax.swing.JFrame {
 				.addGap(0, 681, Short.MAX_VALUE));
 
 		jTabs.addTab("Nursery", jNursery);
-
-		jSafariPanel.setName("jSafariPanel"); // NOI18N
-
-		javax.swing.GroupLayout jSafariPanelLayout = new javax.swing.GroupLayout(jSafariPanel);
-		jSafariPanel.setLayout(jSafariPanelLayout);
-		jSafariPanelLayout.setHorizontalGroup(jSafariPanelLayout
-				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 1280, Short.MAX_VALUE));
-		jSafariPanelLayout.setVerticalGroup(jSafariPanelLayout
-				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 681, Short.MAX_VALUE));
-
-		jTabs.addTab("Safari", jSafariPanel);
 
 		jLastLogPanel.setName("jLastLogPanel"); // NOI18N
 
