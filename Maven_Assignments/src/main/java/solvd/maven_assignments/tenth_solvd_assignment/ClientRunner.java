@@ -3,8 +3,8 @@ package tenth_solvd_assignment;
 import java.util.ArrayList;
 import java.util.logging.Level;
 
-import tenth_solvd_assignment.connectivity.CustomConnectionPool;
 import tenth_solvd_assignment.connectivity.CustomConnection;
+import tenth_solvd_assignment.connectivity.CustomConnectionPool;
 import tenth_solvd_assignment.utilities.MyLogger;
 
 public class ClientRunner {

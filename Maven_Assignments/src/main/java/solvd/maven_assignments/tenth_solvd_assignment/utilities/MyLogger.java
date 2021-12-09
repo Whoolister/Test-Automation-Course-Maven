@@ -19,6 +19,5 @@ public class MyLogger extends Logger {
 		ch.setFormatter(new SimpleFormatter());
 		ch.setLevel(Level.ALL);
 		this.addHandler(ch);
-
 	}
 }

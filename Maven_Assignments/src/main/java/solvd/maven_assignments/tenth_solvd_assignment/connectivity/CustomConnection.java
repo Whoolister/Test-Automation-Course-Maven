@@ -5,7 +5,6 @@ import tenth_solvd_assignment.utilities.MyLogger;
 public class CustomConnection {
 	// MOCK DB CONNECTION CLASS
 	private static final MyLogger LOG = new MyLogger(CustomConnection.class.getName());
-
 	static {
 		LOG.setupLogger();
 	}
