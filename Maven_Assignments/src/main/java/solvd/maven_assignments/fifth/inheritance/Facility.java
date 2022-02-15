@@ -1,6 +1,6 @@
-package inheritance;
+package solvd.maven_assignments.fifth.inheritance;
 
-import utilities.MyLogger;
+import solvd.maven_assignments.fifth.utilities.MyLogger;
 
 import java.util.ArrayList;
 import java.util.logging.Logger;

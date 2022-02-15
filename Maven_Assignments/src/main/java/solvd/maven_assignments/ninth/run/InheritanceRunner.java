@@ -3,8 +3,8 @@ package solvd.maven_assignments.ninth.run;
 import ninth_solvd_assignment.battle.Arena;
 import ninth_solvd_assignment.genetics.Laboratory;
 import ninth_solvd_assignment.inheritance.Facility;
-import ninth_solvd_assignment.inheritance.WildlifeReserve;
 import org.apache.commons.lang3.StringUtils;
+import solvd.maven_assignments.ninth.inheritance.WildlifeReserve;
 import solvd.maven_assignments.ninth.utilities.MyLogger;
 
 import java.util.Scanner;

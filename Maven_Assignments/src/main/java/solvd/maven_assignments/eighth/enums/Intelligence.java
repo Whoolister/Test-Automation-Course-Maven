@@ -1,4 +1,4 @@
-package eighth_solvd_assignment.enums;
+package solvd.maven_assignments.eighth.enums;
 
 public enum Intelligence {
     POPULATION_BASED(

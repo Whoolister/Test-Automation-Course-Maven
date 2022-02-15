@@ -1,7 +1,8 @@
-package ninth_solvd_assignment.enums;
+package solvd.maven_assignments.ninth.enums;
 
-import ninth_solvd_assignment.battle.Conditions;
-import ninth_solvd_assignment.inheritance.Animal;
+
+import solvd.maven_assignments.ninth.battle.Conditions;
+import solvd.maven_assignments.ninth.inheritance.Animal;
 
 public enum Weather {
     // THESE ARE ALL GOOD ICONS, TRUST ME

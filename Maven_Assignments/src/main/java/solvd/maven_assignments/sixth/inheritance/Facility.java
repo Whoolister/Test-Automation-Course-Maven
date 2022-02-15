@@ -1,6 +1,6 @@
-package sixth_solvd_assignment.inheritance;
+package solvd.maven_assignments.sixth.inheritance;
 
-import sixth_solvd_assignment.utilities.MyLogger;
+import solvd.maven_assignments.sixth.utilities.MyLogger;
 
 import java.util.ArrayList;
 import java.util.logging.Logger;

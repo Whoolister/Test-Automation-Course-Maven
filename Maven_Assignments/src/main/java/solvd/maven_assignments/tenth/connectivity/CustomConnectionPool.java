@@ -1,4 +1,4 @@
-package tenth_solvd_assignment.connectivity;
+package solvd.maven_assignments.tenth.connectivity;
 
 import java.util.ArrayList;
 

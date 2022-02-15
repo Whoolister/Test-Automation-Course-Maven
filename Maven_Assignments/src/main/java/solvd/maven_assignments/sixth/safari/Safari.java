@@ -1,10 +1,10 @@
-package sixth_solvd_assignment.safari;
+package solvd.maven_assignments.sixth.safari;
 
-import sixth_solvd_assignment.exceptions.BadVariableException;
-import sixth_solvd_assignment.inheritance.Animal;
-import sixth_solvd_assignment.inheritance.Facility;
-import sixth_solvd_assignment.utilities.CustomLinkedList;
-import sixth_solvd_assignment.utilities.Randomizer;
+import solvd.maven_assignments.sixth.exceptions.BadVariableException;
+import solvd.maven_assignments.sixth.inheritance.Animal;
+import solvd.maven_assignments.sixth.inheritance.Facility;
+import solvd.maven_assignments.sixth.utilities.CustomLinkedList;
+import solvd.maven_assignments.sixth.utilities.Randomizer;
 
 import java.util.Random;
 import java.util.Scanner;

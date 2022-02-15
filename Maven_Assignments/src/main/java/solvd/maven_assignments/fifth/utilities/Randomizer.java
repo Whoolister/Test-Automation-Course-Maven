@@ -1,6 +1,6 @@
-package utilities;
+package solvd.maven_assignments.fifth.utilities;
 
-import inheritance.*;
+import solvd.maven_assignments.fifth.inheritance.*;
 
 import java.util.ArrayList;
 import java.util.Random;

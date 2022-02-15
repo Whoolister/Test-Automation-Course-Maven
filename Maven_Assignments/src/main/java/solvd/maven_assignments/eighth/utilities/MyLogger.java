@@ -1,4 +1,4 @@
-package eighth_solvd_assignment.utilities;
+package solvd.maven_assignments.eighth.utilities;
 
 import org.apache.commons.io.FileUtils;
 

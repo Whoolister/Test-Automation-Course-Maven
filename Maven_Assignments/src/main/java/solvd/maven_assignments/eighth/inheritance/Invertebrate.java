@@ -1,6 +1,6 @@
-package eighth_solvd_assignment.inheritance;
+package solvd.maven_assignments.eighth.inheritance;
 
-import eighth_solvd_assignment.enums.*;
+import solvd.maven_assignments.eighth.enums.*;
 
 public abstract class Invertebrate extends Animal {
     protected Invertebrate(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet,

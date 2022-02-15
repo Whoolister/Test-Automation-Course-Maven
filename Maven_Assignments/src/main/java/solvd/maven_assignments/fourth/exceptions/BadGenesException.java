@@ -1,4 +1,4 @@
-package exceptions;
+package solvd.maven_assignments.fourth.exceptions;
 
 public class BadGenesException extends Exception {
 

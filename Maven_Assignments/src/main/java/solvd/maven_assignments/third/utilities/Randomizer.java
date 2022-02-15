@@ -1,4 +1,4 @@
-package utilities;
+package solvd.maven_assignments.third.utilities;
 
 public class Randomizer {
     public static String randomizeString(int length) {

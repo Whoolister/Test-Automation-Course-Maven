@@ -1,6 +1,6 @@
-package inheritance;
+package solvd.maven_assignments.fourth.inheritance;
 
-import exceptions.BadVariableException;
+import solvd.maven_assignments.fourth.exceptions.BadVariableException;
 
 public interface IAgriculture {
     String cultivate() throws BadVariableException;

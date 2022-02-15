@@ -1,4 +1,4 @@
-package ninth_solvd_assignment.exceptions;
+package solvd.maven_assignments.ninth.exceptions;
 
 public class ExcessRankException extends Exception {
 

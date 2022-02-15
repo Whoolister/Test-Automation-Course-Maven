@@ -1,4 +1,4 @@
-package enums;
+package solvd.maven_assignments.fifth.enums;
 
 public enum Locomotion {
     BIPEDAL("This being walks on two legs, and a mostly upright posture."),

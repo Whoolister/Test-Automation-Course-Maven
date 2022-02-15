@@ -1,6 +1,7 @@
 package solvd.maven_assignments.ninth.utilities;
 
 import org.apache.commons.lang3.StringUtils;
+import solvd.maven_assignments.ninth.inheritance.*;
 
 import java.util.ArrayList;
 import java.util.Random;

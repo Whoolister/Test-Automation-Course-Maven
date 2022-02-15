@@ -1,6 +1,6 @@
-package eighth_solvd_assignment.inheritance;
+package solvd.maven_assignments.eighth.inheritance;
 
-import eighth_solvd_assignment.utilities.MyLogger;
+import solvd.maven_assignments.eighth.utilities.MyLogger;
 
 import java.util.ArrayList;
 import java.util.List;

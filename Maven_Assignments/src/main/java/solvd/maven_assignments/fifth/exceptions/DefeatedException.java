@@ -1,4 +1,4 @@
-package exceptions;
+package solvd.maven_assignments.fifth.exceptions;
 
 public class DefeatedException extends Exception {
 

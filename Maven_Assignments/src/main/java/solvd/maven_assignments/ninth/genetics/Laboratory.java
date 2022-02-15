@@ -1,10 +1,10 @@
-package ninth_solvd_assignment.genetics;
+package solvd.maven_assignments.ninth.genetics;
 
-import ninth_solvd_assignment.enums.*;
-import ninth_solvd_assignment.inheritance.Animal;
-import ninth_solvd_assignment.inheritance.Facility;
-import ninth_solvd_assignment.utilities.Randomizer;
 import org.apache.commons.lang3.StringUtils;
+import solvd.maven_assignments.ninth.enums.*;
+import solvd.maven_assignments.ninth.inheritance.Animal;
+import solvd.maven_assignments.ninth.inheritance.Facility;
+import solvd.maven_assignments.ninth.utilities.Randomizer;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;

@@ -1,4 +1,4 @@
-package ninth_solvd_assignment.enums;
+package solvd.maven_assignments.ninth.enums;
 
 public enum CyrcadianRythm {
     DIURNAL("This being remains active while the sun stays up, useful at staying safe while the light reveals all."),

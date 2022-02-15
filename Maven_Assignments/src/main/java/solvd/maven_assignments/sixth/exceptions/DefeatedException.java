@@ -1,4 +1,4 @@
-package sixth_solvd_assignment.exceptions;
+package solvd.maven_assignments.sixth.exceptions;
 
 public class DefeatedException extends Exception {
 

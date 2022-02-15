@@ -1,9 +1,9 @@
-package eighth_solvd_assignment.genetics;
+package solvd.maven_assignments.eighth.genetics;
 
-import eighth_solvd_assignment.inheritance.Animal;
-import eighth_solvd_assignment.inheritance.Facility;
-import eighth_solvd_assignment.utilities.Randomizer;
 import org.apache.commons.lang3.StringUtils;
+import solvd.maven_assignments.eighth.inheritance.Animal;
+import solvd.maven_assignments.eighth.inheritance.Facility;
+import solvd.maven_assignments.eighth.utilities.Randomizer;
 
 import java.util.LinkedList;
 import java.util.Scanner;

@@ -1,13 +1,13 @@
-package sixth_solvd_assignment.battle;
+package solvd.maven_assignments.sixth.battle;
 
-import sixth_solvd_assignment.enums.BaseStat;
-import sixth_solvd_assignment.exceptions.DefeatedException;
-import sixth_solvd_assignment.exceptions.ExcessRankException;
-import sixth_solvd_assignment.exceptions.ExhaustedException;
-import sixth_solvd_assignment.exceptions.MissException;
-import sixth_solvd_assignment.inheritance.Animal;
-import sixth_solvd_assignment.inheritance.Facility;
-import sixth_solvd_assignment.utilities.Randomizer;
+import solvd.maven_assignments.sixth.enums.BaseStat;
+import solvd.maven_assignments.sixth.exceptions.DefeatedException;
+import solvd.maven_assignments.sixth.exceptions.ExcessRankException;
+import solvd.maven_assignments.sixth.exceptions.ExhaustedException;
+import solvd.maven_assignments.sixth.exceptions.MissException;
+import solvd.maven_assignments.sixth.inheritance.Animal;
+import solvd.maven_assignments.sixth.inheritance.Facility;
+import solvd.maven_assignments.sixth.utilities.Randomizer;
 
 import java.util.*;
 import java.util.logging.Level;

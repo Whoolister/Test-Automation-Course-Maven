@@ -1,4 +1,4 @@
-package inheritance;
+package solvd.maven_assignments.fourth.inheritance;
 
 import java.util.Random;
 

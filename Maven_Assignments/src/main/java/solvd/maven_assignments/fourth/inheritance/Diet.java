@@ -1,4 +1,4 @@
-package inheritance;
+package solvd.maven_assignments.fourth.inheritance;
 
 public enum Diet {
     HERBIVOROUS("This being gets it's meals from plant matter."),

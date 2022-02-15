@@ -1,4 +1,4 @@
-package sixth_solvd_assignment.enums;
+package solvd.maven_assignments.sixth.enums;
 
 public enum BaseStat {
     MAX_HEALTH("Maximum amount of HP this creature can own at any given moment."),

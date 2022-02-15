@@ -1,7 +1,7 @@
-package eighth_solvd_assignment.inheritance;
+package solvd.maven_assignments.eighth.inheritance;
 
-import eighth_solvd_assignment.utilities.Randomizer;
 import org.apache.commons.lang3.StringUtils;
+import solvd.maven_assignments.eighth.utilities.Randomizer;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

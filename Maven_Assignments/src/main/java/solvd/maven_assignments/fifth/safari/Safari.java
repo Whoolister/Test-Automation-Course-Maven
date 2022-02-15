@@ -1,10 +1,10 @@
-package safari;
+package solvd.maven_assignments.fifth.safari;
 
-import exceptions.BadVariableException;
-import inheritance.Animal;
-import inheritance.Facility;
-import utilities.CustomLinkedList;
-import utilities.Randomizer;
+import solvd.maven_assignments.fifth.exceptions.BadVariableException;
+import solvd.maven_assignments.fifth.inheritance.Animal;
+import solvd.maven_assignments.fifth.inheritance.Facility;
+import solvd.maven_assignments.fifth.utilities.CustomLinkedList;
+import solvd.maven_assignments.fifth.utilities.Randomizer;
 
 import java.util.Random;
 import java.util.Scanner;

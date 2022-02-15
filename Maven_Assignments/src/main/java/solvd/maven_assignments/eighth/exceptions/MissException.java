@@ -1,4 +1,4 @@
-package eighth_solvd_assignment.exceptions;
+package solvd.maven_assignments.eighth.exceptions;
 
 public class MissException extends Exception {
 

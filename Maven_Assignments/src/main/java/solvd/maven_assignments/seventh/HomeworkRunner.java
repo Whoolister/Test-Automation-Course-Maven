@@ -1,9 +1,9 @@
-package seventh_solvd_assignment;
+package solvd.maven_assignments.seventh;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.RegExUtils;
 import org.apache.commons.lang3.StringUtils;
-import seventh_solvd_assignment.utilities.MyLogger;
+import solvd.maven_assignments.seventh.utilities.MyLogger;
 
 import java.io.File;
 import java.io.IOException;

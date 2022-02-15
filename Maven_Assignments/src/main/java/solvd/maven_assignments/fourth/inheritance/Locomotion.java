@@ -1,4 +1,4 @@
-package inheritance;
+package solvd.maven_assignments.fourth.inheritance;
 
 public enum Locomotion {
     BIPEDAL("This being walks on two legs, and a mostly upright posture."),

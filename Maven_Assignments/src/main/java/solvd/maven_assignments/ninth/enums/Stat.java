@@ -1,4 +1,4 @@
-package ninth_solvd_assignment.enums;
+package solvd.maven_assignments.ninth.enums;
 
 public enum Stat {
     HEALTH_POINTS("The amount of damage this creature can take."),

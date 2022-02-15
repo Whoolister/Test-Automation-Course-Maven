@@ -1,4 +1,4 @@
-package enums;
+package solvd.maven_assignments.fifth.enums;
 
 public enum Stat {
     MAX_HEALTH("Maximum amount of HP this creature can own at any given moment."),

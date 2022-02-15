@@ -1,7 +1,8 @@
-package inheritance;
+package solvd.maven_assignments.fifth.inheritance;
 
-import exceptions.BadVariableException;
-import utilities.Randomizer;
+
+import solvd.maven_assignments.fifth.exceptions.BadVariableException;
+import solvd.maven_assignments.fifth.utilities.Randomizer;
 
 import java.util.ArrayList;
 import java.util.Scanner;

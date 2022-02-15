@@ -1,6 +1,6 @@
-package tenth_solvd_assignment.connectivity;
+package solvd.maven_assignments.tenth.connectivity;
 
-import tenth_solvd_assignment.utilities.MyLogger;
+import solvd.maven_assignments.tenth.utilities.MyLogger;
 
 public class CustomConnection {
     // MOCK DB CONNECTION CLASS

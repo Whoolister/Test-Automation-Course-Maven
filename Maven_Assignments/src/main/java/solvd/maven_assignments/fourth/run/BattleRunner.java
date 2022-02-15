@@ -1,8 +1,8 @@
-package run;
+package solvd.maven_assignments.fourth.run;
 
-import battle.Arena;
-import inheritance.*;
-import utilities.MyLogger;
+import solvd.maven_assignments.fourth.battle.Arena;
+import solvd.maven_assignments.fourth.inheritance.*;
+import solvd.maven_assignments.fourth.utilities.MyLogger;
 
 import java.io.BufferedReader;
 import java.io.File;

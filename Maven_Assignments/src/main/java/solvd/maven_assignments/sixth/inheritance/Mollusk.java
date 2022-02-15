@@ -1,9 +1,9 @@
-package sixth_solvd_assignment.inheritance;
+package solvd.maven_assignments.sixth.inheritance;
 
-import sixth_solvd_assignment.enums.*;
-import sixth_solvd_assignment.exceptions.BadVariableException;
-import sixth_solvd_assignment.interfaces.IEctothermy;
-import sixth_solvd_assignment.interfaces.IHibernation;
+import solvd.maven_assignments.sixth.enums.*;
+import solvd.maven_assignments.sixth.exceptions.BadVariableException;
+import solvd.maven_assignments.sixth.interfaces.IEctothermy;
+import solvd.maven_assignments.sixth.interfaces.IHibernation;
 
 import java.util.Random;
 

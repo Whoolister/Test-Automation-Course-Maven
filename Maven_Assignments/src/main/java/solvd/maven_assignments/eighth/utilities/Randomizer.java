@@ -1,6 +1,6 @@
-package eighth_solvd_assignment.utilities;
+package solvd.maven_assignments.eighth.utilities;
 
-import eighth_solvd_assignment.inheritance.*;
+import solvd.maven_assignments.eighth.inheritance.*;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
-package ninth_solvd_assignment.genetics;
+package solvd.maven_assignments.ninth.genetics;
 
-import ninth_solvd_assignment.inheritance.Animal;
+import solvd.maven_assignments.ninth.inheritance.Animal;
 
 public interface IBreeding {
     Animal breed(Animal partner);

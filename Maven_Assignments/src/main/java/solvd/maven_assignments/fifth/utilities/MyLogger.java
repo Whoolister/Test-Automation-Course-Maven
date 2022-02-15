@@ -1,4 +1,4 @@
-package utilities;
+package solvd.maven_assignments.fifth.utilities;
 
 import java.io.BufferedReader;
 import java.io.File;

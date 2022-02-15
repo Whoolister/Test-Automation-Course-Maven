@@ -1,10 +1,10 @@
-package eighth_solvd_assignment.safari;
+package solvd.maven_assignments.eighth.safari;
 
-import eighth_solvd_assignment.inheritance.Animal;
-import eighth_solvd_assignment.inheritance.Facility;
-import eighth_solvd_assignment.utilities.CustomLinkedList;
-import eighth_solvd_assignment.utilities.Randomizer;
 import org.apache.commons.lang3.StringUtils;
+import solvd.maven_assignments.eighth.inheritance.Animal;
+import solvd.maven_assignments.eighth.inheritance.Facility;
+import solvd.maven_assignments.eighth.utilities.CustomLinkedList;
+import solvd.maven_assignments.eighth.utilities.Randomizer;
 
 import java.util.Random;
 import java.util.Scanner;

@@ -1,13 +1,13 @@
-package eighth_solvd_assignment.run;
+package solvd.maven_assignments.eighth.run;
 
-import eighth_solvd_assignment.battle.Arena;
-import eighth_solvd_assignment.genetics.Nursery;
-import eighth_solvd_assignment.inheritance.Animal;
-import eighth_solvd_assignment.inheritance.Facility;
-import eighth_solvd_assignment.inheritance.Zoo;
-import eighth_solvd_assignment.safari.Safari;
-import eighth_solvd_assignment.utilities.MyLogger;
 import org.apache.commons.lang3.StringUtils;
+import solvd.maven_assignments.eighth.battle.Arena;
+import solvd.maven_assignments.eighth.genetics.Nursery;
+import solvd.maven_assignments.eighth.inheritance.Animal;
+import solvd.maven_assignments.eighth.inheritance.Facility;
+import solvd.maven_assignments.eighth.inheritance.Zoo;
+import solvd.maven_assignments.eighth.safari.Safari;
+import solvd.maven_assignments.eighth.utilities.MyLogger;
 
 import java.util.ArrayList;
 import java.util.Scanner;

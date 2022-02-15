@@ -1,13 +1,16 @@
+package solvd.maven_assignments.ninth.inheritance;
 
-import ninth_solvd_assignment.battle.IFighter;
-import ninth_solvd_assignment.exceptions.DefeatedException;
-import ninth_solvd_assignment.exceptions.ExcessRankException;
-import ninth_solvd_assignment.exceptions.ExhaustedException;
-import ninth_solvd_assignment.exceptions.MissException;
-import ninth_solvd_assignment.genetics.IBreeding;
-import ninth_solvd_assignment.genetics.Mutator;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
+import solvd.maven_assignments.ninth.battle.IFighter;
+import solvd.maven_assignments.ninth.enums.*;
+import solvd.maven_assignments.ninth.exceptions.DefeatedException;
+import solvd.maven_assignments.ninth.exceptions.ExcessRankException;
+import solvd.maven_assignments.ninth.exceptions.ExhaustedException;
+import solvd.maven_assignments.ninth.exceptions.MissException;
+import solvd.maven_assignments.ninth.genetics.IBreeding;
+import solvd.maven_assignments.ninth.genetics.Mutator;
+import solvd.maven_assignments.ninth.utilities.Randomizer;
 
 import java.util.*;
 

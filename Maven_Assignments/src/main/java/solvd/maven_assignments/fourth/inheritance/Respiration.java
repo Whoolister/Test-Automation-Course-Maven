@@ -1,4 +1,4 @@
-package inheritance;
+package solvd.maven_assignments.fourth.inheritance;
 
 public enum Respiration {
     LUNGS("This being takes air into their lungs, to then extract molecular oxygen from the atmoshpere."),

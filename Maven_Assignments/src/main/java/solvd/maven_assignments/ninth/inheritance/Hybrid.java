@@ -1,5 +1,7 @@
 package solvd.maven_assignments.ninth.inheritance;
 
+import solvd.maven_assignments.ninth.enums.*;
+
 public class Hybrid extends Animal {
     public Hybrid(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet,
                   CyrcadianRythm cyrcadianRythm, String geneSequence) {

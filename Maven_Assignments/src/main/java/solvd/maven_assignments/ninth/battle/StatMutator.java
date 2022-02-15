@@ -1,6 +1,6 @@
-package ninth_solvd_assignment.battle;
+package solvd.maven_assignments.ninth.battle;
 
-import ninth_solvd_assignment.inheritance.Animal;
+import solvd.maven_assignments.ninth.inheritance.Animal;
 
 @FunctionalInterface
 public interface StatMutator<E extends Animal> {

@@ -1,10 +1,10 @@
-package sixth_solvd_assignment.battle;
+package solvd.maven_assignments.sixth.battle;
 
-import sixth_solvd_assignment.exceptions.DefeatedException;
-import sixth_solvd_assignment.exceptions.ExcessRankException;
-import sixth_solvd_assignment.exceptions.ExhaustedException;
-import sixth_solvd_assignment.exceptions.MissException;
-import sixth_solvd_assignment.inheritance.Animal;
+import solvd.maven_assignments.sixth.exceptions.DefeatedException;
+import solvd.maven_assignments.sixth.exceptions.ExcessRankException;
+import solvd.maven_assignments.sixth.exceptions.ExhaustedException;
+import solvd.maven_assignments.sixth.exceptions.MissException;
+import solvd.maven_assignments.sixth.inheritance.Animal;
 
 public interface IFighter {
     void rankUP() throws ExcessRankException;

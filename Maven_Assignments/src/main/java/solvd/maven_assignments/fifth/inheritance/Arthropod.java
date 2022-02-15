@@ -1,14 +1,10 @@
-package inheritance;
+package solvd.maven_assignments.fifth.inheritance;
 
-import enums.Diet;
-import enums.Intelligence;
-import enums.Locomotion;
-import enums.Respiration;
-import enums.*;
-import exceptions.BadVariableException;
-import interfaces.IAgriculture;
-import interfaces.IEctothermy;
-import interfaces.ISwarm;
+import solvd.maven_assignments.fifth.enums.*;
+import solvd.maven_assignments.fifth.exceptions.BadVariableException;
+import solvd.maven_assignments.fifth.interfaces.IAgriculture;
+import solvd.maven_assignments.fifth.interfaces.IEctothermy;
+import solvd.maven_assignments.fifth.interfaces.ISwarm;
 
 import java.util.Random;
 

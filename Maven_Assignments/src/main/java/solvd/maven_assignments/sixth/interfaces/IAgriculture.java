@@ -1,6 +1,6 @@
-package sixth_solvd_assignment.interfaces;
+package solvd.maven_assignments.sixth.interfaces;
 
-import sixth_solvd_assignment.exceptions.BadVariableException;
+import solvd.maven_assignments.sixth.exceptions.BadVariableException;
 
 public interface IAgriculture {
     String cultivate() throws BadVariableException;

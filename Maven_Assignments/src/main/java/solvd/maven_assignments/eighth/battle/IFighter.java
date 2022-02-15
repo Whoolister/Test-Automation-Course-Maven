@@ -1,11 +1,12 @@
-package eighth_solvd_assignment.battle;
+package solvd.maven_assignments.eighth.battle;
 
-import eighth_solvd_assignment.enums.Stat;
-import eighth_solvd_assignment.exceptions.DefeatedException;
-import eighth_solvd_assignment.exceptions.ExcessRankException;
-import eighth_solvd_assignment.exceptions.ExhaustedException;
-import eighth_solvd_assignment.exceptions.MissException;
-import eighth_solvd_assignment.inheritance.Animal;
+
+import solvd.maven_assignments.eighth.enums.Stat;
+import solvd.maven_assignments.eighth.exceptions.DefeatedException;
+import solvd.maven_assignments.eighth.exceptions.ExcessRankException;
+import solvd.maven_assignments.eighth.exceptions.ExhaustedException;
+import solvd.maven_assignments.eighth.exceptions.MissException;
+import solvd.maven_assignments.eighth.inheritance.Animal;
 
 public interface IFighter {
     void rankUP() throws ExcessRankException;

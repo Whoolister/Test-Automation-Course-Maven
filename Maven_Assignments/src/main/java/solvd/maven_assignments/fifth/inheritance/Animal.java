@@ -1,14 +1,10 @@
-package inheritance;
+package solvd.maven_assignments.fifth.inheritance;
 
-import battle.IFighter;
-import enums.Diet;
-import enums.Intelligence;
-import enums.Locomotion;
-import enums.Respiration;
-import enums.*;
-import exceptions.*;
-import genetics.IBreeding;
-import utilities.Randomizer;
+import solvd.maven_assignments.fifth.battle.IFighter;
+import solvd.maven_assignments.fifth.enums.*;
+import solvd.maven_assignments.fifth.exceptions.*;
+import solvd.maven_assignments.fifth.genetics.IBreeding;
+import solvd.maven_assignments.fifth.utilities.Randomizer;
 
 import java.util.EnumMap;
 import java.util.Objects;

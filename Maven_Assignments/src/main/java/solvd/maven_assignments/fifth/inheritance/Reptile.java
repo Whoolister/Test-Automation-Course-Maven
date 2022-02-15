@@ -1,12 +1,8 @@
-package inheritance;
+package solvd.maven_assignments.fifth.inheritance;
 
-import enums.Diet;
-import enums.Intelligence;
-import enums.Locomotion;
-import enums.Respiration;
-import enums.*;
-import interfaces.IEctothermy;
-import interfaces.IEndothermy;
+import solvd.maven_assignments.fifth.enums.*;
+import solvd.maven_assignments.fifth.interfaces.IEctothermy;
+import solvd.maven_assignments.fifth.interfaces.IEndothermy;
 
 import java.util.Random;
 

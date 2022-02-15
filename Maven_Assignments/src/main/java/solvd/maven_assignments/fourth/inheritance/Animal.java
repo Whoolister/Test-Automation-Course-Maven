@@ -1,11 +1,12 @@
-package inheritance;
+package solvd.maven_assignments.fourth.inheritance;
 
-import battle.IFighter;
-import exceptions.BadVariableException;
-import exceptions.DepletedHealthException;
-import exceptions.NegativeStaminaException;
-import genetics.IBreeding;
-import utilities.Randomizer;
+
+import solvd.maven_assignments.fourth.battle.IFighter;
+import solvd.maven_assignments.fourth.exceptions.BadVariableException;
+import solvd.maven_assignments.fourth.exceptions.DepletedHealthException;
+import solvd.maven_assignments.fourth.exceptions.NegativeStaminaException;
+import solvd.maven_assignments.fourth.genetics.IBreeding;
+import solvd.maven_assignments.fourth.utilities.Randomizer;
 
 import java.util.ArrayList;
 import java.util.Objects;

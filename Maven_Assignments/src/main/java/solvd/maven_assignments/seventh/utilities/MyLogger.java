@@ -1,4 +1,4 @@
-package seventh_solvd_assignment.utilities;
+package solvd.maven_assignments.seventh.utilities;
 
 import java.util.logging.*;
 

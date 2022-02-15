@@ -1,4 +1,4 @@
-package inheritance;
+package solvd.maven_assignments.fourth.inheritance;
 
 public enum Intelligence {
     POPULATION_BASED("This being is as smart as their kin are numerous, working off an eusocial network of pheromones and chemical trails."),

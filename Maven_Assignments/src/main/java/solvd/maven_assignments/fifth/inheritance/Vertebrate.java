@@ -1,10 +1,6 @@
-package inheritance;
+package solvd.maven_assignments.fifth.inheritance;
 
-import enums.Diet;
-import enums.Intelligence;
-import enums.Locomotion;
-import enums.Respiration;
-import enums.*;
+import solvd.maven_assignments.fifth.enums.*;
 
 public abstract class Vertebrate extends Animal {
     protected Vertebrate(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet) {

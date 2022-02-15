@@ -1,8 +1,9 @@
-package battle;
+package solvd.maven_assignments.fourth.battle;
 
-import exceptions.DepletedHealthException;
-import exceptions.NegativeStaminaException;
-import inheritance.Animal;
+
+import solvd.maven_assignments.fourth.exceptions.DepletedHealthException;
+import solvd.maven_assignments.fourth.exceptions.NegativeStaminaException;
+import solvd.maven_assignments.fourth.inheritance.Animal;
 
 import java.util.ArrayList;
 

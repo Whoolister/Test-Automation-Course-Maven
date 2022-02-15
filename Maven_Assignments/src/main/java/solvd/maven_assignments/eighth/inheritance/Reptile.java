@@ -1,9 +1,9 @@
-package eighth_solvd_assignment.inheritance;
+package solvd.maven_assignments.eighth.inheritance;
 
-import eighth_solvd_assignment.enums.*;
-import eighth_solvd_assignment.interfaces.IEctothermy;
-import eighth_solvd_assignment.interfaces.IEndothermy;
-import eighth_solvd_assignment.utilities.Randomizer;
+import solvd.maven_assignments.eighth.enums.*;
+import solvd.maven_assignments.eighth.interfaces.IEctothermy;
+import solvd.maven_assignments.eighth.interfaces.IEndothermy;
+import solvd.maven_assignments.eighth.utilities.Randomizer;
 
 import java.util.Random;
 

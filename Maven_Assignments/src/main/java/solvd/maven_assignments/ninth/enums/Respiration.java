@@ -1,4 +1,4 @@
-package ninth_solvd_assignment.enums;
+package solvd.maven_assignments.ninth.enums;
 
 public enum Respiration {
     LUNGS("This being takes air into their lungs, to then extract molecular oxygen from the atmoshpere."),

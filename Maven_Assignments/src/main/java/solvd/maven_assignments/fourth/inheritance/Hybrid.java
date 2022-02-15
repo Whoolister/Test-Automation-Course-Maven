@@ -1,4 +1,4 @@
-package inheritance;
+package solvd.maven_assignments.fourth.inheritance;
 
 public class Hybrid extends Animal {
     public Hybrid(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet) {

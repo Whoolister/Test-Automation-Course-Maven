@@ -1,8 +1,8 @@
-package tenth_solvd_assignment;
+package solvd.maven_assignments.tenth;
 
-import tenth_solvd_assignment.connectivity.CustomConnection;
-import tenth_solvd_assignment.connectivity.CustomConnectionPool;
-import tenth_solvd_assignment.utilities.MyLogger;
+import solvd.maven_assignments.tenth.connectivity.CustomConnection;
+import solvd.maven_assignments.tenth.connectivity.CustomConnectionPool;
+import solvd.maven_assignments.tenth.utilities.MyLogger;
 
 import java.util.ArrayList;
 import java.util.logging.Level;

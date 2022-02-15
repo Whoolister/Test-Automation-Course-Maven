@@ -1,4 +1,4 @@
-package eighth_solvd_assignment.genetics;
+package solvd.maven_assignments.eighth.genetics;
 
 @FunctionalInterface
 public interface Mutator<E extends CharSequence> {

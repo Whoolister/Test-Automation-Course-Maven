@@ -1,13 +1,14 @@
-package battle;
+package solvd.maven_assignments.fifth.battle;
 
-import enums.Stat;
-import exceptions.DefeatedException;
-import exceptions.ExcessRankException;
-import exceptions.ExhaustedException;
-import exceptions.MissException;
-import inheritance.Animal;
-import inheritance.Facility;
-import utilities.Randomizer;
+import solvd.maven_assignments.fifth.enums.Stat;
+import solvd.maven_assignments.fifth.exceptions.DefeatedException;
+import solvd.maven_assignments.fifth.exceptions.ExcessRankException;
+import solvd.maven_assignments.fifth.exceptions.ExhaustedException;
+import solvd.maven_assignments.fifth.exceptions.MissException;
+import solvd.maven_assignments.fifth.inheritance.Animal;
+import solvd.maven_assignments.fifth.inheritance.Facility;
+import solvd.maven_assignments.fifth.utilities.Randomizer;
+
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;

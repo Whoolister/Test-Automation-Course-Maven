@@ -1,4 +1,4 @@
-package sixth_solvd_assignment.interfaces;
+package solvd.maven_assignments.sixth.interfaces;
 
 public interface IHibernation {
     String hibernate();

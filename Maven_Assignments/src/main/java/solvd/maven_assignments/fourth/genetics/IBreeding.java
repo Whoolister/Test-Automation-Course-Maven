@@ -1,6 +1,6 @@
-package genetics;
+package solvd.maven_assignments.fourth.genetics;
 
-import inheritance.Animal;
+import solvd.maven_assignments.fourth.inheritance.Animal;
 
 public interface IBreeding {
     void mixGenes();

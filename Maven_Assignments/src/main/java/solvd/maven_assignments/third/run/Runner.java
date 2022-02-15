@@ -1,7 +1,9 @@
-package run;
+package solvd.maven_assignments.third.run;
 
-import inheritance.*;
-import utilities.Randomizer;
+
+import solvd.maven_assignments.third.inheritance.Animal;
+import solvd.maven_assignments.third.utilities.Randomizer;
+
 
 import java.util.ArrayList;
 import java.util.Arrays;

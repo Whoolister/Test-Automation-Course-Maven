@@ -1,7 +1,8 @@
 package solvd.maven_assignments.second.run;
 
 import solvd.maven_assignments.second.inheritance.*;
-import utilities.Randomizer;
+import solvd.maven_assignments.third.utilities.Randomizer;
+
 
 import java.util.ArrayList;
 import java.util.Arrays;

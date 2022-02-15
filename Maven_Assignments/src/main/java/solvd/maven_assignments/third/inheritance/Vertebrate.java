@@ -1,4 +1,4 @@
-package inheritance;
+package solvd.maven_assignments.third.inheritance;
 
 public abstract class Vertebrate extends Animal {
     public Vertebrate(String respiration, String locomotion, String intelligence, String diet) {

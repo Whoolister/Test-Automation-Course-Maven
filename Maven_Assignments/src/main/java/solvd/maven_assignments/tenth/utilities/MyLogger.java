@@ -1,4 +1,4 @@
-package tenth_solvd_assignment.utilities;
+package solvd.maven_assignments.tenth.utilities;
 
 import java.util.logging.*;
 

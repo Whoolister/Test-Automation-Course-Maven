@@ -1,4 +1,4 @@
-package enums;
+package solvd.maven_assignments.fifth.enums;
 
 public enum SpecialTrait {
     //INVERTEBRATE TRAITS

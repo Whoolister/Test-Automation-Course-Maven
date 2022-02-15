@@ -1,9 +1,9 @@
-package sixth_solvd_assignment.inheritance;
+package solvd.maven_assignments.sixth.inheritance;
 
-import sixth_solvd_assignment.enums.Diet;
-import sixth_solvd_assignment.enums.Intelligence;
-import sixth_solvd_assignment.enums.Locomotion;
-import sixth_solvd_assignment.enums.Respiration;
+import solvd.maven_assignments.sixth.enums.Diet;
+import solvd.maven_assignments.sixth.enums.Intelligence;
+import solvd.maven_assignments.sixth.enums.Locomotion;
+import solvd.maven_assignments.sixth.enums.Respiration;
 
 public class Hybrid extends Animal {
     public Hybrid(Respiration respiration, Locomotion locomotion, Intelligence intelligence, Diet diet) {

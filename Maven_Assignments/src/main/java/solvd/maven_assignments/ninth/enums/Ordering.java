@@ -1,6 +1,6 @@
-package ninth_solvd_assignment.enums;
+package solvd.maven_assignments.ninth.enums;
 
-import ninth_solvd_assignment.inheritance.Animal;
+import solvd.maven_assignments.ninth.inheritance.Animal;
 
 import java.util.Comparator;
 

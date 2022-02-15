@@ -1,10 +1,10 @@
-package sixth_solvd_assignment.run;
+package solvd.maven_assignments.sixth.run;
 
-import sixth_solvd_assignment.battle.Arena;
-import sixth_solvd_assignment.inheritance.Animal;
-import sixth_solvd_assignment.inheritance.Zoo;
-import sixth_solvd_assignment.safari.Safari;
-import sixth_solvd_assignment.utilities.MyLogger;
+import solvd.maven_assignments.sixth.battle.Arena;
+import solvd.maven_assignments.sixth.inheritance.Animal;
+import solvd.maven_assignments.sixth.inheritance.Zoo;
+import solvd.maven_assignments.sixth.safari.Safari;
+import solvd.maven_assignments.sixth.utilities.MyLogger;
 
 import java.util.ArrayList;
 import java.util.Scanner;

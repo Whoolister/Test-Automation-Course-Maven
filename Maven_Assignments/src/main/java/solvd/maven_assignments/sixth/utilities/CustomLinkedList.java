@@ -1,4 +1,4 @@
-package sixth_solvd_assignment.utilities;
+package solvd.maven_assignments.sixth.utilities;
 
 public class CustomLinkedList<E> {
     private Node head;

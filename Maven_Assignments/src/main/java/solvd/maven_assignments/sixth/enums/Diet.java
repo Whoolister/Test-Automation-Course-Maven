@@ -1,4 +1,4 @@
-package sixth_solvd_assignment.enums;
+package solvd.maven_assignments.sixth.enums;
 
 public enum Diet {
     HERBIVOROUS("This being gets it's meals from plant matter."),

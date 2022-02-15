@@ -1,5 +1,7 @@
-package sixth_solvd_assignment.genetics;
+package solvd.maven_assignments.sixth.genetics;
 
-public class Nursery {
+import solvd.maven_assignments.sixth.inheritance.Facility;
+
+public class Nursery extends Facility {
 
 }

@@ -1,7 +1,7 @@
-package sixth_solvd_assignment.inheritance;
+package solvd.maven_assignments.sixth.inheritance;
 
-import sixth_solvd_assignment.exceptions.BadVariableException;
-import sixth_solvd_assignment.utilities.Randomizer;
+import solvd.maven_assignments.sixth.exceptions.BadVariableException;
+import solvd.maven_assignments.sixth.utilities.Randomizer;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -64,7 +64,7 @@ public class Zoo extends Facility {
                                                 + System.lineSeparator() + animal.think() + System.lineSeparator());
                             } catch (BadVariableException e) {
                                 LOG.logAndShow(Level.SEVERE, "Problem Ocurred in Animal Collection Examination: "
-                                        + e.getMessage() + System.lineSeparator() + animal.toString());
+                                        + e.getMessage() + System.lineSeparator() + animal);
                             }
 
                         }

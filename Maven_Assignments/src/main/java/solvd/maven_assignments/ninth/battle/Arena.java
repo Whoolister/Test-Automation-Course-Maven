@@ -1,16 +1,16 @@
-package ninth_solvd_assignment.battle;
+package solvd.maven_assignments.ninth.battle;
 
-import ninth_solvd_assignment.enums.Ordering;
-import ninth_solvd_assignment.enums.Stat;
-import ninth_solvd_assignment.enums.Weather;
-import ninth_solvd_assignment.exceptions.DefeatedException;
-import ninth_solvd_assignment.exceptions.ExcessRankException;
-import ninth_solvd_assignment.exceptions.ExhaustedException;
-import ninth_solvd_assignment.exceptions.MissException;
-import ninth_solvd_assignment.inheritance.Animal;
-import ninth_solvd_assignment.inheritance.Facility;
-import ninth_solvd_assignment.utilities.Randomizer;
 import org.apache.commons.lang3.StringUtils;
+import solvd.maven_assignments.ninth.enums.Ordering;
+import solvd.maven_assignments.ninth.enums.Stat;
+import solvd.maven_assignments.ninth.enums.Weather;
+import solvd.maven_assignments.ninth.exceptions.DefeatedException;
+import solvd.maven_assignments.ninth.exceptions.ExcessRankException;
+import solvd.maven_assignments.ninth.exceptions.ExhaustedException;
+import solvd.maven_assignments.ninth.exceptions.MissException;
+import solvd.maven_assignments.ninth.inheritance.Animal;
+import solvd.maven_assignments.ninth.inheritance.Facility;
+import solvd.maven_assignments.ninth.utilities.Randomizer;
 
 import java.util.*;
 import java.util.logging.Level;

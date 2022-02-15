@@ -1,10 +1,10 @@
-package run;
+package solvd.maven_assignments.fifth.run;
 
-import battle.Arena;
-import inheritance.Animal;
-import inheritance.Zoo;
-import safari.Safari;
-import utilities.MyLogger;
+import solvd.maven_assignments.fifth.battle.Arena;
+import solvd.maven_assignments.fifth.inheritance.Animal;
+import solvd.maven_assignments.fifth.inheritance.Zoo;
+import solvd.maven_assignments.fifth.safari.Safari;
+import solvd.maven_assignments.fifth.utilities.MyLogger;
 
 import java.util.ArrayList;
 import java.util.Scanner;

@@ -1,6 +1,7 @@
-package utilities;
+package solvd.maven_assignments.fourth.utilities;
 
-import inheritance.*;
+
+import solvd.maven_assignments.fourth.inheritance.Animal;
 
 import java.util.Random;
 

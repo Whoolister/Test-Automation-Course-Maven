@@ -1,8 +1,8 @@
-package ninth_solvd_assignment.enums;
+package solvd.maven_assignments.ninth.enums;
 
-import ninth_solvd_assignment.battle.StatMutator;
-import ninth_solvd_assignment.genetics.Decoder;
-import ninth_solvd_assignment.inheritance.Animal;
+import solvd.maven_assignments.ninth.battle.StatMutator;
+import solvd.maven_assignments.ninth.genetics.Decoder;
+import solvd.maven_assignments.ninth.inheritance.Animal;
 
 public enum SpecialTrait {
     // INVERTEBRATE TRAITS

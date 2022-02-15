@@ -1,6 +1,6 @@
-package sixth_solvd_assignment.utilities;
+package solvd.maven_assignments.sixth.utilities;
 
-import sixth_solvd_assignment.inheritance.*;
+import solvd.maven_assignments.sixth.inheritance.*;
 
 import java.util.ArrayList;
 import java.util.Random;

@@ -1,7 +1,7 @@
-package ninth_solvd_assignment.inheritance;
+package solvd.maven_assignments.ninth.inheritance;
 
-import ninth_solvd_assignment.utilities.MyLogger;
-import ninth_solvd_assignment.utilities.Randomizer;
+import solvd.maven_assignments.ninth.utilities.MyLogger;
+import solvd.maven_assignments.ninth.utilities.Randomizer;
 
 import java.util.ArrayList;
 import java.util.Arrays;

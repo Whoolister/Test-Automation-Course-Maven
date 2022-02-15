@@ -1,9 +1,9 @@
 package solvd.maven_assignments.ninth.inheritance;
 
-import ninth_solvd_assignment.enums.*;
-import ninth_solvd_assignment.interfaces.IAgriculture;
-import ninth_solvd_assignment.interfaces.IEndothermy;
-import ninth_solvd_assignment.interfaces.IHibernation;
+import solvd.maven_assignments.ninth.interfaces.IAgriculture;
+import solvd.maven_assignments.ninth.enums.*;
+import solvd.maven_assignments.ninth.interfaces.IEndothermy;
+import solvd.maven_assignments.ninth.interfaces.IHibernation;
 
 import java.util.Random;
 

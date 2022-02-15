@@ -1,6 +1,6 @@
-package eighth_solvd_assignment.enums;
+package solvd.maven_assignments.eighth.enums;
 
-import eighth_solvd_assignment.genetics.Decoder;
+import solvd.maven_assignments.eighth.genetics.Decoder;
 
 public enum SpecialTrait {
     // INVERTEBRATE TRAITS

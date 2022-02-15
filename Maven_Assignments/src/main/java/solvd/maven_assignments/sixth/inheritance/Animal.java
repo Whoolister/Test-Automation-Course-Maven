@@ -1,10 +1,10 @@
-package sixth_solvd_assignment.inheritance;
+package solvd.maven_assignments.sixth.inheritance;
 
-import sixth_solvd_assignment.battle.IFighter;
-import sixth_solvd_assignment.enums.*;
-import sixth_solvd_assignment.exceptions.*;
-import sixth_solvd_assignment.genetics.IBreeding;
-import sixth_solvd_assignment.utilities.Randomizer;
+import solvd.maven_assignments.sixth.battle.IFighter;
+import solvd.maven_assignments.sixth.enums.*;
+import solvd.maven_assignments.sixth.exceptions.*;
+import solvd.maven_assignments.sixth.genetics.IBreeding;
+import solvd.maven_assignments.sixth.utilities.Randomizer;
 
 import java.util.EnumMap;
 import java.util.Objects;
